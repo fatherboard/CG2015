@@ -4,8 +4,8 @@
 #include <GL/glut.h>
 
 void myReshape(GLsizei w, GLsizei h) {
-	glViewport(0, 0, w, h);
-	glMatrixMode(GL_PROJECTION);
+	glViewport(0, 0, 400, 400);			// o objecto passa a ter um tamanho fixo em vez de ser relativo
+	glMatrixMode(GL_PROJECTION);		// ao tamanho da janela
 	glLoadIdentity();
 	glOrtho(-2.0f, 2.0f, -2.0f, 2.0f, -2.0f, 2.0f);
 	glMatrixMode(GL_MODELVIEW);
