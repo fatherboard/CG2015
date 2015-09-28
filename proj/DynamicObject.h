@@ -1,14 +1,13 @@
-#pragma once
-#include "gameobject.h"
-class DynamicObject abstract :
+#include "GameObject.h"
+class DynamicObject :
 	public GameObject
 {
 public:
 	DynamicObject(void);
-	~DynamicObject(void);
-	void update(double const delta);
-	void setSpeed(Vector3 const speed);
-	void setSpeed(double x, double y, double z);
-	Vector3 getSpeed();
+	virtual ~DynamicObject(void);
+	virtual void update(double const delta);
+	virtual void setSpeed(Vector3 const speed);
+	virtual void setSpeed(double x, double y, double z);
+	virtual Vector3 getSpeed();
 };
 

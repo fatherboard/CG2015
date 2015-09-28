@@ -1,5 +1,4 @@
-#pragma once
-#include "obstacle.h"
+#include "Obstacle.h"
 class Orange :
 	public Obstacle
 {

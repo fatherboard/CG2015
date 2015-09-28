@@ -1,4 +1,3 @@
-#pragma once
 #include <GL/glut.h>
 #include "Vector3.h"
 class LightSource

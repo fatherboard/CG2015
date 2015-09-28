@@ -1,12 +1,11 @@
-#pragma once
 #include "Vector3.h"
-class Entity abstract
+class Entity
 {
 public:
 	Entity(void);
-	~Entity(void);
-	Vector3 getPosition();
-	Vector3 setPosition(double x, double y, double z);
-	Vector3 setPosition(Vector3 const p);
+	virtual ~Entity(void);
+	virtual Vector3 getPosition();
+	virtual Vector3 setPosition(double x, double y, double z);
+	virtual Vector3 setPosition(Vector3 const p);
 };
 

@@ -1,5 +1,4 @@
-#pragma once
-#include "camera.h"
+#include "Camera.h"
 class PerspectiveCamera :
 	public Camera
 {

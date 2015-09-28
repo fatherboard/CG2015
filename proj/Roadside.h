@@ -1,5 +1,4 @@
-#pragma once
-#include "staticobject.h"
+#include "StaticObject.h"
 class Roadside :
 	public StaticObject
 {

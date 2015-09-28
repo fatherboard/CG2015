@@ -1,11 +1,10 @@
-#pragma once
 #include "GameObject.h"
 
-class StaticObject abstract :
+class StaticObject :
 	public GameObject
 {
 public:
 	StaticObject(void);
-	~StaticObject(void);
+	virtual ~StaticObject(void);
 };
 

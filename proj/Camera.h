@@ -1,7 +1,6 @@
-#pragma once
-#include "entity.h"
+#include "Entity.h"
 
-class Camera abstract :
+class Camera :
 	public Entity
 {
 protected:
@@ -9,10 +8,11 @@ protected:
 	double _far;
 
 public:
+	Camera(void);
 	Camera(double near, double far);
-	~Camera(void);
-	void update();
-	void computeProjectionMatrix();
-	void computeVisualizationMatrix();
+	virtual ~Camera(void);
+	virtual void update();
+	virtual void computeProjectionMatrix();
+	virtual void computeVisualizationMatrix();
 };
 

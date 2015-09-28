@@ -1,5 +1,4 @@
-#pragma once
-#include "dynamicobject.h"
+#include "DynamicObject.h"
 class Car :
 	public DynamicObject
 {
