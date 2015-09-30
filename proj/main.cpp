@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <GL/gl.h>
-#include <GL/glut.h>
+#include <C:\Program Files\Common Files\glut\include\GL\glut.h>
 
 void myReshape(GLsizei w, GLsizei h) {
 	glViewport(0, 0, w, h);

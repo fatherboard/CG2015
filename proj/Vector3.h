@@ -25,7 +25,7 @@ public:
 	double getY();
 	double getZ();
 	void set(double x, double y, double z);
-	Vector3 equals(Vector3 vec);
+	int equals(Vector3 vec);
 	Vector3 dotProduct(double num);
 	Vector3 add(Vector3 vec);
 	Vector3 subtr(Vector3 vec);
