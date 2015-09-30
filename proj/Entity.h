@@ -12,6 +12,9 @@
 
 class Vector3;
 class Entity {
+private:
+	Vector3 _position;
+
 public:
 	Entity();
 	virtual ~Entity();

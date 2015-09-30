@@ -41,14 +41,14 @@ void Vector3::set(double x, double y, double z){
 	_z = z;
 }
 
-int Vector3::equals(Vector3 vec){
+bool Vector3::equals(Vector3 vec){
 	if(this->_x != vec._x)
-		return 0;
+		return false;
 	if(this->_y != vec._y)
-		return 0;
+		return false;
 	if(this->_z != vec._z)
-		return 0;
-	return 1;
+		return false;
+	return true;
 }
 
 Vector3 Vector3::dotProduct(double num){
@@ -71,7 +71,3 @@ Vector3 Vector3::subtr(Vector3 vec){
 	this->_z -= vec._z;
 	return this;
 }
-
-//Vector3 dotProduct(double num);
-//Vector3 add(Vector3 vec);
-//Vector3 subtr(Vector3 vec);
