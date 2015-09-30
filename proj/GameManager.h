@@ -9,14 +9,18 @@
 #define PROJ_GAMEMANAGER_H_
 
 #include "Camera.h"
+#include "LightSource.h"
+#include "GameObject.h"
 
 class GameManager {
 private:
 	Camera *_cameras;
+	LightSource *_light_sources;
+	GameObject *_game_objects;
 
 public:
 	GameManager();
-	virtual ~GameManager();
+	~GameManager();
 
 	void display();
 	void reshape(GLsizei w, GLsizei h);
