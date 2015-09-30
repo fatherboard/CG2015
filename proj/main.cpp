@@ -1,6 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <GL/gl.h>
+#include <GL/glext.h>
 #include <GL/glut.h>
 
 void myReshape(GLsizei w, GLsizei h) {
