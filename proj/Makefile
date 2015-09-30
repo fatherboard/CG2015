@@ -1,8 +1,8 @@
-all: main.cpp
-	g++ main.cpp -g -lGL -lGLU -lglut -o main
+	gcc -o proj main.cpp -lGL -lGLU -lglut
+	make run
+
+run:
+	./proj
 
 clean:
-	rm -f *.o main
-
-install:
-	apt-get install freeglut3-dev
+	rm -f *.o proj
