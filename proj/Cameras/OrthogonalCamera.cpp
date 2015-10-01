@@ -8,10 +8,12 @@
 #include "OrthogonalCamera.h"
 
 OrthogonalCamera::OrthogonalCamera(double left, double right, double bottom, double top, double near, double far) {
-	this->_left = left;
-	this->_right = right;
-	this->_bottom = bottom;
-	this->_top = top;
+	_left = left;
+	_right = right;
+	_bottom = bottom;
+	_top = top;
+	_near = near;
+	_far = far;
 }
 
 OrthogonalCamera::~OrthogonalCamera() {
