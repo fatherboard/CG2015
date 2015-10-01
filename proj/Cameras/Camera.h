@@ -8,8 +8,8 @@
 #ifndef PROJ_CAMERA_H_
 #define PROJ_CAMERA_H_
 
-#include "Entity.h"
-#include "Vector3.h"
+#include "../GameMgr/Entity.h"
+#include "../GameMgr/Vector3.h"
 
 class Camera : public Entity{
 protected:

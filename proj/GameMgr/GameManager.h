@@ -8,9 +8,9 @@
 #ifndef PROJ_GAMEMANAGER_H_
 #define PROJ_GAMEMANAGER_H_
 
-#include "Camera.h"
+#include "../Cameras/Camera.h"
 #include "LightSource.h"
-#include "GameObject.h"
+#include "../GameObjects/GameObject.h"
 
 class GameManager {
 private:

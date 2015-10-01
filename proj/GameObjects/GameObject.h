@@ -8,7 +8,7 @@
 #ifndef PROJ_GAMEOBJECT_H_
 #define PROJ_GAMEOBJECT_H_
 
-#include "Entity.h"
+#include "../GameMgr/Entity.h"
 
 class GameObject: public Entity {
 public:

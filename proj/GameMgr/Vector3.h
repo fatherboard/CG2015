@@ -4,6 +4,7 @@
  *  Created on: 30 Sep 2015
  *      Author: eu
  */
+#pragma once
 
 #ifndef PROJ_VECTOR3_H_
 #define PROJ_VECTOR3_H_
@@ -25,10 +26,15 @@ public:
 	double getY();
 	double getZ();
 	void set(double x, double y, double z);
-	bool equals(Vector3 vec);
+	/*bool equals(Vector3 vec);
 	Vector3 dotProduct(double num);
 	Vector3 add(Vector3 vec);
-	Vector3 subtr(Vector3 vec);
+	Vector3 subtr(Vector3 vec);*/
+
+	Vector3 operator=(Vector3 vec);
+	Vector3 operator*(double num);
+	Vector3 operator+(Vector3 vec);
+	Vector3 operator-(Vector3 vec);
 
 };
 

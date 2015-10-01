@@ -18,9 +18,9 @@ DynamicObject::~DynamicObject() {
 void DynamicObject::update(double delta_t){
 	double new_x, new_y, new_z;
 
-	new_x = this->_speed.getX() + this->_speed * delta_t;
-	new_y = this->_speed.getY() + this->_speed * delta_t;
-	new_z = this->_speed.getZ() + this->_speed * delta_t;
+//	new_x = this->_speed.getX() + this->_speed * delta_t;
+//	new_y = this->_speed.getY() + this->_speed * delta_t;
+//	new_z = this->_speed.getZ() + this->_speed * delta_t;
 
 	this->_speed.set(new_x, new_y, new_z);
 }
@@ -33,7 +33,7 @@ void DynamicObject::setSpeed(Vector3 speed){
 }
 void DynamicObject::setSpeed(double x, double y, double z){
 	this->_speed.~Vector3();
-	this->_speed = Vector3::Vector3(x,y,z);
+	this->_speed = Vector3(x,y,z);
 }
 Vector3 DynamicObject::getSpeed(){
 	return this->_speed;

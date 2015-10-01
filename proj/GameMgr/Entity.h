@@ -4,6 +4,7 @@
  *  Created on: 30 Sep 2015
  *      Author: eu
  */
+#pragma once
 
 #ifndef PROJ_ENTITY_H_
 #define PROJ_ENTITY_H_
@@ -11,6 +12,7 @@
 #include "Vector3.h"
 
 class Vector3;
+
 class Entity {
 private:
 	Vector3 _position;

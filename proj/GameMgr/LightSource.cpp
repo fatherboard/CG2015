@@ -20,6 +20,7 @@ bool LightSource::getState(){
 }
 bool LightSource::setState(bool state){
 	this->_state = state;
+	return this->_state;
 }
 GLenum LightSource::getNum(){
 	return this->_num;
@@ -36,14 +37,21 @@ void LightSource::setCutOff(double cut_off){
 void LightSource::setExponent(double exponent){
 	this->_exponent = exponent;
 }
-void LightSource::setAmbient(double ambient){
-	this->_ambient = ambient;
+void LightSource::setAmbient(double ambient[4]){
+	int i;
+	for(i = 0; i < 4; i ++)
+		this->_ambient[i] = ambient[i];
+
 }
-void LightSource::setDiffuse(double diffuse){
-	this->_diffuse = diffuse;
+void LightSource::setDiffuse(double diffuse[4]){
+	int i;
+	for(i = 0; i < 4; i ++)
+		this->_diffuse[i] = diffuse[i];
 }
-void LightSource::setSpecular(double specular){
-	this->_specular = specular;
+void LightSource::setSpecular(double specular[4]){
+	int i;
+	for(i = 0; i < 4; i ++)
+		this->_specular[i] = specular[i];
 }
 void LightSource::draw(){
 	// TODO

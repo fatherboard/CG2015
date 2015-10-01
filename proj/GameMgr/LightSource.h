@@ -36,9 +36,9 @@ public:
 	void setDirection(Vector3 direction);
 	void setCutOff(double cut_off);
 	void setExponent(double exponent);
-	void setAmbient(double ambient);
-	void setDiffuse(double diffuse);
-	void setSpecular(double specular);
+	void setAmbient(double ambient[4]);
+	void setDiffuse(double diffuse[4]);
+	void setSpecular(double specular[4]);
 	void draw();
 };
 
