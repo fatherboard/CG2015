@@ -9,8 +9,6 @@
 #ifndef PROJ_VECTOR3_H_
 #define PROJ_VECTOR3_H_
 
-#include "Entity.h"
-
 class Vector3 {
 protected:
 	double _x;
@@ -31,10 +29,10 @@ public:
 	Vector3 add(Vector3 vec);
 	Vector3 subtr(Vector3 vec);*/
 
-	Vector3 operator=(Vector3 vec);
-	Vector3 operator*(double num);
-	Vector3 operator+(Vector3 vec);
-	Vector3 operator-(Vector3 vec);
+	bool operator=(Vector3 vec);
+	void operator*(double num);
+	void operator+(Vector3 vec);
+	void operator-(Vector3 vec);
 
 };
 

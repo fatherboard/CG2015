@@ -11,11 +11,9 @@
 
 #include "Vector3.h"
 
-class Vector3;
-
 class Entity {
 private:
-	Vector3 _position;
+	Vector3 position;
 
 public:
 	Entity();
