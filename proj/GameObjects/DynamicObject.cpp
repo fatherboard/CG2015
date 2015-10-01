@@ -16,13 +16,9 @@ DynamicObject::~DynamicObject() {
 }
 
 void DynamicObject::update(double delta_t){
-	double new_x, new_y, new_z;
 
-//	new_x = this->_speed.getX() + this->_speed * delta_t;
-//	new_y = this->_speed.getY() + this->_speed * delta_t;
-//	new_z = this->_speed.getZ() + this->_speed * delta_t;
+		// TODO
 
-	this->_speed.set(new_x, new_y, new_z);
 }
 
 // nao esquecer que a nova posicao de um objecto em movimento

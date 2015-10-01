@@ -22,7 +22,7 @@ private:
 	Vector3 _at;
 
 public:
-	Camera(double near, double far, Vector3 up, Vector3 center, Vector3 at);
+	Camera(double near, double far);
 	virtual ~Camera();
 
 	virtual void update();
