@@ -74,7 +74,15 @@ Vector3 Vector3::subtr(Vector3 vec){
 
 bool Vector3::operator=(Vector3 vec){
 	// TODO
-	if()
+	if(vec._x!=this->_x){
+		return false;
+	}
+	if(vec._y!=this->_y){
+		return false;
+	}
+	if(vec._z!=this->_z){
+		return false;
+	}
 
 	return true;
 }
