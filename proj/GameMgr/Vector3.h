@@ -9,8 +9,6 @@
 #ifndef PROJ_VECTOR3_H_
 #define PROJ_VECTOR3_H_
 
-#include "Entity.h"
-
 class Vector3 {
 protected:
 	double _x;

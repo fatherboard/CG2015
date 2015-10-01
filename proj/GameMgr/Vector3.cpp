@@ -81,19 +81,19 @@ Vector3 Vector3::operator*(double num){
 	this->_x *= num;
 	this->_y *= num;
 	this->_z *= num;
-	return this;
+	return Vector3(this->_x, this->_y, this->_z);
 }
 
 Vector3 Vector3::operator+(Vector3 vec){
 	this->_x += vec._x;
 	this->_y += vec._y;
 	this->_z += vec._z;
-	return this;
+	return Vector3(this->_x, this->_y, this->_z);
 }
 
 Vector3 Vector3::operator-(Vector3 vec){
 	this->_x -= vec._x;
 	this->_y -= vec._y;
 	this->_z -= vec._z;
-	return this;
+	return Vector3(this->_x, this->_y, this->_z);
 }

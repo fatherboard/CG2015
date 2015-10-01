@@ -7,12 +7,9 @@
 
 #include "Camera.h"
 
-Camera::Camera(double near, double far, Vector3 up, Vector3 center, Vector3 at) {
+Camera::Camera(double near, double far) {
 	this->_near = near;
 	this->_far = far;
-	this->_up = up;
-	this->_center = center;
-	this->_at = at;
 }
 
 
