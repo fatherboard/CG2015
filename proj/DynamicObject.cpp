@@ -8,7 +8,7 @@
 #include "DynamicObject.h"
 
 DynamicObject::DynamicObject() {
-	this->_speed = Vector3(0, 0, 0);
+	// TODO
 }
 
 DynamicObject::~DynamicObject() {
@@ -23,15 +23,13 @@ void DynamicObject::update(double delta_t){
 
 // nao esquecer que a nova posicao de um objecto em movimento
 // e dada por: posicao_1 = posicao_0 + velocidade * delta_t
-void DynamicObject::setSpeed(Vector3 speed){
-	this->_speed.~Vector3();
-	this->_speed = speed;
+void DynamicObject::setSpeed(Vector3* speed){
+	_speed.set(speed->getX(),speed->getY(),speed->getZ());
 }
 void DynamicObject::setSpeed(double x, double y, double z){
-	this->_speed.~Vector3();
-	this->_speed = Vector3(x,y,z);
+	_speed.set(x,y,z);
 }
-Vector3 DynamicObject::getSpeed(){
-	return this->_speed;
+Vector3* DynamicObject::getSpeed(){
+	return &_speed;
 }
 

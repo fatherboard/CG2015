@@ -7,20 +7,18 @@
 
 #include "OrthogonalCamera.h"
 
-OrthogonalCamera::OrthogonalCamera(double left, double right, double bottom, double top, double near, double far) {
-	_left = left;
-	_right = right;
-	_bottom = bottom;
-	_top = top;
-	_near = near;
-	_far = far;
+OrthogonalCamera::OrthogonalCamera(double left, double right, double bottom, double top, double near, double far):Camera(near,far) {
+	_left=left;
+	_right=right;		
+	_bottom=bottom;
+	_top=top;
 }
 
 OrthogonalCamera::~OrthogonalCamera() {
 	// TODO Auto-generated destructor stub
 }
 
-void OrthogonalCamera::update(){
+void OrthogonalCamera::update(GLsizei w, GLsizei h){
 	// TODO
 }
 void OrthogonalCamera::computeProjectionMatrix(){

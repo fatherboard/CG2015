@@ -7,15 +7,22 @@
 
 #include "Camera.h"
 
-Camera::Camera(){
-	_far=0;
-	_near=0;
-}
-
 Camera::Camera(double near, double far) {
 	_near = near;
 	_far = far;
 }
 Camera::~Camera(){}
+
+double Camera::getNear(){ 
+	return _near; 
+}
+double Camera::getFar(){ 
+	return _far; 
+}
+
+void Camera::update(GLsizei w, GLsizei h)
+{
+}
+
 
 

@@ -7,16 +7,16 @@
 
 #include "PerspectiveCamera.h"
 
-PerspectiveCamera::PerspectiveCamera(double fovy, double aspect) {
-	this->_fovy = fovy;
-	this->_aspect = aspect;
+PerspectiveCamera::PerspectiveCamera(double fovy,double aspect, double zNear, double zFar):Camera(zFar, zNear) {
+	_fovy=fovy;
+	_aspect=aspect;
 }
 
 PerspectiveCamera::~PerspectiveCamera() {
 	// TODO Auto-generated destructor stub
 }
 
-void PerspectiveCamera::update(){
+void PerspectiveCamera::update(GLsizei w, GLsizei h){
 	// TODO
 }
 void PerspectiveCamera::computeProjectionMatrix(){

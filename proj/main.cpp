@@ -1,4 +1,4 @@
-#include <GL/glut.h>
+#include "Header.h"
 
 void myReshape(GLsizei w, GLsizei h) {
 	glViewport(0, 0, w, h);
