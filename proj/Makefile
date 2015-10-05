@@ -1,4 +1,5 @@
-	gcc -o proj main.cpp -lGL -lGLU -lglut
+all:
+	g++ *.cpp -lGL -lGLU -lglut -o proj
 	make run
 
 run:
@@ -6,3 +7,6 @@ run:
 
 clean:
 	rm -f *.o proj
+
+install:
+	sudo apt-get install g++-multilib freeglut3-dev
