@@ -1,15 +1,15 @@
 #pragma once
 
-#ifndef __ROADSIDE__
-#define __ROADSIDE__
+#ifndef __TRACK__
+#define __TRACK__
 
 #include "StaticObject.h"
-class Roadside :
+class Track :
 	public StaticObject
 {
 public:
-	Roadside(void);
-	~Roadside(void);
+	Track(void);
+	~Track(void);
 	void draw();
 };
 

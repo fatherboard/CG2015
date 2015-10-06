@@ -1,14 +1,14 @@
-#include "Roadside.h"
+#include "Track.h"
 
-Roadside::Roadside() {
+Track::Track() {
 	// TODO Auto-generated constructor stub
 
 }
 
-Roadside::~Roadside() {
+Track::~Track() {
 	// TODO Auto-generated destructor stub
 }
 
-void Roadside::draw(){
+void Track::draw(){
 	// TODO
 }
