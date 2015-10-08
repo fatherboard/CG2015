@@ -4,6 +4,7 @@
  *  Created on: 30/09/2015
  *      Author: 5702pedro.bucho
  */
+#include "stdlib.h"
 #include "GL/glut.h"
 #include "LightSource.h"
 

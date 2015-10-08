@@ -14,16 +14,27 @@ OrthogonalCamera::OrthogonalCamera(double left, double right, double bottom, dou
 	_top=top;
 }
 
-OrthogonalCamera::~OrthogonalCamera() {
-	// TODO Auto-generated destructor stub
-}
+OrthogonalCamera::~OrthogonalCamera() {}
 
 void OrthogonalCamera::update(GLsizei w, GLsizei h){
-	// TODO
+
+	float ratio = (_right - _left) / (_top - _bottom);
+	float aspect = (float)w / h;
+	if (ratio < aspect) {
+		float aux = ((_top - _bottom) * aspect - (_right - _left)) / 2;
+		glOrtho(_left - aux, _right + aux, _bottom, _top, getNear(), getFar());
+	}
+	else
+	{
+		float aux = ((_right - _left) / aspect - (_top - _bottom)) / 2;
+		glOrtho(_left, _right, _bottom - aux, _top + aux, getNear(), getFar());
+	}
 }
 void OrthogonalCamera::computeProjectionMatrix(){
-	// TODO
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
 }
 void OrthogonalCamera::computeVisualizationMatrix(){
-	// TODO
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 }

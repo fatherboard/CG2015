@@ -2,25 +2,24 @@
 #ifndef __GAMEMANAGER__
 #define __GAMEMANAGER__
 
-#include "Camera.h"
-#include "LightSource.h"
-#include "GameObject.h"
+#include "Header.h"
+#include <list>
 
 class GameManager {
 
 	std::list<Camera *> _cameras;
 	LightSource* _light_sources;
-	std::list<GameObject *> _game_objects;
+	std::list<GameObject *> _gameObjects;
 
 	public:
 		GameManager();
 		~GameManager();
 		
 		std::list<Camera *> getCameras(void);
-		std::list<Camera *> setCameras(Camera* camera);
+		void setCameras(Camera* camera);
 		
 		LightSource* getLight_sources(void);
-		LightSource* setLight_sources(LightSource*);
+		void setLight_sources(LightSource*);
 		
 		std::list<GameObject *> getGame_objects(void);
 		void setGame_objects(GameObject* obj);
