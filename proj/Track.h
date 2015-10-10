@@ -4,7 +4,7 @@
 #define __TRACK__
 
 #include "StaticObject.h"
-#include "GL\glut.h"
+#include "GL/glut.h"
 class Track :
 	public StaticObject
 {

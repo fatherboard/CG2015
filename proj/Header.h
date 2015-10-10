@@ -6,7 +6,7 @@
 
 #define UPDATE_TIME 30
 
-#include "stdlib.h""
+#include "stdlib.h"
 #include "GL/glut.h"
 #include "Entity.h"
 #include "GameObject.h"
