@@ -6,6 +6,7 @@
  */
 
 #include "Butter.h"
+#include <GL/glut.h>
 
 Butter::Butter() {
 	// TODO Auto-generated constructor stub
@@ -17,5 +18,12 @@ Butter::~Butter() {
 }
 
 void Butter::draw(){
-	// TODO
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glScalef(1.0f, 1.5f, 1.0f);
+	glutSolidCube(1);
+	glFlush();
+	glPopMatrix();
 }
