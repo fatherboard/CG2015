@@ -6,6 +6,7 @@
  */
 
 #include "GameManager.h"
+#include "Butter.h"
 extern GameManager *gamemanager;
 
 
@@ -48,6 +49,8 @@ void GameManager::display(){
 	//draw Track
 	Track *track = new Track();
 	track->draw();
+	Car *car = new Car();
+	car->draw();
 	//_gameObjects.front()->draw();
 	
 
