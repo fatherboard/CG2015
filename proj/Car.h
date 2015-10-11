@@ -12,8 +12,7 @@ public:
 	void draw();
 
 private:
-	float _h;
-	float _l;
+	float _x, _y, _z, _l, _h;
 
 	// Nomes:
 	//		T -> face de cima (top)

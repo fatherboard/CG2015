@@ -9,9 +9,12 @@
 #include <GL/glut.h>
 #include <math.h>
 
-Car::Car(float x, float y, float z, float hoodLength, float hoodHeight) {
-	this->_l = hoodLength;
-	this->_h = hoodHeight;
+Car::Car(float x, float y, float z, float l, float h) {
+	this->_x = x;
+	this->_y = y;
+	this->_z = z;
+	this->_l = l;
+	this->_h = h;
 
 	computeVertices(x, y, z);
 }
@@ -26,11 +29,19 @@ Car::~Car() {
 }
 
 void Car::draw() {
+
+	// corpo
+	glPushMatrix();
+	glColor3f(1, 1, 0);
+	glScalef(1, 0.75f, 1 / _h); // ver a dimensao zz
+	glTranslatef(_x, _y, _z);
+	glTranslatef(_l / 2, -1 * _l / 2, 0);
+	glutSolidCube(_l);
+	glPopMatrix();
+
+	// capo
 	glColor3f(1, 0, 0);
-
-	// falta algum refactoring para tornar o codigo mais flexivel e eficiente
 	glBegin(GL_TRIANGLES);
-
 	// topo
 	glVertex3f(_vertTL[0], _vertTL[1], _vertTL[2]);
 	glVertex3f(_vertTF[0], _vertTF[1], _vertTF[2]);
@@ -64,6 +75,16 @@ void Car::draw() {
 	glVertex3f(_vertBR[0], _vertBR[1], _vertBR[2]);
 	glVertex3f(_vertBL[0], _vertBL[1], _vertBL[2]);
 	glEnd();
+
+	// eixo dianteiro (ainda nao esta como queremos)
+	/*glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glColor3f(0, 1, 0);
+	glTranslatef(_x, _y, _z);
+	glTranslatef(_l /2, _l / 2, 0);
+	glScalef(_l, 1, 1);
+	glutSolidSphere(1, 50, 50);
+	glPopMatrix();*/
 
 	glFlush();
 }
