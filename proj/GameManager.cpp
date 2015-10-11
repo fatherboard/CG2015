@@ -49,8 +49,10 @@ void GameManager::display(){
 	//draw Track
 	Track *track = new Track();
 	track->draw();
-	Car *car = new Car();
+	Car *car = new Car(0, 0, 0, 2, 1);
 	car->draw();
+	Car *car2 = new Car(3, 0, 0, 3, 1);
+	car2->draw();
 	//_gameObjects.front()->draw();
 	
 
