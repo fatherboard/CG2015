@@ -25,7 +25,7 @@ void Car::draw() {
 	draw(0);
 }
 
-void Car::draw(int wf){
+void Car::draw(int wf) {
 
 	glColor3f(1, 0, 0);
 	glPushMatrix();
@@ -36,43 +36,61 @@ void Car::draw(int wf){
 	glColor3f(0.6, 0.6, 0.6);
 	glTranslated(-26.75, -0.8, 0);
 	glScalef(0.5, 1.0, 1.0);
-	glutSolidCube(1);
+	if (wf)
+		glutWireCube(1);
+	else
+		glutSolidCube(1);
 	glPopMatrix();
 
 	//eixo tras esquerda
 	glPushMatrix();
 	glTranslated(-30.3, -0.8, 0);
 	glScalef(0.5, 1.0, 1.0);
-	glutSolidCube(1);
+	if (wf)
+		glutWireCube(1);
+	else
+		glutSolidCube(1);
 	glPopMatrix();
 
 	//eixo frente direita
 	glPushMatrix();
 	glTranslated(-27.9, 1.5, 0);
 	glScalef(1.2, 0.6, 1.0);
-	glutSolidCube(1);
+	if (wf)
+		glutWireCube(1);
+	else
+		glutSolidCube(1);
 	glPopMatrix();
 
 	//eixo frente esquerda
 	glPushMatrix();
 	glTranslated(-29.5, 1.5, 0);
 	glScalef(1.2, 0.6, 1.0);
-	glutSolidCube(1);
+	if (wf)
+		glutWireCube(1);
+	else
+		glutSolidCube(1);
 	glPopMatrix();
 
 	//tubo de escape esquerdo
 	glPushMatrix();
-	glColor3f(0.0, 0.0,0.0);
+	glColor3f(0.0, 0.0, 0.0);
 	glTranslated(-29.1, -1.6, 0);
 	glScalef(0.5, 0.5, 0.5);
-	glutSolidCube(1);
+	if (wf)
+		glutWireCube(1);
+	else
+		glutSolidCube(1);
 	glPopMatrix();
 
 	//tubo de escape direito
 	glPushMatrix();
 	glTranslated(-28, -1.6, 0);
 	glScalef(0.5, 0.5, 0.5);
-	glutSolidCube(1);
+	if (wf)
+		glutWireCube(1);
+	else
+		glutSolidCube(1);
 	glPopMatrix();
 
 	//roda direita traseira
@@ -80,8 +98,11 @@ void Car::draw(int wf){
 	glColor3f(0, 0, 0);
 	glTranslated(-26.2, -0.8, 0);
 	glRotatef(90, 0, 0, 1);
-	glRotatef(90,1,0,0);
-	glutSolidTorus(0.4, 0.5, 100, 100);
+	glRotatef(90, 1, 0, 0);
+	if (wf)
+		glutWireTorus(0.4, 0.5, 100, 100);
+	else
+		glutSolidTorus(0.4, 0.5, 100, 100);
 	glPopMatrix();
 
 	//roda esquerda traseira
@@ -90,7 +111,10 @@ void Car::draw(int wf){
 	glTranslated(-31, -0.8, 0);
 	glRotatef(90, 0, 0, 1);
 	glRotatef(90, 1, 0, 0);
-	glutSolidTorus(0.4, 0.5, 100, 100);
+	if (wf)
+		glutWireTorus(0.4, 0.5, 100, 100);
+	else
+		glutSolidTorus(0.4, 0.5, 100, 100);
 	glPopMatrix();
 
 	//roda esquerda frente
@@ -99,7 +123,10 @@ void Car::draw(int wf){
 	glTranslated(-30, 1.5, 0);
 	glRotatef(90, 0, 0, 1);
 	glRotatef(90, 1, 0, 0);
-	glutSolidTorus(0.2, 0.5, 100, 100);
+	if (wf)
+		glutWireTorus(0.2, 0.5, 100, 100);
+	else
+		glutSolidTorus(0.2, 0.5, 100, 100);
 	glPopMatrix();
 
 	//roda direita frente
@@ -108,15 +135,21 @@ void Car::draw(int wf){
 	glTranslated(-27.05, 1.5, 0);
 	glRotatef(90, 0, 0, 1);
 	glRotatef(90, 1, 0, 0);
-	glutSolidTorus(0.2, 0.5, 100, 100);
+	if (wf)
+		glutWireTorus(0.2, 0.5, 100, 100);
+	else
+		glutSolidTorus(0.2, 0.5, 100, 100);
 	glPopMatrix();
 
 	//retangulo, parte de tras do carro
 	glColor3f(1, 0, 0);
 	glPushMatrix();
-	glTranslated(-28.5,-0.7,0);
-	glScalef(1.0,0.5,1.0);
-	glutSolidCube(3);
+	glTranslated(-28.5, -0.7, 0);
+	glScalef(1.0, 0.5, 1.0);
+	if (wf)
+		glutSolidCube(3);
+	else
+		glutSolidCube(3);
 	glPopMatrix();
 
 	// corpo
@@ -133,7 +166,7 @@ void Car::draw(int wf){
 
 	// capo
 	glColor3f(1, 0, 0);
-	if(wf)
+	if (wf)
 		glBegin(GL_LINE);
 	else
 		glBegin(GL_TRIANGLES);
@@ -179,16 +212,6 @@ void Car::draw(int wf){
 	glVertex3f(_vertBR[0], _vertBR[1], _vertBR[2]);
 	glVertex3f(_vertBL[0], _vertBL[1], _vertBL[2]);
 	glEnd();
-
-	// eixo dianteiro (ainda nao esta como queremos)
-	/*glMatrixMode(GL_MODELVIEW);
-	 glPushMatrix();
-	 glColor3f(0, 1, 0);
-	 glTranslatef(_x, _y, _z);
-	 glTranslatef(_l /2, _l / 2, 0);
-	 glScalef(_l, 1, 1);
-	 glutSolidSphere(1, 50, 50);
-	 glPopMatrix();*/
 
 	glFlush();
 }

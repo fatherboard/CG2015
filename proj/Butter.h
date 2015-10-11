@@ -11,6 +11,7 @@ public:
 	~Butter();
 
 	void draw();
+	void draw(int wf);
 };
 
 #endif

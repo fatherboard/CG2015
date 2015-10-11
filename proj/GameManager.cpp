@@ -53,10 +53,10 @@ void GameManager::display(){
 
 	//draw Butter
 	Butter *b = new Butter();
-	b->draw();
+	b->draw(_wireframe);
 	//draw orange
 	Orange *orange = new Orange();
-	orange->draw();
+	orange->draw(_wireframe);
 
 	Car *car = new Car(0, 0, 0, 5, 1);
 	car->draw(_wireframe);
