@@ -10,6 +10,7 @@ public:
 	Car(float x, float y, float z, float l, float h);
 	~Car();
 	void draw();
+	void draw(int wf);
 
 private:
 	float _x, _y, _z, _l, _h;

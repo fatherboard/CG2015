@@ -29,6 +29,10 @@ Car::~Car() {
 }
 
 void Car::draw() {
+	draw(0);
+}
+
+void Car::draw(int wf) {
 
 	// corpo
 	glPushMatrix();
@@ -36,40 +40,52 @@ void Car::draw() {
 	glScalef(1, 0.75f, 1 / _h); // ver a dimensao zz
 	glTranslatef(_x, _y, _z);
 	glTranslatef(_l / 2, -1 * _l / 2, 0);
-	glutSolidCube(_l);
+	if (wf)
+		glutWireCube(_l);
+	else
+		glutSolidCube(_l);
 	glPopMatrix();
 
 	// capo
 	glColor3f(1, 0, 0);
 	glBegin(GL_TRIANGLES);
-	// topo
+	// topo capo
 	glVertex3f(_vertTL[0], _vertTL[1], _vertTL[2]);
 	glVertex3f(_vertTF[0], _vertTF[1], _vertTF[2]);
 	glVertex3f(_vertTR[0], _vertTR[1], _vertTR[2]);
 
-	// fundo
+	// fundo capo
 	glVertex3f(_vertBL[0], _vertBL[1], _vertBL[2]);
 	glVertex3f(_vertBF[0], _vertBF[1], _vertBF[2]);
 	glVertex3f(_vertBR[0], _vertBR[1], _vertBR[2]);
 
 	glEnd();
 
-	// laterais
-	glBegin(GL_POLYGON);
+	// laterais capo
+	if (wf)
+		glBegin(GL_LINE);
+	else
+		glBegin(GL_POLYGON);
 	glVertex3f(_vertTL[0], _vertTL[1], _vertTL[2]);
 	glVertex3f(_vertTF[0], _vertTF[1], _vertTF[2]);
 	glVertex3f(_vertBF[0], _vertBF[1], _vertBF[2]);
 	glVertex3f(_vertBL[0], _vertBL[1], _vertBL[2]);
 	glEnd();
 
-	glBegin(GL_POLYGON);
+	if (wf)
+		glBegin(GL_LINE);
+	else
+		glBegin(GL_POLYGON);
 	glVertex3f(_vertTR[0], _vertTR[1], _vertTR[2]);
 	glVertex3f(_vertTF[0], _vertTF[1], _vertTF[2]);
 	glVertex3f(_vertBF[0], _vertBF[1], _vertBF[2]);
 	glVertex3f(_vertBR[0], _vertBR[1], _vertBR[2]);
 	glEnd();
 
-	glBegin(GL_POLYGON);
+	if (wf)
+		glBegin(GL_LINE);
+	else
+		glBegin(GL_POLYGON);
 	glVertex3f(_vertTL[0], _vertTL[1], _vertTL[2]);
 	glVertex3f(_vertTR[0], _vertTR[1], _vertTR[2]);
 	glVertex3f(_vertBR[0], _vertBR[1], _vertBR[2]);
@@ -78,13 +94,13 @@ void Car::draw() {
 
 	// eixo dianteiro (ainda nao esta como queremos)
 	/*glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glColor3f(0, 1, 0);
-	glTranslatef(_x, _y, _z);
-	glTranslatef(_l /2, _l / 2, 0);
-	glScalef(_l, 1, 1);
-	glutSolidSphere(1, 50, 50);
-	glPopMatrix();*/
+	 glPushMatrix();
+	 glColor3f(0, 1, 0);
+	 glTranslatef(_x, _y, _z);
+	 glTranslatef(_l /2, _l / 2, 0);
+	 glScalef(_l, 1, 1);
+	 glutSolidSphere(1, 50, 50);
+	 glPopMatrix();*/
 
 	glFlush();
 }

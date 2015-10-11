@@ -6,6 +6,7 @@
  */
 
 #include "Orange.h"
+#include <GL/glut.h>
 
 Orange::Orange() {
 	// TODO Auto-generated constructor stub
@@ -17,5 +18,11 @@ Orange::~Orange() {
 }
 
 void Orange::draw(){
-	// TODO
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glutSolidCube(1);
+	glFlush();
+	glPopMatrix();
 }

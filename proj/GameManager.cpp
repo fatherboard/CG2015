@@ -7,12 +7,9 @@
 
 #include "GameManager.h"
 #include "Butter.h"
-extern GameManager *gamemanager;
-
 
 GameManager::GameManager() {
-	// TODO Auto-generated constructor stub
-
+	_wireframe = 0;
 }
 
 GameManager::~GameManager() {
@@ -50,13 +47,11 @@ void GameManager::display(){
 	Track *track = new Track();
 	track->draw();
 	Car *car = new Car(0, 0, 0, 5, 1);
-	car->draw();
+	car->draw(_wireframe);
 
 	Car *car2 = new Car(6, 0, 0, 2, 1);
-	car2->draw();
+	car2->draw(_wireframe);
 	//_gameObjects.front()->draw();
-	
-
 	
 	glFlush();
 
@@ -67,18 +62,35 @@ void GameManager::reshape(GLsizei w, GLsizei h){
 	_cameras.front()->computeVisualizationMatrix();
 	_cameras.front()->update(w, h);
 }
-void GameManager::keyPressed(){
 
+void GameManager::keyPressed(unsigned char key){
+	switch(key){
+		case 'A':
+		case 'a':
+			glClearColor(0.0f, 0.0f, 0.0f, 1.0f );
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			glFlush();
+			if(_wireframe)
+				_wireframe = 0;
+			else
+				_wireframe = 1;
+			display();
+			break;
+	}
 }
+
 void GameManager::onTimer(){
 
 }
+
 void GameManager::idle(){
 
 }
+
 void GameManager::update(){
 
 }
+
 void GameManager::init(){
 	setCameras(new OrthogonalCamera(-60, 60, -60, 60, -60, 60));
 	//setGame_objects(new Track());
