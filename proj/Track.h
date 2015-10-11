@@ -13,6 +13,7 @@ public:
 	Track(void);
 	~Track(void);
 	void draw();
+	void draw(int wf);
 };
 
 #endif

@@ -2,22 +2,33 @@
 
 int i;
 
-Track::Track() {}
+Track::Track() {
+}
 
 Track::~Track() {
 	// TODO Auto-generated destructor stub
 }
 
-void Track::draw(){
-	glColor3f(1.0f,1.0f, 1.0f);
-	glutSolidCube(100);
+void Track::draw() {
+	draw(0);
+}
+
+void Track::draw(int wf) {
+	glColor3f(1.0f, 1.0f, 1.0f);
+	if (wf)
+		glutWireCube(100);
+	else
+		glutSolidCube(100);
 	glColor3f(1.0f, 0.3f, 0.0f);
 	for (i = 0; i < 80; i++) {
 		//1
 
 		glPushMatrix();
 		glTranslatef(-45, i - 40, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -27,7 +38,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-45 + i, 40, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -37,7 +51,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(39, 40 - i, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -48,7 +65,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-9 + i, 10, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -59,7 +79,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-10, i - 9, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -70,7 +93,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-9 + i, -10, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -80,7 +106,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(39, -10 - i, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -90,7 +119,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-45 + i, -40, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -101,7 +133,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-30, i - 28, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -110,8 +145,11 @@ void Track::draw(){
 		//in:2
 
 		glPushMatrix();
-		glTranslatef(-30+i,28, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		glTranslatef(-30 + i, 28, 0);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -120,8 +158,11 @@ void Track::draw(){
 		//in:3
 
 		glPushMatrix();
-		glTranslatef(26, 28-i, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		glTranslatef(26, 28 - i, 0);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -131,7 +172,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-22 + i, 20, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -141,7 +185,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-24, i - 20, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -151,7 +198,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-22 + i, -20, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -161,7 +211,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(26, -28 + i, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
@@ -171,7 +224,10 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-30 + i, -28, 0);
-		glutSolidTorus(0.1, 0.3, 50, 50);
+		if (wf)
+			glutWireTorus(0.1, 0.3, 50, 50);
+		else
+			glutSolidTorus(0.1, 0.3, 50, 50);
 		glPopMatrix();
 		i++;
 
