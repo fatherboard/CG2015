@@ -12,10 +12,10 @@ public:
 	Car(float x, float y, float z, float l, float h);
 	~Car();
 	void draw();
+	void draw(int wf);
 
 private:
-	float _h;
-	float _l;
+	float _x, _y, _z, _h, _l;
 
 	// Nomes:
 	//		T -> face de cima (top)

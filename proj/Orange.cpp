@@ -6,6 +6,7 @@
  */
 
 #include "Orange.h"
+#include <GL/glut.h>
 
 Orange::Orange() {
 	// TODO Auto-generated constructor stub

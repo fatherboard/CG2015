@@ -22,5 +22,4 @@
 #include "Orange.h"
 #include "StaticObject.h"
 #include "Vector3.h"
-#include "stdafx.h"
 #include <iostream>
