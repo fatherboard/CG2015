@@ -6,7 +6,8 @@
  */
 
 #include "GameManager.h"
-#include "Butter.h"
+
+using  namespace std;
 extern GameManager *gamemanager;
 
 
@@ -36,27 +37,31 @@ void GameManager::setLight_sources(LightSource* light){
 	_light_sources=light;
 }
 
-std::list<GameObject *> GameManager::getGame_objects(void) {
+/*std::list<GameObject *> GameManager::getGame_objects(void) {
 	return _gameObjects;
-}
-void GameManager::setGame_objects(GameObject* obj) {
+}*/
+/*void GameManager::setGame_objects(GameObject* obj) {
+	cout << "Entrou no setGame\n";
 	_gameObjects.push_back(obj);
-}
+}*/
 
 void GameManager::display(){
+	_cameras.front()->computeVisualizationMatrix();
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	//draw Track
 	Track *track = new Track();
 	track->draw();
-	Car *car = new Car(0, 0, 0, 5, 1);
+	//draw Butter
+	Butter *b = new Butter();
+	b->draw();
+	//draw orange
+	Orange *orange = new Orange();
+	orange->draw();
+	Car *car = new Car(-30.0, 0, 0, 3, 1);
 	car->draw();
-
-	Car *car2 = new Car(6, 0, 0, 2, 1);
-	car2->draw();
-	//_gameObjects.front()->draw();
 	
-
+	
 	
 	glFlush();
 
@@ -64,8 +69,8 @@ void GameManager::display(){
 void GameManager::reshape(GLsizei w, GLsizei h){
 	glViewport(0, 0, w, h);
 	_cameras.front()->computeProjectionMatrix();
-	_cameras.front()->computeVisualizationMatrix();
 	_cameras.front()->update(w, h);
+	
 }
 void GameManager::keyPressed(){
 
@@ -81,6 +86,5 @@ void GameManager::update(){
 }
 void GameManager::init(){
 	setCameras(new OrthogonalCamera(-60, 60, -60, 60, -60, 60));
-	//setGame_objects(new Track());
 }
 

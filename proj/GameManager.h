@@ -7,22 +7,22 @@
 
 class GameManager {
 
-	std::list<Camera *> _cameras;
+	std::list<Camera*> _cameras;
 	LightSource* _light_sources;
-	std::list<GameObject *> _gameObjects;
+	//std::list<GameObject*> _gameObjects;
 
 	public:
 		GameManager();
 		~GameManager();
 		
-		std::list<Camera *> getCameras(void);
-		void setCameras(Camera* camera);
+		std::list<Camera*> getCameras(void);
+		void setCameras(Camera *camera);
 		
 		LightSource* getLight_sources(void);
 		void setLight_sources(LightSource*);
 		
-		std::list<GameObject *> getGame_objects(void);
-		void setGame_objects(GameObject* obj);
+		//std::list<GameObject*> getGame_objects(void);
+		//void setGame_objects(GameObject *obj);
 		
 		
 		void display();

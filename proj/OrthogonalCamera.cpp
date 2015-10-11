@@ -4,9 +4,7 @@
  *  Created on: 30/09/2015
  *      Author: 5702pedro.bucho
  */
-
 #include "OrthogonalCamera.h"
-
 OrthogonalCamera::OrthogonalCamera(double left, double right, double bottom, double top, double near, double far):Camera(near,far) {
 	_left=left;
 	_right=right;		
@@ -17,7 +15,6 @@ OrthogonalCamera::OrthogonalCamera(double left, double right, double bottom, dou
 OrthogonalCamera::~OrthogonalCamera() {}
 
 void OrthogonalCamera::update(GLsizei w, GLsizei h){
-
 	float ratio = (_right - _left) / (_top - _bottom);
 	float aspect = (float)w / h;
 	if (ratio < aspect) {

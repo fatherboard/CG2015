@@ -17,5 +17,10 @@ Orange::~Orange() {
 }
 
 void Orange::draw(){
-	// TODO
+	glPushMatrix();
+	glColor3f(1.0f, 0.5f, 0.0f);
+	glTranslated(-39.0, 34.0, 0.0);
+	glScalef(4.0f, 4.0f, 4.0f);
+	glutSolidSphere(1, 50, 50);
+	glPopMatrix();
 }

@@ -5,6 +5,7 @@
 
 #include "StaticObject.h"
 #include "GL/glut.h"
+
 class Track :
 	public StaticObject
 {

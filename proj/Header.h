@@ -18,5 +18,9 @@
 #include "OrthogonalCamera.h"
 #include "PerspectiveCamera.h"
 #include "Track.h"
+#include "Butter.h"
+#include "Orange.h"
 #include "StaticObject.h"
 #include "Vector3.h"
+#include "stdafx.h"
+#include <iostream>

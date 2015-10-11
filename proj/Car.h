@@ -3,16 +3,19 @@
 #define __CAR__
 
 #include "DynamicObject.h"
+#include "stdlib.h"
+#include <cmath>
 
-class Car: public DynamicObject {
+class Car : public DynamicObject {
 public:
-	
+
 	Car(float x, float y, float z, float l, float h);
 	~Car();
 	void draw();
 
 private:
-	float _x, _y, _z, _l, _h;
+	float _h;
+	float _l;
 
 	// Nomes:
 	//		T -> face de cima (top)
