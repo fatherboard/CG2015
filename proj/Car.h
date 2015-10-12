@@ -11,6 +11,7 @@ public:
 
 	Car(double x, double y, double z);
 	~Car();
+	void draw();
 	void draw(int wf);
 	double _l;
 	double _h;

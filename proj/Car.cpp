@@ -2,10 +2,9 @@
 #include <GL/glut.h>
 #include <math.h>
 
-
 Car::Car(double x, double y, double z) {
-	setPosition(x,y,z);
-	setSpeed(0,0,0);
+	setPosition(x, y, z);
+	setSpeed(0, 0, 0);
 	this->_l = 3;
 	this->_h = 1;
 
@@ -21,11 +20,15 @@ Car::~Car() {
 	free(_vertBF);
 }
 
+void Car::draw() {
+	draw(0);
+}
 
 void Car::draw(int wf) {
 	glColor3f(1, 0, 0);
 	glPushMatrix();
-	glTranslated(getPosition()->getX(), getPosition()->getY(),getPosition()->getZ());
+	glTranslated(getPosition()->getX(), getPosition()->getY(),
+			getPosition()->getZ());
 
 	//eixo tras direita
 	glPushMatrix();
@@ -147,10 +150,11 @@ void Car::draw(int wf) {
 	else
 		glutSolidCube(3);
 	glPopMatrix();
-	
 
-	// falta algum refactoring para tornar o codigo mais flexivel e eficiente
-	glBegin(GL_TRIANGLES);
+	if (wf)
+		glBegin(GL_LINE);
+	else
+		glBegin(GL_TRIANGLES);
 
 	// topo
 	glVertex3f(_vertTL[0], _vertTL[1], _vertTL[2]);
@@ -165,21 +169,30 @@ void Car::draw(int wf) {
 	glEnd();
 
 	// laterais
-	glBegin(GL_POLYGON);
+	if (wf)
+		glBegin(GL_LINES);
+	else
+		glBegin(GL_POLYGON);
 	glVertex3f(_vertTL[0], _vertTL[1], _vertTL[2]);
 	glVertex3f(_vertTF[0], _vertTF[1], _vertTF[2]);
 	glVertex3f(_vertBF[0], _vertBF[1], _vertBF[2]);
 	glVertex3f(_vertBL[0], _vertBL[1], _vertBL[2]);
 	glEnd();
 
-	glBegin(GL_POLYGON);
+	if (wf)
+		glBegin(GL_LINES);
+	else
+		glBegin(GL_POLYGON);
 	glVertex3f(_vertTR[0], _vertTR[1], _vertTR[2]);
 	glVertex3f(_vertTF[0], _vertTF[1], _vertTF[2]);
 	glVertex3f(_vertBF[0], _vertBF[1], _vertBF[2]);
 	glVertex3f(_vertBR[0], _vertBR[1], _vertBR[2]);
 	glEnd();
 
-	glBegin(GL_POLYGON);
+	if (wf)
+		glBegin(GL_LINES);
+	else
+		glBegin(GL_POLYGON);
 	glVertex3f(_vertTL[0], _vertTL[1], _vertTL[2]);
 	glVertex3f(_vertTR[0], _vertTR[1], _vertTR[2]);
 	glVertex3f(_vertBR[0], _vertBR[1], _vertBR[2]);
@@ -193,7 +206,7 @@ float Car::computeSqrt() {
 }
 
 float *writeTo3FloatArray(float x, float y, float z) {
-	float *array = (float *)malloc(3 * sizeof(float));
+	float *array = (float *) malloc(3 * sizeof(float));
 
 	array[0] = x;
 	array[1] = y;
@@ -210,6 +223,5 @@ void Car::computeVertices(float x, float y, float z) {
 	_vertBL = writeTo3FloatArray(x, y, z - _h);
 	_vertBR = writeTo3FloatArray(x + _l, y, z - _h);
 	_vertBF = writeTo3FloatArray(x + _l / 2, computeSqrt(), z - _h);
-
 
 }
