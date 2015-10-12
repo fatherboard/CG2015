@@ -90,6 +90,27 @@ void GameManager::keyPressed(unsigned char key) {
 			break; //bottom key
 	}
 }
+
+void GameManager::keyUP(unsigned char key) {
+	switch (key) {
+		case GLUT_KEY_LEFT:
+			car->setSpeed(0, car->getSpeed()->getY(), car->getSpeed()->getZ());
+			break; //left key
+
+		case GLUT_KEY_UP:
+			car->setSpeed(car->getSpeed()->getX(), 0, car->getSpeed()->getZ());
+			break; //up key
+
+		case GLUT_KEY_RIGHT:
+			car->setSpeed(0, car->getSpeed()->getY(), car->getSpeed()->getZ());
+			break; //right key
+
+		case GLUT_KEY_DOWN:
+			car->setSpeed(car->getSpeed()->getX(), 0, car->getSpeed()->getZ());
+			break; //bottom key
+	}
+}
+
 void GameManager::keyPressed_A(unsigned char key) {
 	switch (key) {
 	case 'a':

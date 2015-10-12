@@ -31,6 +31,7 @@ class GameManager {
 		void reshape(GLsizei w, GLsizei h);
 		void keyPressed(unsigned char key);
 		void keyPressed_A(unsigned char key);
+		void keyUP(unsigned char key);
 		void onTimer();
 		void idle();
 		void update(double tempo);

@@ -10,11 +10,11 @@ void myReshape(int w, int h){
 	gameManager->reshape(w, h);
 }
 
-void keyboardFunc(unsigned char key, int x, int y){
-	gameManager->keyPressed(key);
-}
 void tecla_primida(int key, int x, int y) {
 	gameManager->keyPressed(key); 
+}
+void tecla_levantada(int key, int x, int y) {
+	gameManager->keyUP(key);
 }
 void tecla_primida_A(unsigned char key, int x, int y) {
 	gameManager->keyPressed_A(key);
@@ -36,6 +36,7 @@ int main(int argc, char ** argv) {
 	glutDisplayFunc(myDisplay);
 	glutReshapeFunc(myReshape);
 	glutSpecialFunc(tecla_primida);
+	glutSpecialUpFunc((tecla_levantada));
 	glutKeyboardFunc(tecla_primida_A);
 	gameManager->init();
 	glutMainLoop();
