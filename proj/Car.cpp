@@ -146,7 +146,7 @@ void Car::draw(int wf) {
 	glTranslated(-28.5, -0.7, 0);
 	glScalef(1.0, 0.5, 1.0);
 	if (wf)
-		glutSolidCube(3);
+		glutWireCube(3);
 	else
 		glutSolidCube(3);
 	glPopMatrix();

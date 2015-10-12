@@ -74,9 +74,7 @@ void GameManager::reshape(GLsizei w, GLsizei h){
 void GameManager::keyPressed(unsigned char key) {
 	switch (key) {
 		case GLUT_KEY_LEFT:
-			glRotatef(90, 1,1,1);
 			car->setSpeed(-2, car->getSpeed()->getY(),car->getSpeed()->getZ());
-			glFlush();
 			break; //left key
 
 		case GLUT_KEY_UP: 
