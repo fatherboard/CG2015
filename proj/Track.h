@@ -9,6 +9,7 @@
 class Track :
 	public StaticObject
 {
+	int wf;
 public:
 	Track(void);
 	~Track(void);

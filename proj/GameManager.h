@@ -7,9 +7,11 @@
 
 class GameManager {
 
+	Car *car;
 	std::list<Camera*> _cameras;
 	LightSource* _light_sources;
-	//std::list<GameObject*> _gameObjects;
+	std::list<GameObject*> _gameObjects;
+	int _wireframe;
 
 	public:
 		GameManager();
@@ -21,20 +23,18 @@ class GameManager {
 		LightSource* getLight_sources(void);
 		void setLight_sources(LightSource*);
 		
-		//std::list<GameObject*> getGame_objects(void);
-		//void setGame_objects(GameObject *obj);
+		std::list<GameObject*> getGame_objects(void);
+		void setGame_objects(GameObject *obj);
 		
 		
 		void display();
 		void reshape(GLsizei w, GLsizei h);
 		void keyPressed(unsigned char key);
+		void keyPressed_A(unsigned char key);
 		void onTimer();
 		void idle();
-		void update();
+		void update(double tempo);
 		void init();
-
-	private:
-		int _wireframe;
 };
 
 #endif

@@ -17,11 +17,8 @@ Orange::~Orange() {
 	// TODO Auto-generated destructor stub
 }
 
-void Orange::draw() {
-	draw(0);
-}
+void Orange::draw(int wf){
 
-void Orange::draw(int wf) {
 	glPushMatrix();
 	glColor3f(1.0f, 0.5f, 0.0f);
 	glTranslated(-39.0, 34.0, 0.0);

@@ -9,8 +9,6 @@ class Butter: public Obstacle {
 public:
 	Butter();
 	~Butter();
-
-	void draw();
 	void draw(int wf);
 };
 

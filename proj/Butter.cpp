@@ -16,11 +16,8 @@ Butter::~Butter() {
 	// TODO Auto-generated destructor stub
 }
 
-void Butter::draw() {
-	draw(0);
-}
+void Butter::draw(int wf){
 
-void Butter::draw(int wf) {
 	//#1
 	glPushMatrix();
 	glColor3f(1.0f, 1.0f, 0.0f);
@@ -71,5 +68,4 @@ void Butter::draw(int wf) {
 	else
 		glutSolidCube(2);
 	glPopMatrix();
-
 }

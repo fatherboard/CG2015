@@ -17,7 +17,7 @@ DynamicObject::~DynamicObject() {
 
 void DynamicObject::update(double delta_t){
 
-		// TODO
+	setPosition(getPosition()->getX() + getSpeed()->getX(), getPosition()->getY() + getSpeed()->getY(), getPosition()->getZ());
 
 }
 

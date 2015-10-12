@@ -10,7 +10,6 @@ public:
 	
 	Orange();
 	~Orange();
-	void draw();
 	void draw(int wf);
 };
 

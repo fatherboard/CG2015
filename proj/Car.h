@@ -9,13 +9,11 @@
 class Car : public DynamicObject {
 public:
 
-	Car(float x, float y, float z, float l, float h);
+	Car(double x, double y, double z);
 	~Car();
-	void draw();
 	void draw(int wf);
-
-private:
-	float _x, _y, _z, _h, _l;
+	double _l;
+	double _h;
 
 	// Nomes:
 	//		T -> face de cima (top)

@@ -9,16 +9,10 @@ Track::~Track() {
 	// TODO Auto-generated destructor stub
 }
 
-void Track::draw() {
-	draw(0);
-}
 
-void Track::draw(int wf) {
-	glColor3f(1.0f, 1.0f, 1.0f);
-	if (wf)
-		glutWireCube(100);
-	else
-		glutSolidCube(100);
+void Track::draw(){
+	glColor3f(1.0f,1.0f, 1.0f);
+	glutSolidCube(100);
 	glColor3f(1.0f, 0.3f, 0.0f);
 	for (i = 0; i < 80; i++) {
 		//1

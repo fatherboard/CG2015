@@ -4,7 +4,7 @@
 #include <queue>
 
 
-#define UPDATE_TIME 30
+#define UPDATE_TIME 25
 
 #include "stdlib.h"
 #include "GL/glut.h"
@@ -22,4 +22,5 @@
 #include "Orange.h"
 #include "StaticObject.h"
 #include "Vector3.h"
+#include "stdafx.h"
 #include <iostream>
