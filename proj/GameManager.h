@@ -4,6 +4,9 @@
 
 #include "Header.h"
 #include <list>
+#define ACCELERATION_FORWARD 0.0005
+#define ACCELERATION_BACKWARD 0.0002
+#define ROTATION_SPEED 0.001
 
 class GameManager {
 
@@ -12,6 +15,9 @@ class GameManager {
 	LightSource* _light_sources;
 	std::list<GameObject*> _gameObjects;
 	int _wireframe;
+	int _tempo_atual;
+	int _tempo_anterior;
+	double _delta_t;
 
 	public:
 		GameManager();

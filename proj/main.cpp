@@ -10,7 +10,7 @@ void myReshape(int w, int h){
 	gameManager->reshape(w, h);
 }
 
-void tecla_primida(int key, int x, int y) {
+void tecla_premida(int key, int x, int y) {
 	gameManager->keyPressed(key); 
 }
 void tecla_levantada(int key, int x, int y) {
@@ -32,11 +32,11 @@ int main(int argc, char ** argv) {
 	glutInitWindowSize (600,600);
 	glutInitWindowPosition (-1, -1); 
 	glutCreateWindow("Micromachines");
-	glutTimerFunc(UPDATE_TIME, update_game, 0);
+	glutTimerFunc(UPDATE_TIME, update_game, UPDATE_TIME);
 	glutDisplayFunc(myDisplay);
 	glutReshapeFunc(myReshape);
-	glutSpecialFunc(tecla_primida);
 	glutSpecialUpFunc((tecla_levantada));
+	glutSpecialFunc(tecla_premida);
 	glutKeyboardFunc(tecla_primida_A);
 	gameManager->init();
 	glutMainLoop();

@@ -5,6 +5,7 @@
 #include "DynamicObject.h"
 #include "stdlib.h"
 #include <cmath>
+#define _USE_MATH_DEFINES
 
 class Car : public DynamicObject {
 public:

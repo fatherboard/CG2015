@@ -24,3 +24,6 @@
 #include "Vector3.h"
 #include "stdafx.h"
 #include <iostream>
+#define _USE_MATH_DEFINES
+#include <cmath>
+#include <math.h>

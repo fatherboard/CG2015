@@ -11,9 +11,10 @@ Track::~Track() {
 
 
 void Track::draw(){
-	glColor3f(1.0f,1.0f, 1.0f);
+	glColor3f(0.75f,0.75f, 0.75f);
 	glutSolidCube(100);
 	glColor3f(1.0f, 0.3f, 0.0f);
+	glPushMatrix();
 	for (i = 0; i < 80; i++) {
 		//1
 
