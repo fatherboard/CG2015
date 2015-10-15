@@ -8,46 +8,39 @@
 #include "Orange.h"
 #include <GL/glut.h>
 
-Orange::Orange() {
-	// TODO Auto-generated constructor stub
-
+Orange::Orange(Vector3 location, float radius) {
+	setColor(Vector3(1.0f, 0.5f, 0.0f));
+	this->location = location;
+	this->radius = radius;
 }
 
 Orange::~Orange() {
 	// TODO Auto-generated destructor stub
 }
 
+void Orange::draw() {
+	draw(0);
+}
+
+void Orange::setColor(Vector3 color){
+	this->color = color;
+}
+
+Vector3 Orange::getColor(){
+	return color;
+}
+
 void Orange::draw(int wf) {
 
-	glColor3f(1.0f, 0.5f, 0.0f);
+	glColor3f(color.getX(), color.getY(), color.getZ());
 
-	// #1
 	glPushMatrix();
-	glTranslated(-39.0, 34.0, 0.0);
+	glTranslated(location.getX(), location.getY(), location.getZ());
 	glScalef(4.0f, 4.0f, 4.0f);
-	if (wf)
-		glutWireSphere(1, 50, 5);
-	else
-		glutSolidSphere(1, 50, 5);
-	glPopMatrix();
-
-// #2
-	glPushMatrix();
-	glTranslated(39.0, 34.0, 0.0);
-	glScalef(4.0f, 4.0f, 4.0f);
-	if (wf)
-		glutWireSphere(1, 50, 5);
-	else
-		glutSolidSphere(1, 50, 5);
-	glPopMatrix();
-
-// #3
-	glPushMatrix();
-	glTranslated(-39.0, -34.0, 0.0);
-	glScalef(4.0f, 4.0f, 4.0f);
-	if (wf)
-		glutWireSphere(1, 50, 5);
-	else
-		glutSolidSphere(1, 50, 5);
+	if (wf) {
+		glutWireSphere(radius, 50, 5);
+	} else {
+		glutSolidSphere(radius, 50, 5);
+	}
 	glPopMatrix();
 }

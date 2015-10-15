@@ -57,8 +57,15 @@ void GameManager::display(){
 	b->draw(_wireframe);
 
 	//draw orange
-	Orange *orange = new Orange();
-	orange->draw(_wireframe);
+	//Orange *orange = new Orange(Vector3(-39, 34, 0), 1);
+	Orange *oranges[3];
+
+	oranges[0] = new Orange(Vector3(-39, 34, 0), 1);
+	oranges[1] = new Orange(Vector3(39, 34, 0), 1);
+	oranges[2] = new Orange(Vector3(-39, -34, 0), 1);
+
+	for(int i = 0; i < 3; i++)
+		oranges[i]->draw(_wireframe);
 
 	car->draw(_wireframe);
 	
