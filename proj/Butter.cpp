@@ -7,62 +7,39 @@
 
 #include "Butter.h"
 
-Butter::Butter() {
-	// TODO Auto-generated constructor stub
-
+Butter::Butter(Vector3 location, float width, float length) {
+	setColor(Vector3(1.0f, 1.0f, 0.0f));
+	this->location = location;
+	this->width = width;
+	this->length = length;
 }
 
 Butter::~Butter() {
 	// TODO Auto-generated destructor stub
 }
 
+void Butter::draw(){
+	draw(0);
+}
+
+void Butter::setColor(Vector3 color){
+	this->color = color;
+}
+
+Vector3 Butter::getColor(){
+	return this->color;
+}
+
 void Butter::draw(int wf){
 
-	glColor3f(1.0f, 1.0f, 0.0f);
+	glColor3f(color.getX(), color.getY(), color.getZ());
 
-	//#1
 	glPushMatrix();
-	glTranslated(10.0, 36.0, 0.0);
-	glScalef(1.0f, 1.5f, 1.0f);
+	glTranslated(location.getX(), location.getY(), location.getZ());
+	glScalef(width, length, 1.0f);
 	if (wf)
-		glutWireCube(2);
+		glutWireCube(1);
 	else
-		glutSolidCube(2);
-	glPopMatrix();
-	//#2
-	glPushMatrix();
-	glTranslated(-9.0, 16.0, 0.0);
-	glScalef(1.0f, 1.5f, 1.0f);
-	if (wf)
-		glutWireCube(2);
-	else
-		glutSolidCube(2);
-	glPopMatrix();
-	//#3
-	glPushMatrix();
-	glTranslated(-15.0, -8.0, 0.0);
-	glScalef(1.0f, 1.5f, 1.0f);
-	if (wf)
-		glutWireCube(2);
-	else
-		glutSolidCube(2);
-	glPopMatrix();
-	//#4
-	glPushMatrix();
-	glTranslated(20.0, -17.0, 0.0);
-	glScalef(1.0f, 1.5f, 1.0f);
-	if (wf)
-		glutWireCube(2);
-	else
-		glutSolidCube(2);
-	glPopMatrix();
-	//#5
-	glPushMatrix();
-	glTranslated(-28.0, -32.0, 0.0);
-	glScalef(1.0f, 1.5f, 1.0f);
-	if (wf)
-		glutWireCube(2);
-	else
-		glutSolidCube(2);
+		glutSolidCube(1);
 	glPopMatrix();
 }

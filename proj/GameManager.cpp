@@ -52,12 +52,20 @@ void GameManager::display(){
 	Track *track = new Track();
 	track->draw();
 
-	//draw Butter
-	Butter *b = new Butter();
-	b->draw(_wireframe);
+	//draw Butters
+	Butter *butters[5];
 
-	//draw orange
-	//Orange *orange = new Orange(Vector3(-39, 34, 0), 1);
+	butters[0] = new Butter(Vector3(10.0f, 36.0f, 0.0f), 2.0f, 3.0f);
+	butters[1] = new Butter(Vector3(-9.0f, 16.0f, 0.0f), 2.0f, 3.0f);
+	butters[2] = new Butter(Vector3(-15.0f, -8.0f, 0.0f), 2.0f, 3.0f);
+	butters[3] = new Butter(Vector3(20.0f, -17.0f, 0.0f), 2.0f, 3.0f);
+	butters[4] = new Butter(Vector3(-28.0f, -32.0f, 0.0f), 2.0f, 3.0f);
+
+	for(int i = 0; i < 5; i++){
+		butters[i]->draw(_wireframe);
+	}
+
+	//draw oranges
 	Orange *oranges[3];
 
 	oranges[0] = new Orange(Vector3(-39, 34, 0), 1);

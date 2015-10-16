@@ -7,9 +7,19 @@
 
 class Butter: public Obstacle {
 public:
-	Butter();
+	Butter(Vector3 location, float width, float length);
 	~Butter();
+	void draw();
 	void draw(int wf);
+
+	Vector3 getColor();
+	void setColor(Vector3 color);
+
+private:
+	Vector3 color;
+	Vector3 location;
+	float width;
+	float length;
 };
 
 #endif
