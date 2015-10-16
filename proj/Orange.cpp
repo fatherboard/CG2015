@@ -8,9 +8,9 @@
 #include "Orange.h"
 #include <GL/glut.h>
 
-Orange::Orange(Vector3 location, float radius) {
+Orange::Orange(Vector3 position, float radius) {
 	setColor(Vector3(1.0f, 0.5f, 0.0f));
-	this->location = location;
+	this->position = position;
 	this->radius = radius;
 }
 
@@ -35,7 +35,7 @@ void Orange::draw(int wf) {
 	glColor3f(color.getX(), color.getY(), color.getZ());
 
 	glPushMatrix();
-	glTranslated(location.getX(), location.getY(), location.getZ());
+	glTranslated(position.getX(), position.getY(), position.getZ());
 	glScalef(4.0f, 4.0f, 4.0f);
 	if (wf) {
 		glutWireSphere(radius, 50, 5);

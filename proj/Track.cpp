@@ -9,9 +9,16 @@ Track::~Track() {
 	// TODO Auto-generated destructor stub
 }
 
+void Track::drawCheerio(){
+	if (wf)
+		glutWireTorus(0.1, 0.3, 50, 50);
+	else
+		glutSolidTorus(0.1, 0.3, 50, 50);
+}
 
 void Track::draw(){
-	glColor3f(0.75f,0.75f, 0.75f);
+	//glColor3f(0.75f,0.75f, 0.75f);
+	glColor3f(1,1,1);
 	glutSolidCube(100);
 	glColor3f(1.0f, 0.3f, 0.0f);
 	glPushMatrix();
@@ -20,10 +27,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-45, i - 40, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -33,10 +37,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-45 + i, 40, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -46,10 +47,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(39, 40 - i, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -60,10 +58,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-9 + i, 10, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -74,10 +69,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-10, i - 9, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -88,10 +80,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-9 + i, -10, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -101,10 +90,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(39, -10 - i, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -114,10 +100,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-45 + i, -40, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -128,10 +111,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-30, i - 28, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -141,10 +121,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-30 + i, 28, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -154,10 +131,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(26, 28 - i, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -167,10 +141,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-22 + i, 20, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -180,10 +151,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-24, i - 20, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -193,10 +161,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-22 + i, -20, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -206,10 +171,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(26, -28 + i, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 
@@ -219,10 +181,7 @@ void Track::draw(){
 
 		glPushMatrix();
 		glTranslatef(-30 + i, -28, 0);
-		if (wf)
-			glutWireTorus(0.1, 0.3, 50, 50);
-		else
-			glutSolidTorus(0.1, 0.3, 50, 50);
+		drawCheerio();
 		glPopMatrix();
 		i++;
 

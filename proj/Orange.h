@@ -7,8 +7,8 @@
 
 class Orange: public Obstacle {
 public:
-	
-	Orange(Vector3 location, float radius);
+
+	Orange(Vector3 position, float radius);
 	~Orange();
 	void draw();
 	void draw(int wf);
@@ -17,7 +17,7 @@ public:
 	Vector3 getColor();
 
 private:
-	Vector3 location;
+	Vector3 position;
 	double radius;
 
 	Vector3 color;

@@ -11,6 +11,13 @@ class GameObject: public Entity {
 		~GameObject();
 		void draw();
 		void update(double delta_t);
+
+	private:
+		int wireframe;
+
+	protected:
+		void drawWireframe();
+		void drawSolid();
 };
 
 #endif

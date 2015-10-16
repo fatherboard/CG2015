@@ -7,7 +7,7 @@
 
 class Butter: public Obstacle {
 public:
-	Butter(Vector3 location, float width, float length);
+	Butter(Vector3 position, float width, float length);
 	~Butter();
 	void draw();
 	void draw(int wf);
@@ -17,7 +17,7 @@ public:
 
 private:
 	Vector3 color;
-	Vector3 location;
+	Vector3 position;
 	float width;
 	float length;
 };

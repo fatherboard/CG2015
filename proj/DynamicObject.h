@@ -8,7 +8,6 @@
 
 class DynamicObject: public GameObject {
 
-
 	Vector3 _speed;
 	Vector3 _direcao;
 	double _radian;

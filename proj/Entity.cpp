@@ -27,7 +27,7 @@ Vector3* Entity::setPosition(double x, double y, double z){
 }
 
 Vector3* Entity::setPosition(Vector3* vec){
-	_position.set(vec->getX(),vec->getY(),vec->getZ());
+	_position.set(vec->getX(), vec->getY(), vec->getZ());
 	return &_position;
 }
 
