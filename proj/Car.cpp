@@ -8,10 +8,10 @@ Car::Car(double x, double y, double z) {
 	setPosition(x, y, z);
 	setSpeed(0, 0, 0);
 	setDirecao(M_PI/2,M_PI/2,0);
-	_l = 5;
+	_l = 3;
 	_h = 1;
 
-	computeVertices(0, 0, 0);
+	computeVertices(-1.5, -1.2, 0);
 }
 
 Car::~Car() {
@@ -28,8 +28,7 @@ void Car::draw() {
 }
 
 void Car::draw(int wf) {
-	glColor3f(1, 1, 1);
-	glutSolidCube(2);
+	
 	glColor3f(1, 0, 0);
 
 
@@ -168,7 +167,7 @@ void Car::draw(int wf) {
 	//retangulo, parte de tras do carro
 	glColor3f(1, 0, 0);
 	glPushMatrix(); 
-	//glTranslated(-28.5, -0.7, 0);
+	glTranslated(0, -2 , 0);
 	glScalef(1.0, 0.5, 1.0);
 	if (wf) {
 		glutWireCube(3);
@@ -227,6 +226,8 @@ void Car::draw(int wf) {
 	glEnd();
 
 //glPopMatrix();
+glColor3f(1, 1, 1);
+	glutSolidCube(1);
 }
 
 float Car::computeSqrt() {
