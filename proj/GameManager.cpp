@@ -147,7 +147,6 @@ void GameManager::keyPressed_A(unsigned char key) {
 	case 'a':
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glFlush();
 		if (_wireframe)
 			_wireframe = 0;
 		else

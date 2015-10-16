@@ -28,154 +28,155 @@ void Car::draw() {
 }
 
 void Car::draw(int wf) {
-	
+	glColor3f(1, 1, 1);
+	glutSolidCube(2);
 	glColor3f(1, 0, 0);
 
-/*
-	glPushMatrix();
-	glTranslated(getPosition()->getX()- 37, getPosition()->getY()-0.7, getPosition()->getZ());
-	glRotatef(getRadian() * 180 / M_PI, 0, 0, 1);
-	glTranslated(getPosition()->getX()+28.5, getPosition()->getY()-0.7, getPosition()->getZ());*/ //28.5 -1
+
+	//glPushMatrix();
+	//glTranslated(getPosition()->getX()- 37, getPosition()->getY()-0.7, getPosition()->getZ());
+	//glRotatef(getRadian() * 180 / M_PI, 0, 0, 1);
+	//glTranslated(getPosition()->getX()+28.5, getPosition()->getY()-0.7, getPosition()->getZ()); //28.5 -1
 	//std::cout << "position X=" << getPosition()->getX() << "position Y=" << getPosition()->getY() << "\n";
 
-	////eixo tras direita
-	//glColor3f(0.6, 0.6, 0.6);
-	//glPushMatrix();
-	//glTranslated(-26.75, -0.8, 0);
-	//glScalef(0.5, 1.0, 1.0);
-	//if (wf) {
-	//	glutWireCube(1);
-	//}
-	//else {
-	//	glutSolidCube(1);
-	//}
-	//glPopMatrix();
+	//eixo tras direita
+	glColor3f(0.6, 0.6, 0.6);
+	glPushMatrix();
+	glTranslated(-26.75, -0.8, 0);
+	glScalef(0.5, 1.0, 1.0);
+	if (wf) {
+		glutWireCube(1);
+	}
+	else {
+		glutSolidCube(1);
+	}
+	glPopMatrix();
 
-	////eixo tras esquerda
-	//glPushMatrix();
-	//glTranslated(-30.3, -0.8, 0);
-	//glScalef(0.5, 1.0, 1.0);
-	//if (wf) {
-	//	glutWireCube(1);
-	//}
-	//else {
-	//	glutSolidCube(1);
-	//}
-	//glPopMatrix();
+	//eixo tras esquerda
+	glPushMatrix();
+	glTranslated(-30.3, -0.8, 0);
+	glScalef(0.5, 1.0, 1.0);
+	if (wf) {
+		glutWireCube(1);
+	}
+	else {
+		glutSolidCube(1);
+	}
+	glPopMatrix();
 
-	////eixo frente direita
-	//glPushMatrix();
-	//glTranslated(-27.9, 1.5, 0);
-	//glScalef(1.2, 0.6, 1.0);
-	//if (wf) {
-	//	glutWireCube(1);
-	//}
-	//else {
-	//	glutSolidCube(1);
-	//}
-	//glPopMatrix();
+	//eixo frente direita
+	glPushMatrix();
+	glTranslated(-27.9, 1.5, 0);
+	glScalef(1.2, 0.6, 1.0);
+	if (wf) {
+		glutWireCube(1);
+	}
+	else {
+		glutSolidCube(1);
+	}
+	glPopMatrix();
 
-	////eixo frente esquerda
-	//glPushMatrix();
-	//glTranslated(-29.5, 1.5, 0);
-	//glScalef(1.2, 0.6, 1.0);
-	//if (wf) {
-	//	glutWireCube(1);
-	//}
-	//else {
-	//	glutSolidCube(1);
-	//}
-	//glPopMatrix();
+	//eixo frente esquerda
+	glPushMatrix();
+	glTranslated(-29.5, 1.5, 0);
+	glScalef(1.2, 0.6, 1.0);
+	if (wf) {
+		glutWireCube(1);
+	}
+	else {
+		glutSolidCube(1);
+	}
+	glPopMatrix();
 
-	////tubo de escape esquerdo
-	//glColor3f(0.0, 0.0, 0.0);
-	//glPushMatrix();
-	//glTranslated(-29.1, -1.6, 0);
-	//glScalef(0.5, 0.5, 0.5);
-	//if (wf) {
-	//	glutWireCube(1);
-	//}
-	//else {
-	//	glutSolidCube(1);
-	//}
-	//glPopMatrix();
+	//tubo de escape esquerdo
+	glColor3f(0.0, 0.0, 0.0);
+	glPushMatrix();
+	glTranslated(-29.1, -1.6, 0);
+	glScalef(0.5, 0.5, 0.5);
+	if (wf) {
+		glutWireCube(1);
+	}
+	else {
+		glutSolidCube(1);
+	}
+	glPopMatrix();
 
-	////tubo de escape direito
-	//glPushMatrix();
-	//glTranslated(-28, -1.6, 0);
-	//glScalef(0.5, 0.5, 0.5);
-	//if (wf) {
-	//	glutWireCube(1);
-	//}
-	//else {
-	//	glutSolidCube(1);
-	//}
-	//glPopMatrix();
+	//tubo de escape direito
+	glPushMatrix();
+	glTranslated(-28, -1.6, 0);
+	glScalef(0.5, 0.5, 0.5);
+	if (wf) {
+		glutWireCube(1);
+	}
+	else {
+		glutSolidCube(1);
+	}
+	glPopMatrix();
 
-	////roda direita traseira
-	//glPushMatrix();
-	//glTranslated(-26.2, -0.8, 0);
-	//glRotatef(90, 0, 0, 1);
-	//glRotatef(90, 1, 0, 0);
-	//if (wf) {
-	//	glutWireTorus(0.4, 0.5, 100, 100);
-	//}
-	//else {
-	//	glutSolidTorus(0.4, 0.5, 100, 100);
-	//}
-	//glPopMatrix();
+	//roda direita traseira
+	glPushMatrix();
+	glTranslated(-26.2, -0.8, 0);
+	glRotatef(90, 0, 0, 1);
+	glRotatef(90, 1, 0, 0);
+	if (wf) {
+		glutWireTorus(0.4, 0.5, 100, 100);
+	}
+	else {
+		glutSolidTorus(0.4, 0.5, 100, 100);
+	}
+	glPopMatrix();
 
-	////roda esquerda traseira
-	//glPushMatrix();
-	//glTranslated(-31, -0.8, 0);
-	//glRotatef(90, 0, 0, 1);
-	//glRotatef(90, 1, 0, 0);
-	//if (wf) {
-	//	glutWireTorus(0.4, 0.5, 100, 100);
-	//}
-	//else {
-	//	glutSolidTorus(0.4, 0.5, 100, 100);
-	//}
-	//glPopMatrix();
+	//roda esquerda traseira
+	glPushMatrix();
+	glTranslated(-31, -0.8, 0);
+	glRotatef(90, 0, 0, 1);
+	glRotatef(90, 1, 0, 0);
+	if (wf) {
+		glutWireTorus(0.4, 0.5, 100, 100);
+	}
+	else {
+		glutSolidTorus(0.4, 0.5, 100, 100);
+	}
+	glPopMatrix();
 
-	////roda esquerda frente
-	//glPushMatrix();
-	//glTranslated(-30, 1.5, 0);
-	//glRotatef(90, 0, 0, 1);
-	//glRotatef(90, 1, 0, 0);
-	//if (wf) {
-	//	glutWireTorus(0.2, 0.5, 100, 100);
-	//}
-	//else {
-	//	glutSolidTorus(0.2, 0.5, 100, 100);
-	//}
-	//glPopMatrix();
+	//roda esquerda frente
+	glPushMatrix();
+	glTranslated(-30, 1.5, 0);
+	glRotatef(90, 0, 0, 1);
+	glRotatef(90, 1, 0, 0);
+	if (wf) {
+		glutWireTorus(0.2, 0.5, 100, 100);
+	}
+	else {
+		glutSolidTorus(0.2, 0.5, 100, 100);
+	}
+	glPopMatrix();
 
-	////roda direita frente
-	//glPushMatrix();
-	//glTranslated(-27.05, 1.5, 0);
-	//glRotatef(90, 0, 0, 1);
-	//glRotatef(90, 1, 0, 0);
-	//if (wf) {
-	//	glutWireTorus(0.2, 0.5, 100, 100);
-	//}
-	//else{
-	//	glutSolidTorus(0.2, 0.5, 100, 100);
-	//}
-	//glPopMatrix();
+	//roda direita frente
+	glPushMatrix();
+	glTranslated(-27.05, 1.5, 0);
+	glRotatef(90, 0, 0, 1);
+	glRotatef(90, 1, 0, 0);
+	if (wf) {
+		glutWireTorus(0.2, 0.5, 100, 100);
+	}
+	else{
+		glutSolidTorus(0.2, 0.5, 100, 100);
+	}
+	glPopMatrix();
 
-	////retangulo, parte de tras do carro
-	//glColor3f(1, 0, 0);
-	//glPushMatrix(); 
+	//retangulo, parte de tras do carro
+	glColor3f(1, 0, 0);
+	glPushMatrix(); 
 	//glTranslated(-28.5, -0.7, 0);
-	//glScalef(1.0, 0.5, 1.0);
-	//if (wf) {
-	//	glutWireCube(3);
-	//}
-	//else {
-	//	glutSolidCube(3);
-	//}
-	//glPopMatrix();
+	glScalef(1.0, 0.5, 1.0);
+	if (wf) {
+		glutWireCube(3);
+	}
+	else {
+		glutSolidCube(3);
+	}
+	 glPopMatrix();
 	
 	if (wf)
 		glBegin(GL_LINE);
@@ -225,7 +226,7 @@ void Car::draw(int wf) {
 	glVertex3f(_vertBL[0], _vertBL[1], _vertBL[2]);
 	glEnd();
 
-
+//glPopMatrix();
 }
 
 float Car::computeSqrt() {
