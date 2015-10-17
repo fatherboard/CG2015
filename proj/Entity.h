@@ -6,8 +6,8 @@
 #include "Vector3.h"
 
 class Entity {
-protected:
-	Vector3 _position;
+	protected:
+		Vector3 _position;
 
 	public:
 		Entity();

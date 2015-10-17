@@ -190,7 +190,7 @@ void GameManager::update(double delta_t) {
 
 void GameManager::init() {
 	setCameras(new OrthogonalCamera(-60, 60, -60, 60, -60, 60));
-	Vector3 *pos = new Vector3(10, -20, 0);
+	Vector3 *pos = new Vector3(0,0,0);
 	car = new Car(pos); //-10 -0.8 0
 
 }
