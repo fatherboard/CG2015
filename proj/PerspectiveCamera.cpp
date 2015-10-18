@@ -18,10 +18,10 @@ PerspectiveCamera::PerspectiveCamera(double fovy, double aspect, double zNear, d
 PerspectiveCamera::~PerspectiveCamera() {}
 
 void PerspectiveCamera::update(GLsizei w, GLsizei h){
-	float xmin = -100;
-	float xmax = 100;
-	float ymin = 0;
-	float ymax = 200;
+	float xmin = -60;
+	float xmax = 60;
+	float ymin = 60;
+	float ymax = 60;
 	float aspect = (float) w / h;
 
 	float ratio = (xmax - xmin) / (ymax - ymin);

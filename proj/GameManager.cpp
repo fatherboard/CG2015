@@ -160,6 +160,7 @@ void GameManager::specialKeyUP(unsigned char key) {
 				car->getSpeed()->getZ());
 		break; //bottom key
 	}
+	onTimer();
 }
 
 void GameManager::keyPressed(unsigned char key) {
@@ -171,7 +172,6 @@ void GameManager::keyPressed(unsigned char key) {
 			_wireframe = 0;
 		else
 			_wireframe = 1;
-		onTimer();
 		break;
 	case '1':
 		camera_atual = getCameras()[0];
@@ -186,6 +186,7 @@ void GameManager::keyPressed(unsigned char key) {
 		exit(0);
 		break;
 	}
+	onTimer();
 }
 
 void GameManager::onTimer() {
@@ -201,7 +202,7 @@ void GameManager::idle() {
 void GameManager::update(double delta_t) {
 	_delta_t = delta_t;
 	car->update(delta_t);
-	std::cout << "update";
+	camera_atual->update(_w,_h);
 	glutPostRedisplay();
 }
 
@@ -211,7 +212,7 @@ void GameManager::init() {
 	// falta por a camara 3rd person
 	camera_atual = getCameras()[0];
 
-	Vector3 *pos = new Vector3(0, 0, 0);
+	Vector3 *pos = new Vector3(-37.0f, -10.0f, 0.0f);
 	car = new Car(pos); //-10 -0.8 0
 
 }
