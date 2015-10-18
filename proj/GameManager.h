@@ -11,19 +11,21 @@
 class GameManager {
 
 	Car *car;
-	std::list<Camera*> _cameras;
+	std::vector<Camera*> _cameras;
+	Camera *camera_atual;
 	LightSource* _light_sources;
 	std::list<GameObject*> _gameObjects;
 	int _wireframe;
 	int _tempo_atual;
 	int _tempo_anterior;
+	int _w, _h;
 	double _delta_t;
 
 	public:
 		GameManager();
 		~GameManager();
 		
-		std::list<Camera*> getCameras(void);
+		std::vector<Camera*> getCameras(void);
 		void setCameras(Camera *camera);
 		
 		LightSource* getLight_sources(void);

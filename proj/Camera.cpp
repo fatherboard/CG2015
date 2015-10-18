@@ -20,8 +20,19 @@ double Camera::getFar(){
 	return _far; 
 }
 
-void Camera::update(GLsizei w, GLsizei h)
-{
+Vector3 Camera::getUp(){
+	return _up;
+}
+
+Vector3 Camera::getCenter(){
+	return _center;
+}
+
+Vector3 Camera::getAt(){
+	return _at;
+}
+
+void Camera::update(GLsizei w, GLsizei h){
 }
 
 

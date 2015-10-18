@@ -6,23 +6,44 @@
  */
 
 #include "PerspectiveCamera.h"
+#include <iostream>
 
-PerspectiveCamera::PerspectiveCamera(double fovy,double aspect, double zNear, double zFar):Camera(zFar, zNear) {
-	_fovy=fovy;
-	_aspect=aspect;
+PerspectiveCamera::PerspectiveCamera(double fovy, double aspect, double zNear, double zFar):Camera(zFar, zNear) {
+	_fovy = fovy;
+	_aspect = aspect;
+	_near = zNear;
+	_far = zFar;
 }
 
-PerspectiveCamera::~PerspectiveCamera() {
-	// TODO Auto-generated destructor stub
-}
+PerspectiveCamera::~PerspectiveCamera() {}
 
 void PerspectiveCamera::update(GLsizei w, GLsizei h){
-	// TODO
+	float xmin = -100;
+	float xmax = 100;
+	float ymin = 0;
+	float ymax = 200;
+	float aspect = (float) w / h;
+
+	float ratio = (xmax - xmin) / (ymax - ymin);
+//	if (ratio < 0 || aspect < 0)
+//		std::cout << "NEGATIVE SCALE";
+
+	if (ratio < aspect)
+		glScalef(ratio / aspect, 1, 1);
+	else
+		glScalef(1, aspect / ratio, 1);
 }
 void PerspectiveCamera::computeProjectionMatrix(){
-	// TODO
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(_fovy, _aspect, getNear(), getFar());
 }
 void PerspectiveCamera::computeVisualizationMatrix(){
-	// TODO
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	Vector3 To(getAt().getX() + getUp().getX(), getAt().getY() + getUp().getZ(), getAt().getZ() - getUp().getY());
+	gluLookAt(getAt().getX(), getAt().getY(), getAt().getZ(),	// posicao
+			To.getX(), To.getY(), To.getZ(),					// look at
+			getUp().getX(), getUp().getY(),	getUp().getZ());	// Up Vector
 }
 

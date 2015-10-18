@@ -22,6 +22,9 @@ class Camera : public Entity{
 
 		double getNear();
 		double getFar();
+		Vector3 getUp();
+		Vector3 getCenter();
+		Vector3 getAt();
 		virtual void update(GLsizei w, GLsizei h) = 0;
 		virtual void computeProjectionMatrix() = 0;
 		virtual void computeVisualizationMatrix() = 0;

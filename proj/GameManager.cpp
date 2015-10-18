@@ -19,7 +19,7 @@ GameManager::~GameManager() {
 	// TODO Auto-generated destructor stub
 }
 
-std::list<Camera *> GameManager::getCameras(void) {
+std::vector<Camera *> GameManager::getCameras(void) {
 	return _cameras;
 }
 
@@ -44,6 +44,11 @@ void GameManager::setLight_sources(LightSource* light) {
  }*/
 
 void GameManager::display() {
+
+	camera_atual->computeProjectionMatrix();
+	camera_atual->update(_w, _h);
+	camera_atual->computeVisualizationMatrix();
+
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
@@ -82,10 +87,11 @@ void GameManager::display() {
 }
 void GameManager::reshape(GLsizei w, GLsizei h) {
 	glViewport(0, 0, w, h);
-	_cameras.front()->computeProjectionMatrix();
-	_cameras.front()->computeVisualizationMatrix();
-	_cameras.front()->update(w, h);
-
+	camera_atual->computeProjectionMatrix();
+	camera_atual->computeVisualizationMatrix();
+	camera_atual->update(w, h);
+	_w = w;
+	_h = h;
 }
 
 void GameManager::specialKeyPressed(unsigned char key) {
@@ -167,8 +173,18 @@ void GameManager::keyPressed(unsigned char key) {
 			_wireframe = 1;
 		onTimer();
 		break;
+	case '1':
+		camera_atual = getCameras()[0];
+		break;
+	case '2':
+		camera_atual = getCameras()[1];
+		break;
+	case '3':
+		// definir camara 3rd person
+		break;
 	case 'q':
 		exit(0);
+		break;
 	}
 }
 
@@ -185,12 +201,17 @@ void GameManager::idle() {
 void GameManager::update(double delta_t) {
 	_delta_t = delta_t;
 	car->update(delta_t);
+	std::cout << "update";
 	glutPostRedisplay();
 }
 
 void GameManager::init() {
 	setCameras(new OrthogonalCamera(-60, 60, -60, 60, -60, 60));
-	Vector3 *pos = new Vector3(0,0,0);
+	setCameras(new PerspectiveCamera(90, 1, 1, 400));
+	// falta por a camara 3rd person
+	camera_atual = getCameras()[0];
+
+	Vector3 *pos = new Vector3(0, 0, 0);
 	car = new Car(pos); //-10 -0.8 0
 
 }

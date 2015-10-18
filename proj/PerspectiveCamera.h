@@ -7,8 +7,7 @@
 
 class PerspectiveCamera: public Camera {
 
-	double _fovy;
-	double _aspect;
+	double _fovy, _aspect, _near, _far;
 
 	public:
 		PerspectiveCamera(double fovy,double aspect, double zNear, double zFar);
