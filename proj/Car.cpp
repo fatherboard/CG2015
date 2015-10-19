@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include <iostream>
 
-Vector3 _position;
+//Vector3 _position;
 
 Car::Car(Vector3 *position) {
 	setPosition(position);

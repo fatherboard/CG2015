@@ -11,8 +11,8 @@ extern GameManager *gameManager;
 
 GameManager::GameManager() {
 	_wireframe = 0;
-	_tempo_anterior = glutGet(GLUT_ELAPSED_TIME);
-	_tempo_atual = glutGet(GLUT_ELAPSED_TIME);
+//	_tempo_anterior = glutGet(GLUT_ELAPSED_TIME);
+//	_tempo_atual = glutGet(GLUT_ELAPSED_TIME);
 }
 
 GameManager::~GameManager() {
@@ -95,6 +95,10 @@ void GameManager::reshape(GLsizei w, GLsizei h) {
 }
 
 void GameManager::specialKeyPressed(unsigned char key) {
+
+	double newSpeedX, newSpeedY, newSpeedZ;
+	Vector3 *speed;
+
 	switch (key) {
 	case GLUT_KEY_LEFT:
 		car->setRadian(car->getRadian() + ROTATION_SPEED * _delta_t);
@@ -107,13 +111,12 @@ void GameManager::specialKeyPressed(unsigned char key) {
 		break; //left key
 
 	case GLUT_KEY_UP:
-		car->setSpeed(
-				car->getSpeed()->getX()
-						+ ACCELERATION_FORWARD * car->getDirecao()->getX()
-								* _delta_t,
-				car->getSpeed()->getY()
-						+ ACCELERATION_FORWARD * car->getDirecao()->getY()
-								* _delta_t, car->getSpeed()->getZ());
+		*speed = car->getSpeed();
+		newSpeedX = speed->getX() + ACCELERATION_FORWARD * car->getDirecao()->getX() * _delta_t;
+		newSpeedY = speed->getY() + ACCELERATION_FORWARD * car->getDirecao()->getY() * _delta_t;
+		newSpeedZ = speed->getZ();
+
+		car->setSpeed(newSpeedX, newSpeedY, newSpeedZ);
 		break; //up key
 
 	case GLUT_KEY_RIGHT:
@@ -207,6 +210,10 @@ void GameManager::update(double delta_t) {
 }
 
 void GameManager::init() {
+
+	_tempo_anterior = glutGet(GLUT_ELAPSED_TIME);
+	_tempo_atual = glutGet(GLUT_ELAPSED_TIME);
+
 	setCameras(new OrthogonalCamera(-60, 60, -60, 60, -60, 60));
 	setCameras(new PerspectiveCamera(90, 1, 1, 400));
 	// falta por a camara 3rd person
