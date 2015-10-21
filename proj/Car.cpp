@@ -10,7 +10,8 @@ Car::Car(Vector3 *position) {
 	setPosition(position);
 	//_position.set(position->getX(), position->getY(), position->getZ());
 	setSpeed(0, 0, 0);
-	setDirecao(M_PI / 2, M_PI / 2, 0);
+	setDirecao(0, 0, 0);
+	setRadian(0);
 	_l = 3.0f;
 
 	computeVertices();
@@ -37,6 +38,10 @@ void Car::drawCube(int wf) {
 }
 
 void Car::draw(int wf) {
+
+	glPushMatrix();
+	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
+	glRotatef(getRadian()*180/M_PI, 0, 0, 1);
 
 	//eixo traseira esquerda
 	glColor3f(0.6f, 0.6f, 0.6f);
@@ -80,7 +85,7 @@ void Car::draw(int wf) {
 	//retangulo, parte de tras do carro
 	glColor3f(1, 0, 0);
 	glPushMatrix();
-	glTranslated(-2.1, 0.0f, 50);
+	glTranslated(-2.0, 0.0f, 50);
 	glScalef(0.5, 1.0, 1.0);
 	if (wf) {
 		glutWireCube(3);
@@ -211,6 +216,8 @@ void Car::draw(int wf) {
 	glVertex3f(_vertBR->getX(), _vertBR->getY(), _vertBR->getZ());
 	glVertex3f(_vertBL->getX(), _vertBL->getY(), _vertBL->getZ());
 	glEnd();
+
+	glPopMatrix();
 }
 
 float Car::computeSqrt() {
@@ -227,3 +234,51 @@ void Car::computeVertices() {
 	_vertBF = new Vector3(1.3, 0,50);
 
 }
+
+void Car::carAcelera(unsigned long delta_t) {
+	if (getSpeed()->getX() >= 0.0005 || getSpeed()->getY() >= 0.0005) {
+		setSpeed(getSpeed()->getX(), getSpeed()->getY(), 0);
+	}
+	else
+		setSpeed(getSpeed()->getX() + ACCELERATION_FORWARD * getDirecao()->getX() * delta_t, getSpeed()->getY() + ACCELERATION_FORWARD * getDirecao()->getY() * delta_t, getSpeed()->getZ());
+}
+
+void Car::carTrava(unsigned long delta_t) {
+	setSpeed(getSpeed()->getX() - ACCELERATION_BACKWARD * getDirecao()->getX() * delta_t, getSpeed()->getY() - ACCELERATION_BACKWARD * getDirecao()->getY() * delta_t, getSpeed()->getZ());
+}
+
+void Car::Esquerda(unsigned long delta_t) {
+	setRadian(getRadian() + ROTATION_SPEED * delta_t);
+	if (getRadian() > M_PI) {
+		setRadian(-M_PI);
+	}
+	else if (getRadian() < -M_PI) {
+		setRadian(M_PI);
+	}
+	setDirecao(getRadian(), getRadian(), 0);
+}
+
+void Car::Direita(unsigned long delta_t) {
+	setRadian(getRadian() - ROTATION_SPEED * delta_t);
+	if (getRadian() > M_PI) {
+		setRadian(-M_PI);
+	}
+	else if (getRadian() < -M_PI) {
+		setRadian(M_PI);
+	}
+	setDirecao(getRadian(), getRadian(), 0);
+}
+
+void Car::carDesacelera(unsigned long delta_t, bool sentido) {
+	if (getSpeed()->getX() < 0.000005 || getSpeed()->getY() < 0.000005) {
+		setSpeed(0,0, 0);
+	}
+	else if(sentido)
+		setSpeed(getSpeed()->getX() + ACCELERATION_FORWARD * getDirecao()->getX() * 1/delta_t, getSpeed()->getY() + ACCELERATION_FORWARD * getDirecao()->getY() * 1/delta_t, getSpeed()->getZ());
+	else if(sentido==false)
+		setSpeed(getSpeed()->getX() - ACCELERATION_BACKWARD * getDirecao()->getX() * 1/delta_t, getSpeed()->getY() - ACCELERATION_BACKWARD * getDirecao()->getY() * 1/delta_t, getSpeed()->getZ());
+}
+
+//void Car::update(unsigned long delta_t) {
+//	setPosition(getPosition()->getX() + getSpeed()->getX()*delta_t, getPosition()->getY() + getSpeed()->getY()*delta_t, getPosition()->getZ());
+//}

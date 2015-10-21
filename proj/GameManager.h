@@ -4,9 +4,7 @@
 
 #include "Header.h"
 #include <list>
-#define ACCELERATION_FORWARD 0.0005
-#define ACCELERATION_BACKWARD 0.0002
-#define ROTATION_SPEED 0.001
+
 
 class GameManager {
 
@@ -22,6 +20,7 @@ class GameManager {
 	int _tempo_anterior;
 	int _w, _h;
 	unsigned long _delta_t;
+	bool keystates[4];
 
 	public:
 		GameManager();
@@ -50,6 +49,7 @@ class GameManager {
 		void idle();
 		void update(unsigned long tempo);
 		void init();
+		void MexeCar();
 };
 
 #endif

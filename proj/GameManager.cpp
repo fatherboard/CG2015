@@ -1,9 +1,9 @@
 /*
- * GameManager.cpp
- *
- *  Created on: 30/09/2015
- *      Author: 5702pedro.bucho
- */
+* GameManager.cpp
+*
+*  Created on: 30/09/2015
+*      Author: 5702pedro.bucho
+*/
 
 #include "GameManager.h"
 #include "stdafx.h"
@@ -13,8 +13,8 @@ extern GameManager *gameManager;
 GameManager::GameManager() {
 	car = 0;
 	_wireframe = 0;
-//	_tempo_anterior = glutGet(GLUT_ELAPSED_TIME);
-//	_tempo_atual = glutGet(GLUT_ELAPSED_TIME);
+	_tempo_anterior = glutGet(GLUT_ELAPSED_TIME);
+	_tempo_atual = glutGet(GLUT_ELAPSED_TIME);
 }
 
 GameManager::~GameManager() {
@@ -26,8 +26,8 @@ std::list<Camera *> GameManager::getCameras(void) {
 }
 
 std::list<Camera *> GameManager::setCameras(Camera* aux) {
-	_cameras.push_front(aux); 
-	return _cameras; 
+	_cameras.push_front(aux);
+	return _cameras;
 }
 
 LightSource* GameManager::getLight_sources(void) {
@@ -59,7 +59,7 @@ void GameManager::display() {
 	//camera_atual->computeVisualizationMatrix();
 	GameObject *aux;
 
-	glClearColor(0,0,0,0);
+	glClearColor(0, 0, 0, 0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	for (int i = 0; i < _static_game_objects.size(); i++) {
 		_static_game_objects.front()->draw();
@@ -103,7 +103,7 @@ void GameManager::display() {
 
 	//car->draw(_wireframe);
 
-	
+
 
 }
 void GameManager::reshape(GLsizei w, GLsizei h) {
@@ -116,48 +116,21 @@ void GameManager::reshape(GLsizei w, GLsizei h) {
 }
 
 void GameManager::specialKeyPressed(unsigned char key) {
-
-	double newSpeedX, newSpeedY, newSpeedZ;
-	Vector3 *speed;
-
 	switch (key) {
 	case GLUT_KEY_LEFT:
-		car->setRadian(car->getRadian() + ROTATION_SPEED * _delta_t);
-		if (car->getRadian() > M_PI) {
-			car->setRadian(-M_PI);
-		} else if (car->getRadian() < -M_PI) {
-			car->setRadian(M_PI);
-		}
-		car->setDirecao(car->getRadian(), car->getRadian(), 0);
+		car->Esquerda(_delta_t);
 		break; //left key
 
 	case GLUT_KEY_UP:
-		*speed = car->getSpeed();
-		newSpeedX = speed->getX() + ACCELERATION_FORWARD * car->getDirecao()->getX() * _delta_t;
-		newSpeedY = speed->getY() + ACCELERATION_FORWARD * car->getDirecao()->getY() * _delta_t;
-		newSpeedZ = speed->getZ();
-
-		car->setSpeed(newSpeedX, newSpeedY, newSpeedZ);
+		car->carAcelera(_delta_t);
 		break; //up key
 
 	case GLUT_KEY_RIGHT:
-		car->setRadian(car->getRadian() - ROTATION_SPEED * _delta_t);
-		if (car->getRadian() > M_PI) {
-			car->setRadian(-M_PI);
-		} else if (car->getRadian() < -M_PI) {
-			car->setRadian(M_PI);
-		}
-		car->setDirecao(car->getRadian(), car->getRadian(), 0);
+		car->Direita(_delta_t);
 		break; //right key
 
 	case GLUT_KEY_DOWN:
-		car->setSpeed(
-				car->getSpeed()->getX()
-						- ACCELERATION_BACKWARD * car->getDirecao()->getX()
-								* _delta_t,
-				car->getSpeed()->getY()
-						- ACCELERATION_BACKWARD * car->getDirecao()->getY()
-								* _delta_t, car->getSpeed()->getZ());
+		car->carTrava(_delta_t);
 		break; //bottom key
 	}
 }
@@ -169,7 +142,7 @@ void GameManager::specialKeyUP(unsigned char key) {
 		break; //left key
 
 	case GLUT_KEY_UP:
-		car->setSpeed(0,0,car->getSpeed()->getZ());
+		car->setSpeed(0, 0, car->getSpeed()->getZ());
 		break; //up key
 
 	case GLUT_KEY_RIGHT:
@@ -180,7 +153,6 @@ void GameManager::specialKeyUP(unsigned char key) {
 		car->setSpeed(0, 0, 0);
 		break; //bottom key
 	}
-	onTimer();
 }
 
 void GameManager::keyPressed(unsigned char key) {
@@ -193,18 +165,18 @@ void GameManager::keyPressed(unsigned char key) {
 		else
 			_wireframe = 1;
 		break;
-	//case '1':
-	//	camera_atual = getCameras()[0];
-	//	break;
-	//case '2':
-	//	camera_atual = getCameras()[1];
-	//	break;
-	//case '3':
-	//	// definir camara 3rd person
-	//	break;
-	//case 'q':
-	//	exit(0);
-	//	break;
+		//case '1':
+		//	camera_atual = getCameras()[0];
+		//	break;
+		//case '2':
+		//	camera_atual = getCameras()[1];
+		//	break;
+		//case '3':
+		//	// definir camara 3rd person
+		//	break;
+		//case 'q':
+		//	exit(0);
+		//	break;
 	}
 	/*onTimer();*/
 }
@@ -219,7 +191,6 @@ void GameManager::idle() {}
 
 void GameManager::update(unsigned long delta_t) {
 	_delta_t = delta_t;
-	std::cout << "time= " << delta_t << "\n";
 	for (int i = 0; i < _dynamic_game_objects.size(); i++) {
 		_dynamic_game_objects.front()->update(delta_t);
 		_dynamic_game_objects.push_back(_dynamic_game_objects.front());
@@ -232,14 +203,13 @@ void GameManager::update(unsigned long delta_t) {
 void GameManager::init() {
 	_cameras.push_front(new OrthogonalCamera(-60, 60, -60, 60, -60, 60));
 	//setCameras(new PerspectiveCamera(90, 1, 1, 400));
-
 	// falta por a camara 3rd person
 	//camera_atual = getCameras()[0];
 
 	setStaticObject(new Track());
 
-	Vector3 *pos = new Vector3(-37.0f, -10.0f, 0.0f);
-	setDynamicObject(car = new Car(pos)); 
+	Vector3 *pos = new Vector3(-30.0f, 35.0f, 0.0f);
+	setDynamicObject(car = new Car(pos));
 
 	setStaticObject(new Butter(Vector3(10.0f, 36.0f, 0.0f), 2.0f, 3.0f));
 	setStaticObject(new Butter(Vector3(-9.0f, 16.0f, 0.0f), 2.0f, 3.0f));
@@ -250,6 +220,10 @@ void GameManager::init() {
 	setStaticObject(new Orange(Vector3(-39, 34, 0), 1));
 	setStaticObject(new Orange(Vector3(39, 34, 0), 1));
 	setStaticObject(new Orange(Vector3(-39, -34, 0), 1));
+
+}
+
+void GameManager::MexeCar() {
 
 }
 
