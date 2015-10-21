@@ -9,14 +9,14 @@
 #include "GL/glut.h"
 
 class Camera : public Entity{
-
+public:
 	double _near;
 	double _far;
 	Vector3 _up;
 	Vector3 _center;
 	Vector3 _at;
 
-	public:
+	
 		Camera(double near, double far);
 		~Camera();
 

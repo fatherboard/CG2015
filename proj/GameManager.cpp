@@ -53,10 +53,6 @@ void GameManager::setStaticObject(GameObject* aux) {
 }
 
 void GameManager::display() {
-
-	//camera_atual->computeProjectionMatrix();
-	//camera_atual->update(_w, _h);
-	//camera_atual->computeVisualizationMatrix();
 	GameObject *aux;
 
 	glClearColor(0, 0, 0, 0);
@@ -73,33 +69,6 @@ void GameManager::display() {
 		_dynamic_game_objects.pop_front();
 	}
 	glFlush();
-	////draw Track
-	/*Track *track = new Track();
-	track->draw();*/
-
-	////draw Butters
-	//Butter *butters[5];
-
-	//butters[0] = new Butter(Vector3(10.0f, 36.0f, 0.0f), 2.0f, 3.0f);
-	//butters[1] = new Butter(Vector3(-9.0f, 16.0f, 0.0f), 2.0f, 3.0f);
-	//butters[2] = new Butter(Vector3(-15.0f, -8.0f, 0.0f), 2.0f, 3.0f);
-	//butters[3] = new Butter(Vector3(20.0f, -17.0f, 0.0f), 2.0f, 3.0f);
-	//butters[4] = new Butter(Vector3(-28.0f, -32.0f, 0.0f), 2.0f, 3.0f);
-
-	//for (int i = 0; i < 5; i++) {
-	//	butters[i]->draw(_wireframe);
-	//}
-
-	////draw oranges
-	//Orange *oranges[3];
-
-	//oranges[0] = new Orange(Vector3(-39, 34, 0), 1);
-	//oranges[1] = new Orange(Vector3(39, 34, 0), 1);
-	//oranges[2] = new Orange(Vector3(-39, -34, 0), 1);
-
-	//for (int i = 0; i < 3; i++) {
-	//	oranges[i]->draw(_wireframe);
-	//}
 
 	//car->draw(_wireframe);
 
