@@ -22,7 +22,7 @@ void tecla_primida_A(unsigned char key, int x, int y) {
 
 void update_game(int i) { 
 	gameManager->onTimer();
-	//glutTimerFunc(UPDATE_TIME, update_game, UPDATE_TIME);
+	glutTimerFunc(UPDATE_TIME, update_game, UPDATE_TIME);
 }
 
 int main(int argc, char ** argv) {
@@ -40,4 +40,5 @@ int main(int argc, char ** argv) {
 	glutKeyboardFunc(tecla_primida_A);
 	gameManager->init();
 	glutMainLoop();
+	return 0;
 }

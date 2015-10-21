@@ -17,7 +17,7 @@ DynamicObject::~DynamicObject() {
 	// TODO Auto-generated destructor stub
 }
 
-void DynamicObject::update(double delta_t){
+void DynamicObject::update(unsigned long delta_t){
 
 	setPosition(getPosition()->getX() + getSpeed()->getX()*delta_t, getPosition()->getY() + getSpeed()->getY()*delta_t, getPosition()->getZ());
 

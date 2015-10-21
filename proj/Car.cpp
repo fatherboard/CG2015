@@ -12,7 +12,6 @@ Car::Car(Vector3 *position) {
 	setSpeed(0, 0, 0);
 	setDirecao(M_PI / 2, M_PI / 2, 0);
 	_l = 3.0f;
-	_h = 1.5f;
 
 	computeVertices();
 }
@@ -39,49 +38,41 @@ void Car::drawCube(int wf) {
 
 void Car::draw(int wf) {
 
-	computeVertices();
-
-	//eixo traseira direita
+	//eixo traseira esquerda
 	glColor3f(0.6f, 0.6f, 0.6f);
 	glPushMatrix();
-	glTranslated(_position.getX() + 1.6f, _position.getY() - 2.0f,
-			_position.getZ());
-	glScalef(0.5f, 1.0f, 1.0f);
+	glTranslated(-2.0f, 1.7f, 50);
+	glScalef(1.0f, 0.5f, 1.0f);
 	drawCube(wf);
 	glPopMatrix();
 
-	//eixo traseira esquerda
+	//eixo traseira direita
 	glPushMatrix();
-	glTranslated(_position.getX() - 1.9f, _position.getY() - 2.0f,
-			_position.getZ());
-	glScalef(0.5, 1.0, 1.0);
-	if (wf) {
-		glutWireCube(1);
-	} else {
-		glutSolidCube(1);
-	}
+	glTranslated(-2.0f, - 1.7f, 50);
+	glScalef(1.0, 0.5, 1.0);
+	drawCube(wf);
 	glPopMatrix();
 
 	//eixo frontal direita
 	glPushMatrix();
-	glTranslated(_position.getX() + 1.0f, _position.getY() + 0.5f,
-			_position.getZ());
-	glScalef(1.2, 0.6, 1.0);
+	glTranslated(0.5f, 1.0f, 50);
+	glScalef(0.6, 1.2, 1.0);
 	if (wf) {
 		glutWireCube(1);
-	} else {
+	}
+	else {
 		glutSolidCube(1);
 	}
 	glPopMatrix();
 
 	//eixo frontal esquerda
 	glPushMatrix();
-	glTranslated(_position.getX() - 1.0f, _position.getY() + 0.5f,
-			_position.getZ());
-	glScalef(1.2, 0.6, 1.0);
+	glTranslated(0.5f, - 1.0f, 50);
+	glScalef(0.6, 1.2, 1.0);
 	if (wf) {
 		glutWireCube(1);
-	} else {
+	}
+	else {
 		glutSolidCube(1);
 	}
 	glPopMatrix();
@@ -89,11 +80,12 @@ void Car::draw(int wf) {
 	//retangulo, parte de tras do carro
 	glColor3f(1, 0, 0);
 	glPushMatrix();
-	glTranslated(_position.getX(), _position.getY() - 2.0f, _position.getZ());
-	glScalef(1.0, 0.5, 1.0);
+	glTranslated(-2.1, 0.0f, 50);
+	glScalef(0.5, 1.0, 1.0);
 	if (wf) {
 		glutWireCube(3);
-	} else {
+	}
+	else {
 		glutSolidCube(3);
 	}
 	glPopMatrix();
@@ -101,76 +93,72 @@ void Car::draw(int wf) {
 	//roda traseira direita
 	glColor3f(0.0f, 0.0f, 0.0f);
 	glPushMatrix();
-	glTranslated(_position.getX() + 2.3f, _position.getY() - 2.0f,
-			_position.getZ());
-	glRotatef(90, 0, 0, 1);
+	glTranslated(-2.0f, 2.3f, 50);
 	glRotatef(90, 1, 0, 0);
 	if (wf) {
 		glutWireTorus(0.4, 0.5, 100, 100);
-	} else {
+	}
+	else {
 		glutSolidTorus(0.4, 0.5, 100, 100);
 	}
 	glPopMatrix();
 
 	//roda traseira esquerda
 	glPushMatrix();
-	glTranslated(_position.getX() - 2.3f, _position.getY() - 2.0f,
-			_position.getZ());
-	glRotatef(90, 0, 0, 1);
+	glTranslated(- 2.0f, -2.3f, 50);
 	glRotatef(90, 1, 0, 0);
 	if (wf) {
 		glutWireTorus(0.4, 0.5, 100, 100);
-	} else {
+	}
+	else {
 		glutSolidTorus(0.4, 0.5, 100, 100);
 	}
 	glPopMatrix();
 
 	//roda frontal esquerda
 	glPushMatrix();
-	glTranslated(_position.getX() - 1.6f, _position.getY() + 0.5f,
-			_position.getZ());
-	glRotatef(90, 0, 0, 1);
+	glTranslated(0.5f,- 1.6f, 50);
 	glRotatef(90, 1, 0, 0);
 	if (wf) {
 		glutWireTorus(0.2, 0.5, 100, 100);
-	} else {
+	}
+	else {
 		glutSolidTorus(0.2, 0.5, 100, 100);
 	}
 	glPopMatrix();
 
 	//roda frontal direita
 	glPushMatrix();
-	glTranslated(_position.getX() + 1.6f, _position.getY() + 0.5f,
-			_position.getZ());
-	glRotatef(90, 0, 0, 1);
+	glTranslated(0.5f, 1.6f, 50);
 	glRotatef(90, 1, 0, 0);
 	if (wf) {
 		glutWireTorus(0.2, 0.5, 100, 100);
-	} else {
+	}
+	else {
 		glutSolidTorus(0.2, 0.5, 100, 100);
 	}
 	glPopMatrix();
 
 	//tubo de escape esquerdo
 	glPushMatrix();
-	glTranslated(_position.getX() - 0.7f, _position.getY() - 3.0f,
-			_position.getZ());
+	glTranslated(-3.0f, -0.7f, 50);
 	glScalef(0.5, 0.5, 0.5);
 	if (wf) {
 		glutWireCube(1);
-	} else {
+	}
+	else {
 		glutSolidCube(1);
 	}
 	glPopMatrix();
 
 	//tubo de escape direito
 	glPushMatrix();
-	glTranslated(_position.getX() + 0.5f, _position.getY() - 3.0f,
-			_position.getZ());
+	glTranslated(-3.0f, 0.5f, 50);
 	glScalef(0.5, 0.5, 0.5);
 	if (wf) {
 		glutWireCube(1);
-	} else {
+	}
+	else {
 		glutSolidCube(1);
 	}
 	glPopMatrix();
@@ -230,12 +218,12 @@ float Car::computeSqrt() {
 }
 
 void Car::computeVertices() {
-	_vertTL = new Vector3(_position.getX()-_l/2, _position.getY()-1.3f, _position.getZ());
-	_vertTR = new Vector3(_position.getX()+_l/2, _position.getY()-1.3f, _position.getZ());
-	_vertTF = new Vector3(_position.getX(), _position.getY()+_h, _position.getZ());
+	_vertTL = new Vector3(-1.3f, _l / 2, 52);
+	_vertTR = new Vector3(-1.3f, -_l / 2, 52);
+	_vertTF = new Vector3(1.3, 0, 52);
 
-	_vertBL = new Vector3(_position.getX()-_l/2, _position.getY()-1.3f, _position.getZ()-_h);
-	_vertBR = new Vector3(_position.getX()-_l/2, _position.getY()-1.3f, _position.getZ()-_h);
-	_vertBF = new Vector3(_position.getX(), _position.getY()+_h, _position.getZ()-_h);
+	_vertBL = new Vector3(-1.3f,_l / 2, 50);
+	_vertBR = new Vector3(-1.3f,_l / 2, 50);
+	_vertBF = new Vector3(1.3, 0,50);
 
 }

@@ -6,10 +6,12 @@
  */
 
 #include "GameManager.h"
+#include "stdafx.h"
 
 extern GameManager *gameManager;
 
 GameManager::GameManager() {
+	car = 0;
 	_wireframe = 0;
 //	_tempo_anterior = glutGet(GLUT_ELAPSED_TIME);
 //	_tempo_atual = glutGet(GLUT_ELAPSED_TIME);
@@ -19,12 +21,13 @@ GameManager::~GameManager() {
 	// TODO Auto-generated destructor stub
 }
 
-std::vector<Camera *> GameManager::getCameras(void) {
+std::list<Camera *> GameManager::getCameras(void) {
 	return _cameras;
 }
 
-void GameManager::setCameras(Camera* camera) {
-	_cameras.push_back(camera);
+std::list<Camera *> GameManager::setCameras(Camera* aux) {
+	_cameras.push_front(aux); 
+	return _cameras; 
 }
 
 LightSource* GameManager::getLight_sources(void) {
@@ -35,61 +38,79 @@ void GameManager::setLight_sources(LightSource* light) {
 	_light_sources = light;
 }
 
-/*std::list<GameObject *> GameManager::getGame_objects(void) {
- return _gameObjects;
- }*/
-/*void GameManager::setGame_objects(GameObject* obj) {
- cout << "Entrou no setGame\n";
- _gameObjects.push_back(obj);
- }*/
+std::list<GameObject *> GameManager::getDynamicObjects(void) {
+	return _dynamic_game_objects;
+}
+
+void GameManager::setDynamicObject(GameObject* aux) {
+	_dynamic_game_objects.push_back(aux);
+}
+std::list<GameObject *> GameManager::getStaticObjects(void) {
+	return _static_game_objects;
+}
+void GameManager::setStaticObject(GameObject* aux) {
+	_static_game_objects.push_back(aux);
+}
 
 void GameManager::display() {
 
-	camera_atual->computeProjectionMatrix();
-	camera_atual->update(_w, _h);
-	camera_atual->computeVisualizationMatrix();
+	//camera_atual->computeProjectionMatrix();
+	//camera_atual->update(_w, _h);
+	//camera_atual->computeVisualizationMatrix();
+	GameObject *aux;
 
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClearColor(0,0,0,0);
 	glClear(GL_COLOR_BUFFER_BIT);
-
-	//draw Track
-	Track *track = new Track();
-	track->draw();
-
-	//draw Butters
-	Butter *butters[5];
-
-	butters[0] = new Butter(Vector3(10.0f, 36.0f, 0.0f), 2.0f, 3.0f);
-	butters[1] = new Butter(Vector3(-9.0f, 16.0f, 0.0f), 2.0f, 3.0f);
-	butters[2] = new Butter(Vector3(-15.0f, -8.0f, 0.0f), 2.0f, 3.0f);
-	butters[3] = new Butter(Vector3(20.0f, -17.0f, 0.0f), 2.0f, 3.0f);
-	butters[4] = new Butter(Vector3(-28.0f, -32.0f, 0.0f), 2.0f, 3.0f);
-
-	for (int i = 0; i < 5; i++) {
-		butters[i]->draw(_wireframe);
+	for (int i = 0; i < _static_game_objects.size(); i++) {
+		_static_game_objects.front()->draw();
+		_static_game_objects.push_back(_static_game_objects.front());
+		_static_game_objects.pop_front();
 	}
 
-	//draw oranges
-	Orange *oranges[3];
-
-	oranges[0] = new Orange(Vector3(-39, 34, 0), 1);
-	oranges[1] = new Orange(Vector3(39, 34, 0), 1);
-	oranges[2] = new Orange(Vector3(-39, -34, 0), 1);
-
-	for (int i = 0; i < 3; i++) {
-		oranges[i]->draw(_wireframe);
+	for (int i = 0; i < _dynamic_game_objects.size(); i++) {
+		_dynamic_game_objects.front()->draw();
+		_dynamic_game_objects.push_back(_dynamic_game_objects.front());
+		_dynamic_game_objects.pop_front();
 	}
-
-	car->draw(_wireframe);
-
 	glFlush();
+	////draw Track
+	/*Track *track = new Track();
+	track->draw();*/
+
+	////draw Butters
+	//Butter *butters[5];
+
+	//butters[0] = new Butter(Vector3(10.0f, 36.0f, 0.0f), 2.0f, 3.0f);
+	//butters[1] = new Butter(Vector3(-9.0f, 16.0f, 0.0f), 2.0f, 3.0f);
+	//butters[2] = new Butter(Vector3(-15.0f, -8.0f, 0.0f), 2.0f, 3.0f);
+	//butters[3] = new Butter(Vector3(20.0f, -17.0f, 0.0f), 2.0f, 3.0f);
+	//butters[4] = new Butter(Vector3(-28.0f, -32.0f, 0.0f), 2.0f, 3.0f);
+
+	//for (int i = 0; i < 5; i++) {
+	//	butters[i]->draw(_wireframe);
+	//}
+
+	////draw oranges
+	//Orange *oranges[3];
+
+	//oranges[0] = new Orange(Vector3(-39, 34, 0), 1);
+	//oranges[1] = new Orange(Vector3(39, 34, 0), 1);
+	//oranges[2] = new Orange(Vector3(-39, -34, 0), 1);
+
+	//for (int i = 0; i < 3; i++) {
+	//	oranges[i]->draw(_wireframe);
+	//}
+
+	//car->draw(_wireframe);
+
+	
 
 }
 void GameManager::reshape(GLsizei w, GLsizei h) {
 	glViewport(0, 0, w, h);
-	camera_atual->computeProjectionMatrix();
-	camera_atual->computeVisualizationMatrix();
-	camera_atual->update(w, h);
+	getCameras().front()->computeProjectionMatrix();
+	getCameras().front()->computeVisualizationMatrix();
+	getCameras().front()->update(w, h);
 	_w = w;
 	_h = h;
 }
@@ -148,9 +169,7 @@ void GameManager::specialKeyUP(unsigned char key) {
 		break; //left key
 
 	case GLUT_KEY_UP:
-		car->setSpeed(car->getSpeed()->getX() * exp(-_delta_t),
-				car->getSpeed()->getY() * exp(-_delta_t),
-				car->getSpeed()->getZ());
+		car->setSpeed(0,0,car->getSpeed()->getZ());
 		break; //up key
 
 	case GLUT_KEY_RIGHT:
@@ -158,9 +177,7 @@ void GameManager::specialKeyUP(unsigned char key) {
 		break; //right key
 
 	case GLUT_KEY_DOWN:
-		car->setSpeed(car->getSpeed()->getX() * exp(-_delta_t),
-				car->getSpeed()->getY() * exp(-_delta_t),
-				car->getSpeed()->getZ());
+		car->setSpeed(0, 0, 0);
 		break; //bottom key
 	}
 	onTimer();
@@ -176,20 +193,20 @@ void GameManager::keyPressed(unsigned char key) {
 		else
 			_wireframe = 1;
 		break;
-	case '1':
-		camera_atual = getCameras()[0];
-		break;
-	case '2':
-		camera_atual = getCameras()[1];
-		break;
-	case '3':
-		// definir camara 3rd person
-		break;
-	case 'q':
-		exit(0);
-		break;
+	//case '1':
+	//	camera_atual = getCameras()[0];
+	//	break;
+	//case '2':
+	//	camera_atual = getCameras()[1];
+	//	break;
+	//case '3':
+	//	// definir camara 3rd person
+	//	break;
+	//case 'q':
+	//	exit(0);
+	//	break;
 	}
-	onTimer();
+	/*onTimer();*/
 }
 
 void GameManager::onTimer() {
@@ -198,29 +215,41 @@ void GameManager::onTimer() {
 	_tempo_anterior = _tempo_atual;
 }
 
-void GameManager::idle() {
+void GameManager::idle() {}
 
-}
-
-void GameManager::update(double delta_t) {
+void GameManager::update(unsigned long delta_t) {
 	_delta_t = delta_t;
-	car->update(delta_t);
-	camera_atual->update(_w,_h);
+	std::cout << "time= " << delta_t << "\n";
+	for (int i = 0; i < _dynamic_game_objects.size(); i++) {
+		_dynamic_game_objects.front()->update(delta_t);
+		_dynamic_game_objects.push_back(_dynamic_game_objects.front());
+		_dynamic_game_objects.pop_front();
+	}
 	glutPostRedisplay();
+	//camera_atual->update(_w,_h);
 }
 
 void GameManager::init() {
+	_cameras.push_front(new OrthogonalCamera(-60, 60, -60, 60, -60, 60));
+	//setCameras(new PerspectiveCamera(90, 1, 1, 400));
 
-	_tempo_anterior = glutGet(GLUT_ELAPSED_TIME);
-	_tempo_atual = glutGet(GLUT_ELAPSED_TIME);
-
-	setCameras(new OrthogonalCamera(-60, 60, -60, 60, -60, 60));
-	setCameras(new PerspectiveCamera(90, 1, 1, 400));
 	// falta por a camara 3rd person
-	camera_atual = getCameras()[0];
+	//camera_atual = getCameras()[0];
+
+	setStaticObject(new Track());
 
 	Vector3 *pos = new Vector3(-37.0f, -10.0f, 0.0f);
-	car = new Car(pos); //-10 -0.8 0
+	setDynamicObject(car = new Car(pos)); 
+
+	setStaticObject(new Butter(Vector3(10.0f, 36.0f, 0.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(-9.0f, 16.0f, 0.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(-15.0f, -8.0f, 0.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(20.0f, -17.0f, 0.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(-28.0f, -32.0f, 0.0f), 2.0f, 3.0f));
+
+	setStaticObject(new Orange(Vector3(-39, 34, 0), 1));
+	setStaticObject(new Orange(Vector3(39, 34, 0), 1));
+	setStaticObject(new Orange(Vector3(-39, -34, 0), 1));
 
 }
 

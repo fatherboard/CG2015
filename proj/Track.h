@@ -15,6 +15,7 @@ public:
 	~Track(void);
 	void draw();
 
+
 private:
 	void drawCheerio();
 };

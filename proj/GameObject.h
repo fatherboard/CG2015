@@ -9,8 +9,8 @@ class GameObject: public Entity {
 	public:
 		GameObject();
 		~GameObject();
-		void draw();
-		void update(double delta_t);
+		virtual void draw()=0;
+		void update(unsigned long delta_t);
 
 	private:
 		int wireframe;

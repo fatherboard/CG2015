@@ -11,28 +11,34 @@
 class GameManager {
 
 	Car *car;
-	std::vector<Camera*> _cameras;
+	std::list<Camera *> _cameras;
 	Camera *camera_atual;
 	LightSource* _light_sources;
-	std::list<GameObject*> _gameObjects;
+	std::list<GameObject *> _dynamic_game_objects;
+	std::list<GameObject *> _static_game_objects;
+
 	int _wireframe;
 	int _tempo_atual;
 	int _tempo_anterior;
 	int _w, _h;
-	double _delta_t;
+	unsigned long _delta_t;
 
 	public:
 		GameManager();
 		~GameManager();
 		
-		std::vector<Camera*> getCameras(void);
-		void setCameras(Camera *camera);
+
+		std::list<Camera *> getCameras(void);
+		std::list<Camera *> setCameras(Camera*aux);
 		
 		LightSource* getLight_sources(void);
 		void setLight_sources(LightSource*);
 		
-		std::list<GameObject*> getGame_objects(void);
-		void setGame_objects(GameObject *obj);
+		std::list<GameObject *> getDynamicObjects();
+		void setDynamicObject(GameObject * aux);
+
+		std::list<GameObject *> getStaticObjects();
+		void setStaticObject(GameObject* aux);
 		
 		
 		void display();
@@ -42,7 +48,7 @@ class GameManager {
 		void keyPressed(unsigned char key);
 		void onTimer();
 		void idle();
-		void update(double tempo);
+		void update(unsigned long tempo);
 		void init();
 };
 

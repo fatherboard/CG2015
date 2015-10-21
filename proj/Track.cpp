@@ -21,7 +21,6 @@ void Track::draw(){
 	glColor3f(1,1,1);
 	glutSolidCube(100);
 	glColor3f(1.0f, 0.3f, 0.0f);
-	glPushMatrix();
 	for (i = 0; i < 80; i++) {
 		//1
 
