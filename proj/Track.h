@@ -6,13 +6,12 @@
 #include "StaticObject.h"
 #include "GL/glut.h"
 
-class Track :
-	public StaticObject
+class Track : public StaticObject
 {
 	int wf;
 public:
-	Track(void);
-	~Track(void);
+	Track();
+	~Track();
 	void draw();
 
 

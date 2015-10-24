@@ -143,9 +143,9 @@ void GameManager::keyPressed(unsigned char key) {
 		//case '3':
 		//	// definir camara 3rd person
 		//	break;
-		//case 'q':
-		//	exit(0);
-		//	break;
+		case 'q':
+			exit(0);
+			break;
 	}
 	/*onTimer();*/
 }
