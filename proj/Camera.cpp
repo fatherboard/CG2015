@@ -10,6 +10,8 @@
 Camera::Camera(double near, double far) {
 	_near = near;
 	_far = far;
+	_at.set(0, 10, 120);
+	_up.set(0, 10, 4);
 }
 Camera::~Camera(){}
 
@@ -24,15 +26,15 @@ Vector3 Camera::getUp(){
 	return _up;
 }
 
-Vector3 Camera::getCenter(){
-	return _center;
-}
-
 Vector3 Camera::getAt(){
 	return _at;
 }
 
-void Camera::update(GLsizei w, GLsizei h){
+void Camera::setUp(double x, double y, double z) {
+	_up.set(x, y, z);
+}
+void Camera::setAt(double x, double y, double z) {
+	_at.set(x, y, z);
 }
 
 

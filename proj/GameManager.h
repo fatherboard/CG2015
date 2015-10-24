@@ -9,26 +9,27 @@
 class GameManager {
 
 	Car *car;
-	std::list<Camera *> _cameras;
+	std::vector<Camera *> _cameras;
 	Camera *camera_atual;
 	LightSource* _light_sources;
 	std::list<GameObject *> _dynamic_game_objects;
 	std::list<GameObject *> _static_game_objects;
 
-	int _wireframe;
+	
 	int _tempo_atual;
 	int _tempo_anterior;
 	int _w, _h;
 	unsigned long _delta_t;
 	bool keystates[4];
+	int camera_atual_id = 1;
 
 	public:
 		GameManager();
 		~GameManager();
 		
 
-		std::list<Camera *> getCameras(void);
-		std::list<Camera *> setCameras(Camera*aux);
+		std::vector<Camera *> getCameras(void);
+		std::vector<Camera *> setCameras(Camera*aux);
 		
 		LightSource* getLight_sources(void);
 		void setLight_sources(LightSource*);

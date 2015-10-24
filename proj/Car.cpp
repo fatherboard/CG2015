@@ -236,7 +236,7 @@ void Car::computeVertices() {
 }
 
 void Car::carAcelera(unsigned long delta_t) {
-	if (getSpeed()->getX() >= 0.0005 || getSpeed()->getY() >= 0.0005) {
+	if (getSpeed()->getX() >= 0.005 || getSpeed()->getY() >= 0.005) {
 		setSpeed(getSpeed()->getX(), getSpeed()->getY(), 0);
 	}
 	else
@@ -271,7 +271,7 @@ void Car::Direita(unsigned long delta_t) {
 
 void Car::carDesacelera(unsigned long delta_t, bool sentido) {
 	if (getSpeed()->getX() < 0.000005 || getSpeed()->getY() < 0.000005) {
-		setSpeed(0,0, 0);
+		setSpeed(0,0,0);
 	}
 	else if(sentido)
 		setSpeed(getSpeed()->getX() + ACCELERATION_FORWARD * getDirecao()->getX() * 1/delta_t, getSpeed()->getY() + ACCELERATION_FORWARD * getDirecao()->getY() * 1/delta_t, getSpeed()->getZ());

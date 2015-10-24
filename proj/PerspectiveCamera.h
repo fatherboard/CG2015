@@ -8,12 +8,12 @@
 class PerspectiveCamera: public Camera {
 
 	double _fovy, _aspect;
-	//Car* car = NULL;
+	Car* car = NULL;
 
 	public:
 		PerspectiveCamera();
 		PerspectiveCamera(double fovy, double aspect, double zNear, double zFar);
-		//PerspectiveCamera(double fovy, double aspect, double zNear, double zFar, Car *a);
+		PerspectiveCamera(double fovy, double aspect, double zNear, double zFar, Car *a);
 		~PerspectiveCamera();
 
 		void update(GLsizei w, GLsizei h);

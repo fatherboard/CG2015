@@ -13,7 +13,6 @@ public:
 	double _near;
 	double _far;
 	Vector3 _up;
-	Vector3 _center;
 	Vector3 _at;
 
 	
@@ -23,8 +22,9 @@ public:
 		double getNear();
 		double getFar();
 		Vector3 getUp();
-		Vector3 getCenter();
 		Vector3 getAt();
+		void setUp(double x, double y, double z);
+		void setAt(double x, double y, double z);
 		virtual void update(GLsizei w, GLsizei h) = 0;
 		virtual void computeProjectionMatrix() = 0;
 		virtual void computeVisualizationMatrix() = 0;
