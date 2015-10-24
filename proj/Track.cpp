@@ -26,7 +26,7 @@ void Track::draw(){
 		//1
 
 		glPushMatrix();
-		glTranslatef(-45, i - 40, 0);
+		glTranslatef(-45, i - 40, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -35,7 +35,7 @@ void Track::draw(){
 		//2
 
 		glPushMatrix();
-		glTranslatef(-45 + i, 40, 0);
+		glTranslatef(-45 + i, 40, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -44,7 +44,7 @@ void Track::draw(){
 		//3
 
 		glPushMatrix();
-		glTranslatef(39, 40 - i, 0);
+		glTranslatef(39, 40 - i, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -54,7 +54,7 @@ void Track::draw(){
 		//4
 
 		glPushMatrix();
-		glTranslatef(-9 + i, 10, 0);
+		glTranslatef(-9 + i, 10, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -64,7 +64,7 @@ void Track::draw(){
 		//5
 
 		glPushMatrix();
-		glTranslatef(-10, i - 9, 0);
+		glTranslatef(-10, i - 9, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -74,7 +74,7 @@ void Track::draw(){
 		//6
 
 		glPushMatrix();
-		glTranslatef(-9 + i, -10, 0);
+		glTranslatef(-9 + i, -10, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -83,7 +83,7 @@ void Track::draw(){
 		//7
 
 		glPushMatrix();
-		glTranslatef(39, -10 - i, 0);
+		glTranslatef(39, -10 - i, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -92,7 +92,7 @@ void Track::draw(){
 		//8
 
 		glPushMatrix();
-		glTranslatef(-45 + i, -40, 0);
+		glTranslatef(-45 + i, -40, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -102,7 +102,7 @@ void Track::draw(){
 		//in:1
 
 		glPushMatrix();
-		glTranslatef(-30, i - 28, 0);
+		glTranslatef(-30, i - 28, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -111,7 +111,7 @@ void Track::draw(){
 		//in:2
 
 		glPushMatrix();
-		glTranslatef(-30 + i, 28, 0);
+		glTranslatef(-30 + i, 28, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -120,7 +120,7 @@ void Track::draw(){
 		//in:3
 
 		glPushMatrix();
-		glTranslatef(26, 28 - i, 0);
+		glTranslatef(26, 28 - i, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -129,7 +129,7 @@ void Track::draw(){
 		//in:4
 
 		glPushMatrix();
-		glTranslatef(-22 + i, 20, 0);
+		glTranslatef(-22 + i, 20, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -138,7 +138,7 @@ void Track::draw(){
 		//in:5
 
 		glPushMatrix();
-		glTranslatef(-24, i - 20, 0);
+		glTranslatef(-24, i - 20, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -147,7 +147,7 @@ void Track::draw(){
 		//in:6
 
 		glPushMatrix();
-		glTranslatef(-22 + i, -20, 0);
+		glTranslatef(-22 + i, -20, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -156,7 +156,7 @@ void Track::draw(){
 		//in:7
 
 		glPushMatrix();
-		glTranslatef(26, -28 + i, 0);
+		glTranslatef(26, -28 + i, 50);
 		drawCheerio();
 		glPopMatrix();
 
@@ -165,7 +165,7 @@ void Track::draw(){
 		//in:2
 
 		glPushMatrix();
-		glTranslatef(-30 + i, -28, 0);
+		glTranslatef(-30 + i, -28, 50);
 		drawCheerio();
 		glPopMatrix();
 

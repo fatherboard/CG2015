@@ -176,11 +176,10 @@ void GameManager::update(unsigned long delta_t) {
 		_dynamic_game_objects.pop_front();
 	}
 	if (camera_atual_id == 2) {
-		camera_atual->setAt(car->getPosition()->getX(), car->getPosition()->getY()-20, car->getPosition()->getZ() + 20);
+		camera_atual->setAt(car->getPosition()->getX(), car->getPosition()->getY()-20, car->getPosition()->getZ() + 70);
 		camera_atual->setUp(0, 2, 5);
 	}
 	glutPostRedisplay();
-	//camera_atual->update(_w,_h);
 }
 
 void GameManager::init() {
@@ -193,15 +192,14 @@ void GameManager::init() {
 	Vector3 *pos = new Vector3(-30.0f, 35.0f, 0.0f);
 	setDynamicObject(car = new Car(pos));
 
-	setStaticObject(new Butter(Vector3(10.0f, 36.0f, 0.0f), 2.0f, 3.0f));
-	setStaticObject(new Butter(Vector3(-9.0f, 16.0f, 0.0f), 2.0f, 3.0f));
-	setStaticObject(new Butter(Vector3(-15.0f, -8.0f, 0.0f), 2.0f, 3.0f));
-	setStaticObject(new Butter(Vector3(20.0f, -17.0f, 0.0f), 2.0f, 3.0f));
-	setStaticObject(new Butter(Vector3(-28.0f, -32.0f, 0.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(10.0f, 36.0f, 51.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(-9.0f, 16.0f, 51.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(-15.0f, -8.0f, 51.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(20.0f, -17.0f, 51.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(-28.0f, -32.0f, 51.0f), 2.0f, 3.0f));
 
-	setStaticObject(new Orange(Vector3(-39, 34, 0), 1));
-	setStaticObject(new Orange(Vector3(39, 34, 0), 1));
-	setStaticObject(new Orange(Vector3(-39, -34, 0), 1));
+	setStaticObject(new Orange(Vector3(-39, 34, 53), 1));
+	setStaticObject(new Orange(Vector3(39, 34,53), 1));
+	setStaticObject(new Orange(Vector3(-39, -34, 53), 1));
 
 }
-

@@ -5,6 +5,7 @@
 #include <iostream>
 
 //Vector3 _position;
+extern int _wireframe;
 
 Car::Car(Vector3 *position) {
 	setPosition(position);
@@ -26,18 +27,14 @@ Car::~Car() {
 	_vertBF->~Vector3();
 }
 
-void Car::draw() {
-	draw(0);
-}
-
-void Car::drawCube(int wf) {
-	if (wf)
+void Car::drawCube(int _wireframe) {
+	if (_wireframe)
 		glutWireCube(1);
 	else
 		glutSolidCube(1);
 }
 
-void Car::draw(int wf) {
+void Car::draw() {
 
 	glPushMatrix();
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
@@ -48,21 +45,21 @@ void Car::draw(int wf) {
 	glPushMatrix();
 	glTranslated(-2.0f, 1.7f, 50);
 	glScalef(1.0f, 0.5f, 1.0f);
-	drawCube(wf);
+	drawCube(_wireframe);
 	glPopMatrix();
 
 	//eixo traseira direita
 	glPushMatrix();
 	glTranslated(-2.0f, - 1.7f, 50);
 	glScalef(1.0, 0.5, 1.0);
-	drawCube(wf);
+	drawCube(_wireframe);
 	glPopMatrix();
 
 	//eixo frontal direita
 	glPushMatrix();
 	glTranslated(0.5f, 1.0f, 50);
 	glScalef(0.6, 1.2, 1.0);
-	if (wf) {
+	if (_wireframe) {
 		glutWireCube(1);
 	}
 	else {
@@ -74,7 +71,7 @@ void Car::draw(int wf) {
 	glPushMatrix();
 	glTranslated(0.5f, - 1.0f, 50);
 	glScalef(0.6, 1.2, 1.0);
-	if (wf) {
+	if (_wireframe) {
 		glutWireCube(1);
 	}
 	else {
@@ -87,7 +84,7 @@ void Car::draw(int wf) {
 	glPushMatrix();
 	glTranslated(-2.0, 0.0f, 50);
 	glScalef(0.5, 1.0, 1.0);
-	if (wf) {
+	if (_wireframe) {
 		glutWireCube(3);
 	}
 	else {
@@ -100,7 +97,7 @@ void Car::draw(int wf) {
 	glPushMatrix();
 	glTranslated(-2.0f, 2.3f, 50);
 	glRotatef(90, 1, 0, 0);
-	if (wf) {
+	if (_wireframe) {
 		glutWireTorus(0.4, 0.5, 100, 100);
 	}
 	else {
@@ -112,7 +109,7 @@ void Car::draw(int wf) {
 	glPushMatrix();
 	glTranslated(- 2.0f, -2.3f, 50);
 	glRotatef(90, 1, 0, 0);
-	if (wf) {
+	if (_wireframe) {
 		glutWireTorus(0.4, 0.5, 100, 100);
 	}
 	else {
@@ -124,7 +121,7 @@ void Car::draw(int wf) {
 	glPushMatrix();
 	glTranslated(0.5f,- 1.6f, 50);
 	glRotatef(90, 1, 0, 0);
-	if (wf) {
+	if (_wireframe) {
 		glutWireTorus(0.2, 0.5, 100, 100);
 	}
 	else {
@@ -136,7 +133,7 @@ void Car::draw(int wf) {
 	glPushMatrix();
 	glTranslated(0.5f, 1.6f, 50);
 	glRotatef(90, 1, 0, 0);
-	if (wf) {
+	if (_wireframe) {
 		glutWireTorus(0.2, 0.5, 100, 100);
 	}
 	else {
@@ -148,7 +145,7 @@ void Car::draw(int wf) {
 	glPushMatrix();
 	glTranslated(-3.0f, -0.7f, 50);
 	glScalef(0.5, 0.5, 0.5);
-	if (wf) {
+	if (_wireframe) {
 		glutWireCube(1);
 	}
 	else {
@@ -160,7 +157,7 @@ void Car::draw(int wf) {
 	glPushMatrix();
 	glTranslated(-3.0f, 0.5f, 50);
 	glScalef(0.5, 0.5, 0.5);
-	if (wf) {
+	if (_wireframe) {
 		glutWireCube(1);
 	}
 	else {
@@ -169,7 +166,7 @@ void Car::draw(int wf) {
 	glPopMatrix();
 
 	glColor3f(1.0f, 0.0f, 0.0f);
-	if (wf)
+	if (_wireframe)
 		glBegin(GL_LINE);
 	else
 		glBegin(GL_TRIANGLES);
@@ -179,6 +176,7 @@ void Car::draw(int wf) {
 	glVertex3f(_vertTF->getX(), _vertTF->getY(), _vertTF->getZ());
 	glVertex3f(_vertTR->getX(), _vertTR->getY(), _vertTF->getZ());
 
+
 	// fundo
 	glVertex3f(_vertBL->getX(), _vertBL->getY(), _vertBL->getZ());
 	glVertex3f(_vertBR->getX(), _vertBR->getY(), _vertBR->getZ());
@@ -187,7 +185,7 @@ void Car::draw(int wf) {
 	glEnd();
 
 	// laterais
-	if (wf)
+	if (_wireframe)
 		glBegin(GL_LINES);
 	else
 		glBegin(GL_POLYGON);
@@ -197,7 +195,7 @@ void Car::draw(int wf) {
 	glVertex3f(_vertBL->getX(), _vertBL->getY(), _vertBL->getZ());
 	glEnd();
 
-	if (wf)
+	if (_wireframe)
 		glBegin(GL_LINES);
 	else
 		glBegin(GL_POLYGON);
@@ -207,7 +205,7 @@ void Car::draw(int wf) {
 	glVertex3f(_vertBR->getX(), _vertBR->getY(), _vertBR->getZ());
 	glEnd();
 
-	if (wf)
+	if (_wireframe)
 		glBegin(GL_LINES);
 	else
 		glBegin(GL_POLYGON);

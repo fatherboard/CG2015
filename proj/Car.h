@@ -16,7 +16,6 @@ public:
 	Car(Vector3 *position);
 	~Car();
 	void draw();
-	void draw(int wf);
 	void carAcelera(unsigned long delta_t);
 	void carTrava(unsigned long delta_t);
 	void Esquerda(unsigned long delta_t);
