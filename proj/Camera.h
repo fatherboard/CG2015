@@ -15,9 +15,9 @@ public:
 	Vector3 _up;
 	Vector3 _at;
 
-	
+
 		Camera(double near, double far);
-		~Camera();
+		virtual ~Camera();
 
 		double getNear();
 		double getFar();

@@ -8,7 +8,7 @@
 class GameObject: public Entity {
 	public:
 		GameObject();
-		~GameObject();
+		virtual ~GameObject();
 		virtual void draw()=0;
 		void update(unsigned long delta_t);
 

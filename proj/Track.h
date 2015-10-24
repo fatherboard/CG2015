@@ -3,8 +3,9 @@
 #ifndef __TRACK__
 #define __TRACK__
 
-#include "StaticObject.h"
-#include "GL/glut.h"
+#include "Header.h"
+#include "Cheerio.h"
+#include <list>
 
 class Track : public StaticObject
 {
@@ -13,9 +14,10 @@ public:
 	Track();
 	~Track();
 	void draw();
-
+	std::list<Cheerio *> getCheerios();
 
 private:
+    std::list<Cheerio *> _cheerios;
 	void drawCheerio();
 };
 

@@ -56,7 +56,7 @@ void GameManager::setStaticObject(GameObject* aux) {
 }
 
 void GameManager::display() {
-	
+
 
 	glClearColor(0, 0, 0, 0);
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -65,13 +65,13 @@ void GameManager::display() {
 	camera_atual->update(_w, _h);
 	camera_atual->computeVisualizationMatrix();
 
-	for (int i = 0; i < _static_game_objects.size(); i++) {
+	for (unsigned int i = 0; i < _static_game_objects.size(); i++) {
 		_static_game_objects.front()->draw();
 		_static_game_objects.push_back(_static_game_objects.front());
 		_static_game_objects.pop_front();
 	}
 
-	for (int i = 0; i < _dynamic_game_objects.size(); i++) {
+	for (unsigned int i = 0; i < _dynamic_game_objects.size(); i++) {
 		_dynamic_game_objects.front()->draw();
 		_dynamic_game_objects.push_back(_dynamic_game_objects.front());
 		_dynamic_game_objects.pop_front();
@@ -170,7 +170,7 @@ void GameManager::idle() {}
 
 void GameManager::update(unsigned long delta_t) {
 	_delta_t = delta_t;
-	for (int i = 0; i < _dynamic_game_objects.size(); i++) {
+	for (unsigned int i = 0; i < _dynamic_game_objects.size(); i++) {
 		_dynamic_game_objects.front()->update(delta_t);
 		_dynamic_game_objects.push_back(_dynamic_game_objects.front());
 		_dynamic_game_objects.pop_front();
@@ -187,7 +187,13 @@ void GameManager::init() {
 	setCameras(new PerspectiveCamera(90, 1, 1, 400));
 	setCameras(new PerspectiveCamera(90, 1, 1, 400));
 
-	setStaticObject(new Track());
+    Track *track = new Track();
+	setStaticObject(track);
+	std::list<Cheerio *> cheerios = track->getCheerios();
+
+	for(Cheerio* cheerio : cheerios){
+        setStaticObject(cheerio);
+	}
 
 	Vector3 *pos = new Vector3(-30.0f, 35.0f, 0.0f);
 	setDynamicObject(car = new Car(pos));
