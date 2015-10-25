@@ -43,9 +43,16 @@ void PerspectiveCamera::computeProjectionMatrix(){
 void PerspectiveCamera::computeVisualizationMatrix(){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	Vector3 To(getAt().getX() + getUp().getX(), getAt().getY() + getUp().getZ(), getAt().getZ() - getUp().getY());
-	gluLookAt(getAt().getX(), getAt().getY(), getAt().getZ(),	// posicao
-			To.getX(), To.getY(), To.getZ(),					// look at
+	//glPushMatrix();
+	//glRotated(90, 0,0,1);
+	std::cout << "radian = " << _radian << "\n";
+	std::cout << "radian2 = " << _radian << "\n";
+	if (_radian != 0) {
+		std::cout << "debug";
+	}
+	gluLookAt(getAt().getX()-cos(car->getRadian()), getAt().getY()-sin(car->getRadian()), getAt().getZ()+70,	// posicao
+			getAt().getX(), getAt().getY(), getAt().getZ(),		// look at
 			getUp().getX(), getUp().getY(),	getUp().getZ());	// Up Vector
+	//glPopMatrix();
 }
 

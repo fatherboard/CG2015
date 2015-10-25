@@ -9,7 +9,6 @@ extern int _wireframe;
 
 Car::Car(Vector3 *position) {
 	setPosition(position);
-	//_position.set(position->getX(), position->getY(), position->getZ());
 	setSpeed(0, 0, 0);
 	setDirecao(0, 0, 0);
 	setRadian(0);
@@ -235,7 +234,7 @@ void Car::computeVertices() {
 
 void Car::carAcelera(unsigned long delta_t) {
 	if (getSpeed()->getX() >= 0.005 || getSpeed()->getY() >= 0.005) {
-		setSpeed(getSpeed()->getX(), getSpeed()->getY(), 0);
+		setSpeed(getSpeed()->getX(), getSpeed()->getY(), getSpeed()->getZ());
 	}
 	else
 		setSpeed(getSpeed()->getX() + ACCELERATION_FORWARD * getDirecao()->getX() * delta_t, getSpeed()->getY() + ACCELERATION_FORWARD * getDirecao()->getY() * delta_t, getSpeed()->getZ());

@@ -9,8 +9,6 @@
 class DynamicObject: public GameObject {
 
 	Vector3 _speed;
-	Vector3 _direcao;
-	double _radian;
 	
 public:
 	DynamicObject();
@@ -25,8 +23,6 @@ public:
 	Vector3* getDirecao();
 	void setRadian(double radian);
 	double getRadian();
-	// nao esquecer que a nova posicao de um objecto em movimento
-	// e dada por: posicao_1 = posicao_0 + velocidade * delta_t
 };
 
 #endif

@@ -176,8 +176,8 @@ void GameManager::update(unsigned long delta_t) {
 		_dynamic_game_objects.pop_front();
 	}
 	if (camera_atual_id == 2) {
-		camera_atual->setAt(car->getPosition()->getX(), car->getPosition()->getY()-20, car->getPosition()->getZ() + 70);
-		camera_atual->setUp(0, 2, 5);
+		camera_atual->setAt(car->getPosition()->getX(), car->getPosition()->getY(), car->getPosition()->getZ());
+		camera_atual->setUp(0, 0, 1);
 	}
 	glutPostRedisplay();
 }
@@ -185,7 +185,7 @@ void GameManager::update(unsigned long delta_t) {
 void GameManager::init() {
 	setCameras(camera_atual = new OrthogonalCamera(-60, 60, -60, 60, -60, 60));
 	setCameras(new PerspectiveCamera(90, 1, 1, 400));
-	setCameras(new PerspectiveCamera(90, 1, 1, 400));
+	
 
     Track *track = new Track();
 	setStaticObject(track);
@@ -197,8 +197,9 @@ void GameManager::init() {
 
 	Vector3 *pos = new Vector3(-30.0f, 35.0f, 0.0f);
 	setDynamicObject(car = new Car(pos));
+	setCameras(new PerspectiveCamera(90, 1, 1, 400,car));
 
-	setStaticObject(new Butter(Vector3(10.0f, 36.0f, 51.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(10.0f, 36.0f, 51.0f), 2.0f, 3.0f));  //((posicao), largura, altura
 	setStaticObject(new Butter(Vector3(-9.0f, 16.0f, 51.0f), 2.0f, 3.0f));
 	setStaticObject(new Butter(Vector3(-15.0f, -8.0f, 51.0f), 2.0f, 3.0f));
 	setStaticObject(new Butter(Vector3(20.0f, -17.0f, 51.0f), 2.0f, 3.0f));

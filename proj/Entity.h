@@ -8,6 +8,8 @@
 class Entity {
 	protected:
 		Vector3 _position;
+		Vector3 _direcao;
+		double _radian;
 
 	public:
 		Entity();
