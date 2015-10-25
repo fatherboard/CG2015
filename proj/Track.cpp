@@ -62,13 +62,6 @@ std::list<Cheerio *> Track::getCheerios(){
     return _cheerios;
 }
 
-void Track::drawCheerio(){
-	if (wf)
-		glutWireTorus(0.25, 0.9, 50, 50);
-	else
-		glutSolidTorus(0.25, 0.9, 50, 50);
-}
-
 void Track::draw(){
 	//glColor3f(0.75f,0.75f, 0.75f);
 	glColor3f(1,1,1);

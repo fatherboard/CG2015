@@ -10,6 +10,7 @@
 
 extern GameManager *gameManager;
 int _wireframe;
+Track *track;
 
 GameManager::GameManager() {
 	car = 0;
@@ -57,9 +58,10 @@ void GameManager::setStaticObject(GameObject* aux) {
 
 void GameManager::display() {
 
-
 	glClearColor(0, 0, 0, 0);
 	glClear(GL_COLOR_BUFFER_BIT);
+
+	track->draw();
 
 	camera_atual->computeProjectionMatrix();
 	camera_atual->update(_w, _h);
@@ -189,8 +191,7 @@ void GameManager::init() {
 	setCameras(new PerspectiveCamera(90, 1, 1, 400));
 
 
-    Track *track = new Track();
-    track->draw();
+    track = new Track();
 	//setStaticObject(track);
 	std::list<Cheerio *> cheerios = track->getCheerios();
 

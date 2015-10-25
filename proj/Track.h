@@ -18,7 +18,6 @@ public:
 
 private:
     std::list<Cheerio *> _cheerios;
-	void drawCheerio();
 };
 
 #endif
