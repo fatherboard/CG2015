@@ -15,6 +15,9 @@ Orange::Orange(Vector3 position, float radius){
 	_angle = 0;
 
 	setObjRadius(radius);
+
+    double valor = (rand() % 360)*180/M_PI;
+	setDirecao(valor, valor, 0);
 }
 
 Orange::~Orange() {
@@ -74,4 +77,6 @@ void Orange::update(unsigned long delta_t) {
     _angle += 45;
     if(_angle >= 360)
         _angle = 0;
+
+
 }
