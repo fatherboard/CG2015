@@ -211,8 +211,8 @@ void GameManager::init() {
 	setStaticObject(new Butter(Vector3(-20.0f, -32.0f, 50.0f), 2.0f, 3.0f));
 
 	setDynamicObject(new Orange(new Vector3(-39, 34, 50), 3));
-	setDynamicObject(new Orange(new Vector3(35, 34, 50), 3));
-	setDynamicObject(new Orange(new Vector3(-39, -34, 50), 3));
+	//setDynamicObject(new Orange(new Vector3(35, 34, 50), 3));
+	//setDynamicObject(new Orange(new Vector3(-39, -34, 50), 3));
 
 }
 

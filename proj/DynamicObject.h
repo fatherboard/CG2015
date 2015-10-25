@@ -14,7 +14,7 @@ public:
 	DynamicObject();
 	~DynamicObject();
 
-	void update(unsigned long delta_t);
+	virtual void update(unsigned long delta_t);
 	void setSpeed(Vector3* speed);
 	void setSpeed(double x, double y, double z);
 	Vector3* getSpeed();
