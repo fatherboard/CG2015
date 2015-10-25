@@ -11,7 +11,7 @@ Camera::Camera(double near, double far) {
 	_near = near;
 	_far = far;
 	_at.set(0, -20, 120);
-	_up.set(0, 10, 4);
+	_up.set(0, 0, 1);
 }
 Camera::~Camera(){}
 

@@ -49,9 +49,8 @@ void PerspectiveCamera::computeVisualizationMatrix(){
                 getAt().getX(), getAt().getY(), getAt().getZ()+50,		// look at
                 getUp().getX(), getUp().getY(),	getUp().getZ());	// Up Vector
     }else{
-        Vector3 To(getAt().getX() + getUp().getX(), getAt().getY() + getUp().getZ(), getAt().getZ() - getUp().getY());
         gluLookAt(getAt().getX(), getAt().getY(), getAt().getZ(),	// posicao
-                    To.getX(), To.getY(), To.getZ(),					// look at
+					0, 0, 0,										// look at
                     getUp().getX(), getUp().getY(),	getUp().getZ());// Up Vector
     }
 	//glPopMatrix();
