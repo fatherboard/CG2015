@@ -10,6 +10,7 @@
 
 extern GameManager *gameManager;
 int _wireframe;
+bool backwards = false;
 Track *track;
 
 GameManager::GameManager() {
@@ -103,6 +104,7 @@ void GameManager::specialKeyPressed(unsigned char key) {
 
 	case GLUT_KEY_DOWN:
 		car->carTrava(_delta_t);
+		backwards = true;
 		break; //bottom key
 	}
 }
@@ -123,6 +125,7 @@ void GameManager::specialKeyUP(unsigned char key) {
 
 	case GLUT_KEY_DOWN:
 		car->setSpeed(0, 0, 0);
+		backwards = false;
 		break; //bottom key
 	}
 }
@@ -180,7 +183,16 @@ void GameManager::update(unsigned long delta_t) {
 	Vector3 *posAnterior = new Vector3(car->getPosition());
 	car->update(delta_t);
 
-	if(checkCollisions()){
+    GameObject* collided = checkCollisions();
+	if(collided != NULL){
+        Vector3* obj_pos = collided->getPosition();
+        Vector3* car_dir = car->getDirecao();
+
+        if(backwards){
+            collided->setPosition(obj_pos->getX()-car_dir->getX(), obj_pos->getY()-car_dir->getY(), obj_pos->getZ());
+        }else{
+            collided->setPosition(obj_pos->getX()+car_dir->getX(), obj_pos->getY()+car_dir->getY(), obj_pos->getZ());
+        }
         car->setPosition(posAnterior);
 	}
 	glutPostRedisplay();
@@ -199,8 +211,8 @@ void GameManager::init() {
         setStaticObject(cheerio);
 	}
 
-	Vector3 *pos = new Vector3(-30.0f, 35.0f, 0.0f);
-	car = new Car(pos);
+	pos_init = new Vector3(-30.0f, 35.0f, 0.0f);
+	car = new Car(pos_init);
 	//setDynamicObject(car = new Car(pos));
 	setCameras(new PerspectiveCamera(90, 1, 1, 400,car));
 
@@ -216,7 +228,7 @@ void GameManager::init() {
 
 }
 
-bool GameManager::checkCollisions(){
+GameObject* GameManager::checkCollisions(){
 
     double car_radius = car->getObjRadius();
     bool collision = false;
@@ -227,12 +239,13 @@ bool GameManager::checkCollisions(){
 		double distance = sqrt(pow(obj->getPosition()->getX()-car->getPosition()->getX(),2)+
                                pow(obj->getPosition()->getY()-car->getPosition()->getY(),2));
         if(pow(distance,2) <= pow(car_radius,2) + pow(obj_radius,2)){
+
             collision = true;
         }
 		_static_game_objects.push_back(_static_game_objects.front());
 		_static_game_objects.pop_front();
 		if(collision)
-            return true;
+            return obj;
 	}
 
 	for (unsigned int i = 0; i < _dynamic_game_objects.size(); i++) {
@@ -246,10 +259,12 @@ bool GameManager::checkCollisions(){
         }
 		_dynamic_game_objects.push_back(_dynamic_game_objects.front());
 		_dynamic_game_objects.pop_front();
-		if(collision)
-            return true;
+		if(collision){
+            car->setPosition(pos_init);
+            return obj;
+        }
 	}
 
-	return false;
+	return NULL;
 }
 

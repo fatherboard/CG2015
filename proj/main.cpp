@@ -3,10 +3,10 @@
 
 GameManager *gameManager;
 
-void myDisplay(void){ 
+void myDisplay(void){
 	gameManager->display();
 }
-void myReshape(int w, int h){ 
+void myReshape(int w, int h){
 	gameManager->reshape(w, h);
 }
 
@@ -20,7 +20,7 @@ void tecla_primida_A(unsigned char key, int x, int y) {
 	gameManager->keyPressed(key);
 }
 
-void update_game(int i) { 
+void update_game(int i) {
 	gameManager->onTimer();
 	glutTimerFunc(UPDATE_TIME, update_game, UPDATE_TIME);
 }
@@ -30,7 +30,7 @@ int main(int argc, char ** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
 	glutInitWindowSize (600,600);
-	glutInitWindowPosition (-1, -1); 
+	glutInitWindowPosition (-1, -1);
 	glutCreateWindow("Micromachines");
 	glutTimerFunc(UPDATE_TIME, update_game, UPDATE_TIME);
 	glutDisplayFunc(myDisplay);

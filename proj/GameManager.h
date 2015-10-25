@@ -22,6 +22,7 @@ class GameManager {
 	unsigned long _delta_t;
 	bool keystates[4];
 	int camera_atual_id = 1;
+	Vector3* pos_init;
 
 	public:
 		GameManager();
@@ -52,7 +53,7 @@ class GameManager {
 		void init();
 
     private:
-		bool checkCollisions();
+		GameObject* checkCollisions();
 };
 
 #endif
