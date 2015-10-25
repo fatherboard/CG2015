@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include <iostream>
 
-DynamicObject::DynamicObject() {
+DynamicObject::DynamicObject(){
 	// TODO
 }
 

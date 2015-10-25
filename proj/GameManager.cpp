@@ -203,15 +203,15 @@ void GameManager::init() {
 	//setDynamicObject(car = new Car(pos));
 	setCameras(new PerspectiveCamera(90, 1, 1, 400,car));
 
-	setStaticObject(new Butter(Vector3(10.0f, 36.0f, 51.0f), 2.0f, 3.0f));  //((posicao), largura, altura
-	setStaticObject(new Butter(Vector3(-9.0f, 16.0f, 51.0f), 2.0f, 3.0f));
-	setStaticObject(new Butter(Vector3(-15.0f, -8.0f, 51.0f), 2.0f, 3.0f));
-	setStaticObject(new Butter(Vector3(20.0f, -17.0f, 51.0f), 2.0f, 3.0f));
-	setStaticObject(new Butter(Vector3(-28.0f, -32.0f, 51.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(10.0f, 36.0f, 50.0f), 2.0f, 3.0f));  //((posicao), largura, altura
+	setStaticObject(new Butter(Vector3(-9.0f, 16.0f, 50.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(-15.0f, -8.0f, 50.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(20.0f, -17.0f, 50.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(-20.0f, -32.0f, 50.0f), 2.0f, 3.0f));
 
-	setStaticObject(new Orange(Vector3(-39, 34, 53), 1));
-	setStaticObject(new Orange(Vector3(39, 34,53), 1));
-	setStaticObject(new Orange(Vector3(-39, -34, 53), 1));
+	setDynamicObject(new Orange(new Vector3(-39, 34, 50), 3));
+	setDynamicObject(new Orange(new Vector3(35, 34, 50), 3));
+	setDynamicObject(new Orange(new Vector3(-39, -34, 50), 3));
 
 }
 
@@ -225,8 +225,7 @@ bool GameManager::checkCollisions(){
 		double obj_radius = obj->getObjRadius();
 		double distance = sqrt(pow(obj->getPosition()->getX()-car->getPosition()->getX(),2)+
                                pow(obj->getPosition()->getY()-car->getPosition()->getY(),2));
-        if(pow(distance,2) <= pow(car->getObjRadius(),2) + pow(obj->getObjRadius(),2)){
-            std::cout << "Collision static";
+        if(pow(distance,2) <= pow(car_radius,2) + pow(obj_radius,2)){
             collision = true;
         }
 		_static_game_objects.push_back(_static_game_objects.front());
@@ -236,13 +235,12 @@ bool GameManager::checkCollisions(){
 	}
 
 	for (unsigned int i = 0; i < _dynamic_game_objects.size(); i++) {
-        GameObject* obj = _static_game_objects.front();
+        GameObject* obj = _dynamic_game_objects.front();
+		double obj_radius = obj->getObjRadius();
 
-        double obj_radius = obj->getObjRadius();
 		double distance = sqrt(pow(obj->getPosition()->getX()-car->getPosition()->getX(),2)+
                                pow(obj->getPosition()->getY()-car->getPosition()->getY(),2));
-        if(pow(distance,2) <= pow(car->getObjRadius(),2) + pow(obj->getObjRadius(),2)){
-            std::cout << "Collision dynamic";
+        if(pow(distance,2) <= pow(car_radius,2) + pow(obj_radius,2)){
             collision = true;
         }
 		_dynamic_game_objects.push_back(_dynamic_game_objects.front());

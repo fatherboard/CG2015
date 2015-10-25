@@ -17,7 +17,7 @@ public:
 
 private:
 	Vector3 color;
-	Vector3 position;
+	//Vector3 position;
 	float width;
 	float length;
 };

@@ -14,7 +14,7 @@ Car::Car(Vector3 *position) {
 	setRadian(0);
 	_l = 3.0f;
 
-	setObjRadius(4);
+	setObjRadius(3);
 
 	computeVertices();
 }

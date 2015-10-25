@@ -9,7 +9,7 @@
 class DynamicObject: public GameObject {
 
 	Vector3 _speed;
-	
+
 public:
 	DynamicObject();
 	~DynamicObject();

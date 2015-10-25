@@ -10,7 +10,7 @@
 
 Butter::Butter(Vector3 position, float width, float length) {
 	setColor(Vector3(1.0f, 1.0f, 0.0f));
-	this->position = position;
+	_position = position;
 	this->width = width;
 	this->length = length;
 
@@ -38,7 +38,7 @@ void Butter::draw(int wf){
 	glColor3f(color.getX(), color.getY(), color.getZ());
 
 	glPushMatrix();
-	glTranslated(position.getX(), position.getY(), position.getZ());
+	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 	glScalef(width, length, 1.0f);
 	if (wf)
 		glutWireCube(1);

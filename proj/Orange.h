@@ -17,7 +17,7 @@ public:
 	Vector3 getColor();
 
 private:
-	Vector3 position;
+	//Vector3 position;
 	double radius;
 
 	Vector3 color;
