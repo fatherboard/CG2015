@@ -34,10 +34,47 @@
 		<Linker>
 			<Add library="GL" />
 			<Add library="X11" />
+			<Add library="GLU" />
+			<Add library="glut" />
 		</Linker>
-		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="proj/Butter.cpp" />
+		<Unit filename="proj/Butter.h" />
+		<Unit filename="proj/Camera.cpp" />
+		<Unit filename="proj/Camera.h" />
+		<Unit filename="proj/Car.cpp" />
+		<Unit filename="proj/Car.h" />
+		<Unit filename="proj/Cheerio.cpp" />
+		<Unit filename="proj/Cheerio.h" />
+		<Unit filename="proj/DynamicObject.cpp" />
+		<Unit filename="proj/DynamicObject.h" />
+		<Unit filename="proj/Entity.cpp" />
+		<Unit filename="proj/Entity.h" />
+		<Unit filename="proj/GameManager.cpp" />
+		<Unit filename="proj/GameManager.h" />
+		<Unit filename="proj/GameObject.cpp" />
+		<Unit filename="proj/GameObject.h" />
+		<Unit filename="proj/Header.h" />
+		<Unit filename="proj/LightSource.cpp" />
+		<Unit filename="proj/LightSource.h" />
+		<Unit filename="proj/Makefile" />
+		<Unit filename="proj/Obstacle.cpp" />
+		<Unit filename="proj/Obstacle.h" />
+		<Unit filename="proj/Orange.cpp" />
+		<Unit filename="proj/Orange.h" />
+		<Unit filename="proj/OrthogonalCamera.cpp" />
+		<Unit filename="proj/OrthogonalCamera.h" />
+		<Unit filename="proj/PerspectiveCamera.cpp" />
+		<Unit filename="proj/PerspectiveCamera.h" />
+		<Unit filename="proj/StaticObject.cpp" />
+		<Unit filename="proj/StaticObject.h" />
+		<Unit filename="proj/Track.cpp" />
+		<Unit filename="proj/Track.h" />
+		<Unit filename="proj/Vector3.cpp" />
+		<Unit filename="proj/Vector3.h" />
+		<Unit filename="proj/main.cpp" />
+		<Unit filename="proj/stdafx.cpp" />
+		<Unit filename="proj/stdafx.h" />
+		<Unit filename="proj/targetver.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

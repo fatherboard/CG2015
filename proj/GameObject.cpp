@@ -9,7 +9,11 @@
 #include "DynamicObject.h"
 
 GameObject::GameObject() {
-	// TODO Auto-generated constructor stub
+	setObjRadius(0);
+}
+
+GameObject::GameObject(double obj_radius){
+	setObjRadius(obj_radius);
 }
 
 GameObject::~GameObject() {
@@ -25,4 +29,12 @@ void GameObject::update(unsigned long delta_t){
 		// old was safely casted to NewType
 		v->update(delta_t);
 	}
+}
+
+void GameObject::setObjRadius(double radius){
+    obj_radius = radius;
+}
+
+double GameObject::getObjRadius(){
+    return obj_radius;
 }

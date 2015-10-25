@@ -15,7 +15,7 @@ class GameManager {
 	std::list<GameObject *> _dynamic_game_objects;
 	std::list<GameObject *> _static_game_objects;
 
-	
+
 	int _tempo_atual;
 	int _tempo_anterior;
 	int _w, _h;
@@ -26,21 +26,21 @@ class GameManager {
 	public:
 		GameManager();
 		~GameManager();
-		
+
 
 		std::vector<Camera *> getCameras(void);
 		std::vector<Camera *> setCameras(Camera*aux);
-		
+
 		LightSource* getLight_sources(void);
 		void setLight_sources(LightSource*);
-		
+
 		std::list<GameObject *> getDynamicObjects();
 		void setDynamicObject(GameObject * aux);
 
 		std::list<GameObject *> getStaticObjects();
 		void setStaticObject(GameObject* aux);
-		
-		
+
+
 		void display();
 		void reshape(GLsizei w, GLsizei h);
 		void specialKeyPressed(unsigned char key);
@@ -50,7 +50,9 @@ class GameManager {
 		void idle();
 		void update(unsigned long tempo);
 		void init();
-		void MexeCar();
+
+    private:
+		bool checkCollisions();
 };
 
 #endif

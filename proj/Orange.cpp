@@ -12,6 +12,8 @@ Orange::Orange(Vector3 position, float radius) {
 	setColor(Vector3(1.0f, 0.5f, 0.0f));
 	this->position = position;
 	this->radius = radius;
+
+	setObjRadius(radius);
 }
 
 Orange::~Orange() {

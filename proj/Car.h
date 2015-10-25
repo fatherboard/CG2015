@@ -7,7 +7,7 @@
 #include <cmath>
 #define _USE_MATH_DEFINES
 #define ACCELERATION_FORWARD 0.0001
-#define ACCELERATION_BACKWARD 0.00001
+#define ACCELERATION_BACKWARD 0.00006
 #define ROTATION_SPEED 0.001
 
 class Car : public DynamicObject {
@@ -37,7 +37,7 @@ private:
 	void computeVertices();
 	float getFrontVertexY(float x, float hypotenuse);
 	void drawCube(int wf);
-	
+
 };
 
 #endif

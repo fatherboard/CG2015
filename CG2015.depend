@@ -161,3 +161,166 @@
 1445716022 source:/home/eu/workspace/CG2015/proj/Vector3.cpp
 	"Vector3.h"
 
+1445786774 source:/mnt/DATA/pedro/workspace/CG2015/proj/Butter.cpp
+	"Butter.h"
+	<math.h>
+
+1445778213 /mnt/DATA/pedro/workspace/CG2015/proj/Butter.h
+	"Obstacle.h"
+	"GL/glut.h"
+
+1445763972 /mnt/DATA/pedro/workspace/CG2015/proj/Obstacle.h
+	"DynamicObject.h"
+
+1445774036 /mnt/DATA/pedro/workspace/CG2015/proj/DynamicObject.h
+	"GameObject.h"
+	"Vector3.h"
+	<math.h>
+
+1445786694 /mnt/DATA/pedro/workspace/CG2015/proj/GameObject.h
+	"Entity.h"
+
+1445774036 /mnt/DATA/pedro/workspace/CG2015/proj/Entity.h
+	"Vector3.h"
+
+1445792960 /mnt/DATA/pedro/workspace/CG2015/proj/Vector3.h
+
+1445778488 source:/mnt/DATA/pedro/workspace/CG2015/proj/Cheerio.cpp
+	"Cheerio.h"
+
+1445763972 /mnt/DATA/pedro/workspace/CG2015/proj/Cheerio.h
+	"StaticObject.h"
+	"StaticObject.h"
+	"GL/glut.h"
+
+1445763972 /mnt/DATA/pedro/workspace/CG2015/proj/StaticObject.h
+	"GameObject.h"
+
+1445790160 source:/mnt/DATA/pedro/workspace/CG2015/proj/DynamicObject.cpp
+	"DynamicObject.h"
+	"stdafx.h"
+	<iostream>
+
+1445763972 /mnt/DATA/pedro/workspace/CG2015/proj/stdafx.h
+	"targetver.h"
+	<stdio.h>
+
+1445763972 /mnt/DATA/pedro/workspace/CG2015/proj/targetver.h
+
+1445763972 source:/mnt/DATA/pedro/workspace/CG2015/proj/Entity.cpp
+	"Entity.h"
+
+1445790142 source:/mnt/DATA/pedro/workspace/CG2015/proj/GameObject.cpp
+	"stdafx.h"
+	"GameObject.h"
+	"DynamicObject.h"
+
+1445763972 source:/mnt/DATA/pedro/workspace/CG2015/proj/LightSource.cpp
+	"stdlib.h"
+	"GL/glut.h"
+	"LightSource.h"
+
+1445763972 /mnt/DATA/pedro/workspace/CG2015/proj/LightSource.h
+	"Vector3.h"
+
+1445763972 source:/mnt/DATA/pedro/workspace/CG2015/proj/main.cpp
+	"Header.h"
+	"GameManager.h"
+
+1445763972 /mnt/DATA/pedro/workspace/CG2015/proj/Header.h
+	<iostream>
+	<vector>
+	<list>
+	<queue>
+	"stdlib.h"
+	"GL/glut.h"
+	"Entity.h"
+	"GameObject.h"
+	"DynamicObject.h"
+	"GameManager.h"
+	"Camera.h"
+	"Car.h"
+	"LightSource.h"
+	"OrthogonalCamera.h"
+	"PerspectiveCamera.h"
+	"Track.h"
+	"Butter.h"
+	"Orange.h"
+	"StaticObject.h"
+	"Vector3.h"
+	"stdafx.h"
+	<iostream>
+	<cmath>
+	<math.h>
+
+1445790295 /mnt/DATA/pedro/workspace/CG2015/proj/GameManager.h
+	"Header.h"
+	<list>
+
+1445774026 /mnt/DATA/pedro/workspace/CG2015/proj/Camera.h
+	"Entity.h"
+	"Vector3.h"
+	"stdlib.h"
+	"GL/glut.h"
+
+1445791565 /mnt/DATA/pedro/workspace/CG2015/proj/Car.h
+	"DynamicObject.h"
+	"stdlib.h"
+	<cmath>
+
+1445763972 /mnt/DATA/pedro/workspace/CG2015/proj/OrthogonalCamera.h
+	"Camera.h"
+
+1445763972 /mnt/DATA/pedro/workspace/CG2015/proj/PerspectiveCamera.h
+	"Camera.h"
+
+1445763972 /mnt/DATA/pedro/workspace/CG2015/proj/Track.h
+	"Header.h"
+	"Cheerio.h"
+	<list>
+
+1445763972 /mnt/DATA/pedro/workspace/CG2015/proj/Orange.h
+	"Obstacle.h"
+	"GL/glut.h"
+
+1445763972 source:/mnt/DATA/pedro/workspace/CG2015/proj/Obstacle.cpp
+	"Obstacle.h"
+
+1445778444 source:/mnt/DATA/pedro/workspace/CG2015/proj/Orange.cpp
+	"Orange.h"
+	<GL/glut.h>
+
+1445763972 source:/mnt/DATA/pedro/workspace/CG2015/proj/OrthogonalCamera.cpp
+	"OrthogonalCamera.h"
+
+1445763972 source:/mnt/DATA/pedro/workspace/CG2015/proj/StaticObject.cpp
+	"StaticObject.h"
+
+1445763972 source:/mnt/DATA/pedro/workspace/CG2015/proj/stdafx.cpp
+	"stdafx.h"
+
+1445792958 source:/mnt/DATA/pedro/workspace/CG2015/proj/Vector3.cpp
+	"Vector3.h"
+
+1445774026 source:/mnt/DATA/pedro/workspace/CG2015/proj/Camera.cpp
+	"Camera.h"
+
+1445790746 source:/mnt/DATA/pedro/workspace/CG2015/proj/Car.cpp
+	"Car.h"
+	<GL/glut.h>
+	<math.h>
+	"stdafx.h"
+	<iostream>
+
+1445792960 source:/mnt/DATA/pedro/workspace/CG2015/proj/GameManager.cpp
+	"GameManager.h"
+	"stdafx.h"
+
+1445774036 source:/mnt/DATA/pedro/workspace/CG2015/proj/Track.cpp
+	"Track.h"
+
+1445774688 source:/mnt/DATA/pedro/workspace/CG2015/proj/PerspectiveCamera.cpp
+	"Header.h"
+	"PerspectiveCamera.h"
+	<iostream>
+

@@ -13,6 +13,12 @@ Vector3::Vector3() {
 	_z = 0;
 }
 
+Vector3::Vector3(Vector3* vec){
+    _x = vec->getX();
+    _y = vec->getY();
+    _z = vec->getZ();
+}
+
 Vector3::Vector3(double x, double y, double z) {
 	_x = x;
 	_y = y;

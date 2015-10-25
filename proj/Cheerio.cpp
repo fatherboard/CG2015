@@ -13,6 +13,8 @@ Cheerio::Cheerio(Vector3* position, double iR, double oR){
 	_outer_radius = oR;
 	_sides = 10;
 	_rings = 10;
+
+	setObjRadius(oR);
 }
 
 Cheerio::Cheerio(Vector3* position, double iR, double oR, int s, int r) : Cheerio(position, iR, oR) {

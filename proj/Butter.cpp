@@ -6,12 +6,15 @@
  */
 
 #include "Butter.h"
+#include <math.h>
 
 Butter::Butter(Vector3 position, float width, float length) {
 	setColor(Vector3(1.0f, 1.0f, 0.0f));
 	this->position = position;
 	this->width = width;
 	this->length = length;
+
+	setObjRadius(sqrt(pow(width,2)+pow(length,2))/2);
 }
 
 Butter::~Butter() {
