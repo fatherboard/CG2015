@@ -11,7 +11,8 @@
 Orange::Orange(Vector3 position, float radius){
 	setColor(Vector3(1.0f, 0.5f, 0.0f));
 	_position = position;
-	this->radius = radius;
+	_radius = radius;
+	_angle = 0;
 
 	setObjRadius(radius);
 }
@@ -32,17 +33,45 @@ Vector3 Orange::getColor(){
 	return color;
 }
 
+double Orange::getAngle(){
+    return _angle;
+}
+
+void Orange::setAngle(double angle){
+    _angle = angle;
+}
+
 void Orange::draw(int wf) {
 
 	glColor3f(color.getX(), color.getY(), color.getZ());
 
 	glPushMatrix();
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
-	//glScalef(4.0f, 4.0f, 4.0f);
+	glRotated(_angle, 0, 0, 1);
+
 	if (wf) {
-		glutWireSphere(radius, 50, 5);
+		glutWireSphere(_radius, 50, 5);
 	} else {
-		glutSolidSphere(radius, 50, 5);
+		glutSolidSphere(_radius, 50, 5);
+	}
+
+	//glPopMatrix();
+
+	glPushMatrix();
+	glColor3d(0.035,0.67,0);
+	glTranslatef(0,-1,3);
+	glScalef(0.5,1,0.5);
+	if (wf) {
+		glutWireCube(2);
+	} else {
+		glutSolidCube(2);
 	}
 	glPopMatrix();
+	glPopMatrix();
+}
+
+void Orange::update(unsigned long delta_t) {
+    _angle += 45;
+    if(_angle >= 360)
+        _angle = 0;
 }
