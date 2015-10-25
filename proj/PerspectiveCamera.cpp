@@ -13,10 +13,11 @@ PerspectiveCamera::PerspectiveCamera() : Camera(0, 200) {}
 PerspectiveCamera::PerspectiveCamera(double fovy, double aspect, double zNear, double zFar):Camera(zFar, zNear) {
 	_fovy = fovy;
 	_aspect = aspect;
+	car = NULL;
 }
 
-PerspectiveCamera::PerspectiveCamera(double fovy, double aspect, double zNear, double zFar, Car *a) : PerspectiveCamera(fovy, aspect, zNear, zFar){ 
-	car = a; 
+PerspectiveCamera::PerspectiveCamera(double fovy, double aspect, double zNear, double zFar, Car *a) : PerspectiveCamera(fovy, aspect, zNear, zFar){
+	car = a;
 }
 
 PerspectiveCamera::~PerspectiveCamera() {}
@@ -43,16 +44,16 @@ void PerspectiveCamera::computeProjectionMatrix(){
 void PerspectiveCamera::computeVisualizationMatrix(){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	//glPushMatrix();
-	//glRotated(90, 0,0,1);
-	std::cout << "radian = " << _radian << "\n";
-	std::cout << "radian2 = " << _radian << "\n";
-	if (_radian != 0) {
-		std::cout << "debug";
-	}
-	gluLookAt(getAt().getX()-cos(car->getRadian()), getAt().getY()-sin(car->getRadian()), getAt().getZ()+70,	// posicao
-			getAt().getX(), getAt().getY(), getAt().getZ(),		// look at
-			getUp().getX(), getUp().getY(),	getUp().getZ());	// Up Vector
+	if(car != NULL){
+        gluLookAt(getAt().getX()-cos(car->getRadian()), getAt().getY()-sin(car->getRadian()), getAt().getZ()+70,	// posicao
+                getAt().getX(), getAt().getY(), getAt().getZ(),		// look at
+                getUp().getX(), getUp().getY(),	getUp().getZ());	// Up Vector
+    }else{
+        Vector3 To(getAt().getX() + getUp().getX(), getAt().getY() + getUp().getZ(), getAt().getZ() - getUp().getY());
+        gluLookAt(getAt().getX(), getAt().getY(), getAt().getZ(),	// posicao
+                    To.getX(), To.getY(), To.getZ(),					// look at
+                    getUp().getX(), getUp().getY(),	getUp().getZ());
+    }
 	//glPopMatrix();
 }
 
