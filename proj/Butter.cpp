@@ -8,6 +8,8 @@
 #include "Butter.h"
 #include <math.h>
 
+extern int _wireframe;
+
 Butter::Butter(Vector3 position, float width, float length) {
 	setColor(Vector3(1, 1, 0));
 	_position = position;
@@ -22,10 +24,6 @@ Butter::~Butter() {
 	// TODO Auto-generated destructor stub
 }
 
-void Butter::draw(){
-	draw(0);
-}
-
 void Butter::setColor(Vector3 color){
 	this->color = color;
 }
@@ -34,14 +32,14 @@ Vector3 Butter::getColor(){
 	return this->color;
 }
 
-void Butter::draw(int wf){
+void Butter::draw(){
 
 	glColor3f(color.getX(), color.getY(), color.getZ());
 
 	glPushMatrix();
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 	glScalef(width, length, 1);
-	if (wf)
+	if (_wireframe)
 		glutWireCube(1);
 	else
 		glutSolidCube(1);

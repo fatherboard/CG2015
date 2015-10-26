@@ -18,7 +18,6 @@ public:
 	Cheerio(Vector3* position, double iR, double oR, int s, int r);
 	virtual ~Cheerio();
 	void draw();
-	void draw(int wf);
 
 private:
 	double _inner_radius;

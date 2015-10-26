@@ -7,6 +7,8 @@
 
 #include "Cheerio.h"
 
+extern int _wireframe;
+
 Cheerio::Cheerio(Vector3* position, double iR, double oR){
 	setPosition(position);
 	_inner_radius = iR;
@@ -28,14 +30,10 @@ Cheerio::~Cheerio() {
 }
 
 void Cheerio::draw() {
-	draw(0);
-}
-
-void Cheerio::draw(int wf) {
 	glPushMatrix();
 	glTranslatef(_position.getX(), _position.getY(), _position.getZ());
 	glColor3f(1, 0.3f, 0);
-	if (wf)
+	if (_wireframe)
 		glutWireTorus(0.25, 0.9, 50, 50);
 	else
 		glutSolidTorus(0.25, 0.9, 50, 50);

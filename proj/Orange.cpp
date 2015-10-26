@@ -7,6 +7,8 @@
 
 #include "Orange.h"
 
+extern int _wireframe;
+
 unsigned long inicio;
 unsigned long tempo_atual;
 
@@ -28,10 +30,6 @@ Orange::~Orange() {
 	// TODO Auto-generated destructor stub
 }
 
-void Orange::draw() {
-	draw(0);
-}
-
 void Orange::setColor(Vector3 color){
 	this->color = color;
 }
@@ -48,7 +46,7 @@ void Orange::setAngle(double angle){
     _angle = angle;
 }
 
-void Orange::draw(int wf) {
+void Orange::draw() {
 
 	glColor3f(color.getX(), color.getY(), color.getZ());
 
@@ -56,10 +54,10 @@ void Orange::draw(int wf) {
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 	glRotated(_angle, 0, 0, 1);
 
-	if (wf) {
-		glutWireSphere(_radius, 50, 5);
+	if (_wireframe) {
+		glutWireSphere(_radius, 50, 10);
 	} else {
-		glutSolidSphere(_radius, 50, 5);
+		glutSolidSphere(_radius, 50, 10);
 	}
 
 	//glPopMatrix();
@@ -68,7 +66,7 @@ void Orange::draw(int wf) {
 	glColor3d(0.035,0.67,0);
 	glTranslatef(0,-1,3);
 	glScalef(0.5,1,0.5);
-	if (wf) {
+	if (_wireframe) {
 		glutWireCube(2);
 	} else {
 		glutSolidCube(2);

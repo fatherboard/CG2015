@@ -12,7 +12,6 @@ public:
 	Orange(Vector3 position, float radius);
 	~Orange();
 	void draw();
-	void draw(int wf);
 	void update(unsigned long delta_t);
 
 	void setColor(Vector3 color);

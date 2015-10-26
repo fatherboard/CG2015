@@ -19,7 +19,6 @@ class GameObject: public Entity {
 		double getObjRadius();
 
 	private:
-		int wireframe;
 
 		void drawWireframe();
 		void drawSolid();
