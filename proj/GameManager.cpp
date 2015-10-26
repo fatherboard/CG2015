@@ -185,15 +185,22 @@ void GameManager::update(unsigned long delta_t) {
 
     GameObject* collided = checkCollisions();
 	if(collided != NULL){
-        Vector3* obj_pos = collided->getPosition();
-        Vector3* car_dir = car->getDirecao();
 
-        if(backwards){
-            collided->setPosition(obj_pos->getX()-car_dir->getX(), obj_pos->getY()-car_dir->getY(), obj_pos->getZ());
+        Orange* v = dynamic_cast<Orange*>(collided);
+        if (v != 0) {
+            // e uma laranja
+            car->setPosition(pos_init);
         }else{
-            collided->setPosition(obj_pos->getX()+car_dir->getX(), obj_pos->getY()+car_dir->getY(), obj_pos->getZ());
+            Vector3* obj_pos = collided->getPosition();
+            Vector3* car_dir = car->getDirecao();
+
+            if(backwards){
+                collided->setPosition(obj_pos->getX()-car_dir->getX(), obj_pos->getY()-car_dir->getY(), obj_pos->getZ());
+            }else{
+                collided->setPosition(obj_pos->getX()+car_dir->getX(), obj_pos->getY()+car_dir->getY(), obj_pos->getZ());
+            }
+            car->setPosition(posAnterior);
         }
-        car->setPosition(posAnterior);
 	}
 	glutPostRedisplay();
 }
@@ -223,8 +230,8 @@ void GameManager::init() {
 	setStaticObject(new Butter(Vector3(-20.0f, -32.0f, 50.0f), 2.0f, 3.0f));
 
 	setDynamicObject(new Orange(new Vector3(-39, 34, 50), 3));
-	//setDynamicObject(new Orange(new Vector3(35, 34, 50), 3));
-	//setDynamicObject(new Orange(new Vector3(-39, -34, 50), 3));
+	setDynamicObject(new Orange(new Vector3(35, 34, 50), 3));
+	setDynamicObject(new Orange(new Vector3(-39, -34, 50), 3));
 
 }
 
@@ -239,7 +246,6 @@ GameObject* GameManager::checkCollisions(){
 		double distance = sqrt(pow(obj->getPosition()->getX()-car->getPosition()->getX(),2)+
                                pow(obj->getPosition()->getY()-car->getPosition()->getY(),2));
         if(pow(distance,2) <= pow(car_radius,2) + pow(obj_radius,2)){
-
             collision = true;
         }
 		_static_game_objects.push_back(_static_game_objects.front());
@@ -265,7 +271,6 @@ GameObject* GameManager::checkCollisions(){
         }
 		_dynamic_game_objects.pop_front();
 		if(collision){
-            car->setPosition(pos_init);
             return obj;
         }
 	}

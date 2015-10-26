@@ -7,6 +7,7 @@
 
 #include "Orange.h"
 #include <GL/glut.h>
+#include <iostream>
 
 unsigned long inicio;
 unsigned long tempo_atual;
@@ -78,6 +79,6 @@ void Orange::update(unsigned long delta_t) {
     if(_angle >= 360)
         _angle = 0;
 
-    //Vector3* pos = getPosition();
-    //setPosition(pos->getX()+(rand() % 2) == 0 ? -1 : 1, pos->getY()+(rand() % 2) == 0 ? -1 : 1, pos->getZ());
+    Vector3* pos = getPosition();
+    //setPosition(pos->getX()+1, pos->getY()+1, pos->getZ());
 }
