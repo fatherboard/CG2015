@@ -7,6 +7,8 @@
 
 class GameObject: public Entity {
 	public:
+        bool pushed;
+
 		GameObject();
 		GameObject(double obj_radius);
 		virtual ~GameObject();
@@ -19,7 +21,6 @@ class GameObject: public Entity {
 	private:
 		int wireframe;
 
-	protected:
 		void drawWireframe();
 		void drawSolid();
 };

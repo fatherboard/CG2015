@@ -185,7 +185,6 @@ void GameManager::update(unsigned long delta_t) {
 
     GameObject* collided = checkCollisions();
 	if(collided != NULL){
-
         Orange* v = dynamic_cast<Orange*>(collided);
         if (v != 0) {
             // e uma laranja
@@ -193,11 +192,13 @@ void GameManager::update(unsigned long delta_t) {
         }else{
             Vector3* obj_pos = collided->getPosition();
             Vector3* car_dir = car->getDirecao();
-
-            if(backwards){
-                collided->setPosition(obj_pos->getX()-car_dir->getX(), obj_pos->getY()-car_dir->getY(), obj_pos->getZ());
-            }else{
-                collided->setPosition(obj_pos->getX()+car_dir->getX(), obj_pos->getY()+car_dir->getY(), obj_pos->getZ());
+            if(!collided->pushed){
+                if(backwards){
+                    collided->setPosition(obj_pos->getX()-car_dir->getX(), obj_pos->getY()-car_dir->getY(), obj_pos->getZ());
+                }else{
+                    collided->setPosition(obj_pos->getX()+car_dir->getX(), obj_pos->getY()+car_dir->getY(), obj_pos->getZ());
+                }
+                collided->pushed = true;
             }
             car->setPosition(posAnterior);
         }
@@ -250,8 +251,9 @@ GameObject* GameManager::checkCollisions(){
         }
 		_static_game_objects.push_back(_static_game_objects.front());
 		_static_game_objects.pop_front();
-		if(collision)
+		if(collision){
             return obj;
+        }
 	}
 
 	for (unsigned int i = 0; i < _dynamic_game_objects.size(); i++) {

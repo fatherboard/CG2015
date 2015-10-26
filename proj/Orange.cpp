@@ -17,8 +17,10 @@ Orange::Orange(Vector3 position, float radius){
 	_angle = 0;
 	dX = (rand() % 2) == 0 ? -1 : 1;
 	dY = (rand() % 2) == 0 ? -1 : 1;
+
 	_tempoInicial= glutGet(GLUT_ELAPSED_TIME);
 	setSpeed(0.5,0.5,0);
+
 	setObjRadius(radius);
 }
 
