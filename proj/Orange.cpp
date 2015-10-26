@@ -17,7 +17,8 @@ Orange::Orange(Vector3 position, float radius){
 	_angle = 0;
 	dX = (rand() % 2) == 0 ? -1 : 1;
 	dY = (rand() % 2) == 0 ? -1 : 1;
-
+	_tempoInicial= glutGet(GLUT_ELAPSED_TIME);
+	setSpeed(0.5,0.5,0);
 	setObjRadius(radius);
 }
 
@@ -78,7 +79,11 @@ void Orange::update(unsigned long delta_t) {
     _angle += 45;
     if(_angle >= 360)
         _angle = 0;
-
-    Vector3* pos = getPosition();
-    setPosition(pos->getX()+0.5*dX, pos->getY()+0.5*dY, pos->getZ());
+	Vector3* pos = getPosition();
+	_tempoAgora= glutGet(GLUT_ELAPSED_TIME);
+	if (_tempoAgora - _tempoInicial > 5000) {
+		_tempoInicial = _tempoAgora;
+		setSpeed(getSpeed()->getX() + 0.5, getSpeed()->getY() + 0.5, 0);
+	}
+	setPosition(pos->getX() + getSpeed()->getX()*dX, pos->getY() + getSpeed()->getY()*dY, pos->getZ());
 }

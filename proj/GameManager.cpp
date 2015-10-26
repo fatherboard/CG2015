@@ -259,10 +259,7 @@ GameObject* GameManager::checkCollisions(){
 		double obj_radius = obj->getObjRadius();
 
 		if(isOutOfTable(obj)){
-            delete(obj);
-			setDynamicObject(new Orange(randomPosition(), 3));
-		}else{
-            _dynamic_game_objects.push_back(_dynamic_game_objects.front());
+			obj->setPosition(randomPosition());
 		}
 
 		double distance = sqrt(pow(obj->getPosition()->getX()-car->getPosition()->getX(),2)+
@@ -270,6 +267,7 @@ GameObject* GameManager::checkCollisions(){
         if(pow(distance,2) <= pow(car_radius,2) + pow(obj_radius,2)){
             collision = true;
         }
+		_dynamic_game_objects.push_back(_dynamic_game_objects.front());
 		_dynamic_game_objects.pop_front();
 		if(collision){
             return obj;

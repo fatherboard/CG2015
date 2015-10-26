@@ -25,6 +25,8 @@ private:
 	double _radius;
 	double _angle;
 	int dX, dY;
+	int _tempoInicial;
+	int _tempoAgora;
 
 	Vector3 color;
 };
