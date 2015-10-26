@@ -22,7 +22,9 @@ class GameManager {
 	unsigned long _delta_t;
 	bool keystates[4];
 	int camera_atual_id = 1;
+
 	Vector3* pos_init;
+	double rad_init;
 
 	public:
 		GameManager();

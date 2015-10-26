@@ -1,7 +1,7 @@
+#include "stdafx.h"
 #include "Car.h"
 #include <GL/glut.h>
 #include <math.h>
-#include "stdafx.h"
 #include <iostream>
 
 //Vector3 _position;

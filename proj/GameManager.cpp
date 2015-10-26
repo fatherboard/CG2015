@@ -5,8 +5,8 @@
 *      Author: 5702pedro.bucho
 */
 
-#include "GameManager.h"
 #include "stdafx.h"
+#include "GameManager.h"
 
 extern GameManager *gameManager;
 int _wireframe;
@@ -190,6 +190,7 @@ void GameManager::update(unsigned long delta_t) {
         if (v != 0) {
             // e uma laranja
             car->setPosition(pos_init);
+            car->setRadian(rad_init);
         }else{
             Vector3* obj_pos = collided->getPosition();
             Vector3* car_dir = car->getDirecao();
@@ -221,6 +222,7 @@ void GameManager::init() {
 	pos_init = new Vector3(-30.0f, 35.0f, 0.0f);
 	car = new Car(pos_init);
 	//setDynamicObject(car = new Car(pos));
+	rad_init = car->getRadian();
 	setCameras(new PerspectiveCamera(90, 1, 1, 400,car));
 
 	setStaticObject(new Butter(Vector3(10.0f, 36.0f, 50.0f), 2.0f, 3.0f));  //((posicao), largura, altura
