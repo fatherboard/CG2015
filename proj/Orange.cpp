@@ -15,6 +15,8 @@ Orange::Orange(Vector3 position, float radius){
 	_position = position;
 	_radius = radius;
 	_angle = 0;
+	dX = (rand() % 2) == 0 ? -1 : 1;
+	dY = (rand() % 2) == 0 ? -1 : 1;
 
 	setObjRadius(radius);
 }
@@ -78,5 +80,5 @@ void Orange::update(unsigned long delta_t) {
         _angle = 0;
 
     Vector3* pos = getPosition();
-    setPosition(pos->getX()+0.01, pos->getY()+0.01, pos->getZ());
+    setPosition(pos->getX()+0.5*dX, pos->getY()+0.5*dY, pos->getZ());
 }

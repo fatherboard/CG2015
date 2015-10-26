@@ -3,6 +3,7 @@
 #define __ORANGE__
 
 #include "Obstacle.h"
+#include <cstdlib>
 #include "GL/glut.h"
 
 class Orange: public Obstacle {
@@ -21,9 +22,9 @@ public:
 	double getAngle();
 
 private:
-	//Vector3 position;
 	double _radius;
 	double _angle;
+	int dX, dY;
 
 	Vector3 color;
 };

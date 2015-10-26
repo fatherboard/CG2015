@@ -24,7 +24,6 @@ class GameManager {
 	int camera_atual_id = 1;
 
 	Vector3* pos_init;
-	double rad_init;
 
 	public:
 		GameManager();
@@ -53,6 +52,7 @@ class GameManager {
 		void idle();
 		void update(unsigned long tempo);
 		void init();
+		Vector3* randomPosition();
 
     private:
 		GameObject* checkCollisions();
