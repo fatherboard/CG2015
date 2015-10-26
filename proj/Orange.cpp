@@ -8,6 +8,9 @@
 #include "Orange.h"
 #include <GL/glut.h>
 
+unsigned long inicio;
+unsigned long tempo_atual;
+
 Orange::Orange(Vector3 position, float radius){
 	setColor(Vector3(1.0f, 0.5f, 0.0f));
 	_position = position;
@@ -74,4 +77,7 @@ void Orange::update(unsigned long delta_t) {
     _angle += 45;
     if(_angle >= 360)
         _angle = 0;
+
+    //Vector3* pos = getPosition();
+    //setPosition(pos->getX()+(rand() % 2) == 0 ? -1 : 1, pos->getY()+(rand() % 2) == 0 ? -1 : 1, pos->getZ());
 }

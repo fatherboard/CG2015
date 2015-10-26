@@ -53,7 +53,8 @@ class GameManager {
 		void init();
 
     private:
-		GameObject* checkCollisions();
+		bool checkCollisions();
+		bool isOutOfTable(GameObject* obj);
 };
 
 #endif
