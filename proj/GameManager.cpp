@@ -239,12 +239,17 @@ bool GameManager::checkCollisions(){
         GameObject* obj = _dynamic_game_objects.front();
 		double obj_radius = obj->getObjRadius();
 
+		if(isOutOfTable(obj)){
+            delete(obj);
+		}else{
+            _dynamic_game_objects.push_back(_dynamic_game_objects.front());
+		}
+
 		double distance = sqrt(pow(obj->getPosition()->getX()-car->getPosition()->getX(),2)+
                                pow(obj->getPosition()->getY()-car->getPosition()->getY(),2));
         if(pow(distance,2) <= pow(car_radius,2) + pow(obj_radius,2)){
             collision = true;
         }
-		_dynamic_game_objects.push_back(_dynamic_game_objects.front());
 		_dynamic_game_objects.pop_front();
 		if(collision)
             return true;
@@ -253,3 +258,13 @@ bool GameManager::checkCollisions(){
 	return false;
 }
 
+bool GameManager::isOutOfTable(GameObject* obj){
+
+    Vector3* pos = obj->getPosition();
+
+    if(abs(pos->getX()) > track->track_lim_coord || abs(pos->getY()) > track->track_lim_coord)
+        return true;
+
+    return false;
+
+}
