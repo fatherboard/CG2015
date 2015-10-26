@@ -9,7 +9,7 @@
 #include <math.h>
 
 Butter::Butter(Vector3 position, float width, float length) {
-	setColor(Vector3(1.0f, 1.0f, 0.0f));
+	setColor(Vector3(1, 1, 0));
 	_position = position;
 	this->width = width;
 	this->length = length;
@@ -39,7 +39,7 @@ void Butter::draw(int wf){
 
 	glPushMatrix();
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
-	glScalef(width, length, 1.0f);
+	glScalef(width, length, 1);
 	if (wf)
 		glutWireCube(1);
 	else

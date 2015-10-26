@@ -11,7 +11,7 @@ unsigned long inicio;
 unsigned long tempo_atual;
 
 Orange::Orange(Vector3 position, float radius){
-	setColor(Vector3(1.0f, 0.5f, 0.0f));
+	setColor(Vector3(1, 0.5f, 0));
 	_position = position;
 	_radius = radius;
 	_angle = 0;

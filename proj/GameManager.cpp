@@ -133,7 +133,7 @@ void GameManager::specialKeyUP(unsigned char key) {
 void GameManager::keyPressed(unsigned char key) {
 	switch (key) {
 	case 'a':
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0, 0, 0, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		if (_wireframe)
 			_wireframe = 0;
@@ -218,16 +218,16 @@ void GameManager::init() {
         setStaticObject(cheerio);
 	}
 
-	pos_init = new Vector3(-30.0f, 35.0f, 0.0f);
+	pos_init = new Vector3(-30, 35, 0);
 	car = new Car(pos_init);
 	//setDynamicObject(car = new Car(pos));
 	setCameras(new PerspectiveCamera(90, 1, 1, 400,car));
 
-	setStaticObject(new Butter(Vector3(10.0f, 36.0f, 50.0f), 2.0f, 3.0f));  //((posicao), largura, altura
-	setStaticObject(new Butter(Vector3(-9.0f, 16.0f, 50.0f), 2.0f, 3.0f));
-	setStaticObject(new Butter(Vector3(-15.0f, -8.0f, 50.0f), 2.0f, 3.0f));
-	setStaticObject(new Butter(Vector3(20.0f, -17.0f, 50.0f), 2.0f, 3.0f));
-	setStaticObject(new Butter(Vector3(-20.0f, -32.0f, 50.0f), 2.0f, 3.0f));
+	setStaticObject(new Butter(Vector3(-33, 20, 50), 2, 3));  //((posicao), largura, altura
+	setStaticObject(new Butter(Vector3(29, 20, 50), 2, 3));
+	setStaticObject(new Butter(Vector3(-13, -8, 50), 2, 3));
+	setStaticObject(new Butter(Vector3(35, -23, 50), 2, 3));
+	setStaticObject(new Butter(Vector3(-20, -32, 50), 2, 3));
 
 	setDynamicObject(new Orange(new Vector3(-39, 34, 50), 3));
 	setDynamicObject(new Orange(new Vector3(35, 34, 50), 3));

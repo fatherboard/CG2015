@@ -12,7 +12,7 @@ Car::Car(Vector3 *position) {
 	setSpeed(0, 0, 0);
 	setDirecao(0, 0, 0);
 	setRadian(0);
-	_l = 3.0f;
+	_l = 3;
 
 	setObjRadius(3);
 
@@ -42,24 +42,24 @@ void Car::draw() {
 	glRotatef(getRadian()*180/M_PI, 0, 0, 1);
 
 	//eixo traseira esquerda
-	glColor3f(0.6f, 0.6f, 0.6f);
+	glColor3f(0.6, 0.6, 0.6);
 	glPushMatrix();
-	glTranslated(-2.0f, 1.7f, 50);
-	glScalef(1.0f, 0.5f, 1.0f);
+	glTranslated(-2, 1, 50);
+	glScalef(1, 0.5, 1);
 	drawCube(_wireframe);
 	glPopMatrix();
 
 	//eixo traseira direita
 	glPushMatrix();
-	glTranslated(-2.0f, - 1.7f, 50);
-	glScalef(1.0, 0.5, 1.0);
+	glTranslated(-2, - 1.7, 50);
+	glScalef(1, 0.5, 1);
 	drawCube(_wireframe);
 	glPopMatrix();
 
 	//eixo frontal direita
 	glPushMatrix();
-	glTranslated(0.5f, 1.0f, 50);
-	glScalef(0.6, 1.2, 1.0);
+	glTranslated(0.5, 1, 50);
+	glScalef(0.6, 1.2, 1);
 	if (_wireframe) {
 		glutWireCube(1);
 	}
@@ -70,8 +70,8 @@ void Car::draw() {
 
 	//eixo frontal esquerda
 	glPushMatrix();
-	glTranslated(0.5f, - 1.0f, 50);
-	glScalef(0.6, 1.2, 1.0);
+	glTranslated(0.5, - 1, 50);
+	glScalef(0.6, 1.2, 1);
 	if (_wireframe) {
 		glutWireCube(1);
 	}
@@ -83,8 +83,8 @@ void Car::draw() {
 	//retangulo, parte de tras do carro
 	glColor3f(1, 0, 0);
 	glPushMatrix();
-	glTranslated(-2.0, 0.0f, 50);
-	glScalef(0.5, 1.0, 1.0);
+	glTranslated(-2, 0, 50);
+	glScalef(0.5, 1.0, 1);
 	if (_wireframe) {
 		glutWireCube(3);
 	}
@@ -94,9 +94,9 @@ void Car::draw() {
 	glPopMatrix();
 
 	//roda traseira direita
-	glColor3f(0.0f, 0.0f, 0.0f);
+	glColor3f(0, 0, 0);
 	glPushMatrix();
-	glTranslated(-2.0f, 2.3f, 50);
+	glTranslated(-2, 2.3f, 50);
 	glRotatef(90, 1, 0, 0);
 	if (_wireframe) {
 		glutWireTorus(0.4, 0.5, 100, 100);
@@ -108,7 +108,7 @@ void Car::draw() {
 
 	//roda traseira esquerda
 	glPushMatrix();
-	glTranslated(- 2.0f, -2.3f, 50);
+	glTranslated(- 2, -2.3f, 50);
 	glRotatef(90, 1, 0, 0);
 	if (_wireframe) {
 		glutWireTorus(0.4, 0.5, 100, 100);
@@ -144,7 +144,7 @@ void Car::draw() {
 
 	//tubo de escape esquerdo
 	glPushMatrix();
-	glTranslated(-3.0f, -0.7f, 50);
+	glTranslated(-3, -0.7f, 50);
 	glScalef(0.5, 0.5, 0.5);
 	if (_wireframe) {
 		glutWireCube(1);
@@ -156,7 +156,7 @@ void Car::draw() {
 
 	//tubo de escape direito
 	glPushMatrix();
-	glTranslated(-3.0f, 0.5f, 50);
+	glTranslated(-3, 0.5f, 50);
 	glScalef(0.5, 0.5, 0.5);
 	if (_wireframe) {
 		glutWireCube(1);
@@ -166,7 +166,7 @@ void Car::draw() {
 	}
 	glPopMatrix();
 
-	glColor3f(1.0f, 0.0f, 0.0f);
+	glColor3f(1, 0, 0);
 	if (_wireframe)
 		glBegin(GL_LINE);
 	else
