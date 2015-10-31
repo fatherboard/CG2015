@@ -3,15 +3,16 @@
 #ifndef __LIGHTSOURCE__
 #define __LIGHTSOURCE__
 
-#include "Vector3.h"
+#include "Header.h"
 
 class LightSource {
 
 	Vector3 _direction;
-	Vector3 _position;
-	double _ambient[4];
-	double _diffuse[4];
-	double _specular[4];
+	Vector4 _position;
+
+	Vector4 _ambient;
+	Vector4 _diffuse;
+	Vector4 _specular;
 	double _cut_off;
 	double _exponent;
 	GLenum _num;
@@ -24,13 +25,18 @@ class LightSource {
 		bool getState();
 		bool setState(bool state);
 		GLenum getNum();
-		void setPosition(Vector3 *position);
+		void setPosition(Vector4 *position);
+		void setPosition(double x, double y, double z, double w);
 		void setDirection(Vector3 *direction);
+		void setDirection(double x, double y, double z);
 		void setCutOff(double cut_off);
 		void setExponent(double exponent);
-		void setAmbient(double ambient[4]);
-		void setDiffuse(double diffuse[4]);
-		void setSpecular(double specular[4]);
+		void setAmbient(Vector4 *ambient);
+		void setAmbient(double x, double y, double z, double w);
+		void setDiffuse(Vector4 *diffuse);
+		void setDiffuse(double x, double y, double z, double w);
+		void setSpecular(Vector4 *specular);
+		void setSpecular(double x, double y, double z, double w);
 		void draw();
 };
 

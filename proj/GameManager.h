@@ -11,9 +11,9 @@ class GameManager {
 	Car *car;
 	std::vector<Camera *> _cameras;
 	Camera *camera_atual;
-	LightSource* _light_sources;
 	std::list<GameObject *> _dynamic_game_objects;
 	std::list<GameObject *> _static_game_objects;
+	std::vector<LightSource *> _light_sources;
 
 
 	int _tempo_atual;
@@ -33,8 +33,10 @@ class GameManager {
 		std::vector<Camera *> getCameras(void);
 		std::vector<Camera *> setCameras(Camera*aux);
 
-		LightSource* getLight_sources(void);
-		void setLight_sources(LightSource*);
+		std::vector<LightSource *> getLightSources(void);
+		void setLightSources(std::vector<LightSource *> lights);
+		LightSource* getLight(int i);
+		void addLight(LightSource* light);
 
 		std::list<GameObject *> getDynamicObjects();
 		void setDynamicObject(GameObject * aux);
@@ -54,9 +56,20 @@ class GameManager {
 		void init();
 		Vector3* randomPosition();
 
+		bool getModoDia();
+		void setModoDia(bool modo);
+		bool getLightsOn();
+		void setLightsOn(bool modo);
+		bool getLightsActive();
+		void setLightsActive(bool modo);
+
     private:
 		GameObject* checkCollisions();
 		bool isOutOfTable(GameObject* obj);
+
+		bool _modo_dia = true;
+		bool _lights_on = false;
+		bool _lights_active = true;
 };
 
 #endif

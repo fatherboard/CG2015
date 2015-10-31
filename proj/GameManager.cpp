@@ -35,12 +35,20 @@ std::vector<Camera *> GameManager::setCameras(Camera* aux) {
 	return _cameras;
 }
 
-LightSource* GameManager::getLight_sources(void) {
+std::vector<LightSource *> GameManager::getLightSources(void) {
 	return _light_sources;
 }
 
-void GameManager::setLight_sources(LightSource* light) {
-	_light_sources = light;
+void GameManager::setLightSources(std::vector<LightSource *> lights) {
+	_light_sources = lights;
+}
+
+LightSource* GameManager::getLight(int i){
+    return _light_sources[i];
+}
+
+void GameManager::addLight(LightSource* light){
+    _light_sources.push_back(light);
 }
 
 std::list<GameObject *> GameManager::getDynamicObjects(void) {
@@ -132,6 +140,7 @@ void GameManager::specialKeyUP(unsigned char key) {
 
 void GameManager::keyPressed(unsigned char key) {
 	switch (key) {
+	// wireframe
 	case 'a':
 		glClearColor(0, 0, 0, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -140,24 +149,43 @@ void GameManager::keyPressed(unsigned char key) {
 		else
 			_wireframe = 1;
 		break;
-		case '1':
-			//orthogonal
-			camera_atual_id = 0;
-			camera_atual = getCameras()[0];
-			break;
-		case '2':
-			//perspective
-			camera_atual_id = 1;
-			camera_atual = getCameras()[1];
-			break;
-		case '3':
-			//3rd person
-			camera_atual_id = 2;
-			camera_atual = getCameras()[2];
-			break;
-		case 'q':
-			exit(0);
-			break;
+    // camaras
+    case '1':
+        // orthogonal
+        camera_atual_id = 0;
+        camera_atual = getCameras()[0];
+        break;
+    case '2':
+        // perspective
+        camera_atual_id = 1;
+        camera_atual = getCameras()[1];
+        break;
+    case '3':
+        // 3rd person
+        camera_atual_id = 2;
+        camera_atual = getCameras()[2];
+        break;
+    // luzes
+    case 'n':
+        _modo_dia = !_modo_dia;
+		getLight(0)->setState(_modo_dia);
+		break;
+	case 'l':
+        _lights_active = !_lights_active;
+		if (_lights_active){
+            glEnable(GL_LIGHTING);
+		}else{
+            glDisable(GL_LIGHTING);
+		}
+		break;
+    case 'g':
+        break;
+    case 'c':
+        break;
+    // extra
+    case 'q':
+        exit(0);
+        break;
 	}
 }
 
@@ -234,6 +262,37 @@ void GameManager::init() {
 	setDynamicObject(new Orange(new Vector3(35, 34, 50), 3));
 	setDynamicObject(new Orange(new Vector3(-39, -34, 50), 3));
 
+	// iluminacao global
+	LightSource *aux = new LightSource(getLightSources().size());
+    aux->setPosition(-1, -1, 1, 0);
+    aux->setDirection(0, 0, 0);
+    aux->setSpecular(1.0, 1.0, 1.0, 1.0);
+    aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
+    aux->setAmbient(0.2, 0.2, 0.2, 1.0);
+    aux->setState(true);
+    addLight(aux);
+
+    // velas
+    for(int y = 0; y <= 200; y+=100){
+        for(int x = -100; x <= 100; x += 200){//Vector3(1, (y == 0) ? 1 : -1 , 1)
+            setStaticObject(new Candle(new Vector3(x, y, 0),
+                                       new Vector3((x > 0) ? 1 : -1,
+                                                   (y > 100) ? -1 : (y < 100) ? 1 : 0,
+                                                    1)));
+            aux = new LightSource(getLightSources().size());
+            aux->setPosition(x, y, 20, 1);
+            aux->setDirection(	(x < 0) ? 1 : -1,
+                                (y < 100) ? 0.8 : (y > 100) ? -0.8 : 0,
+                                -1);
+            aux->setSpecular(1.0, 1.0, 1.0, 1.0);
+            aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
+            aux->setAmbient(0.2, 0.2, 0.2, 1.0);
+            aux->setCutOff(60);
+            aux->setExponent(3);
+            aux->setState(_lights_on);
+            addLight(aux);
+        }
+    }
 }
 
 GameObject* GameManager::checkCollisions(){
@@ -301,4 +360,23 @@ Vector3* GameManager::randomPosition() {
 
 	return new Vector3(x*sigX, y*sigY, z);
 
+}
+
+bool GameManager::getModoDia(){
+    return _modo_dia;
+}
+void GameManager::setModoDia(bool modo){
+    _modo_dia = modo;
+}
+bool GameManager::getLightsOn(){
+    return _lights_on;
+}
+void GameManager::setLightsOn(bool modo){
+    _lights_on = modo;
+}
+bool GameManager::getLightsActive(){
+    return _lights_active;
+}
+void GameManager::setLightsActive(bool modo){
+    _lights_active = modo;
 }

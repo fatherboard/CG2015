@@ -22,6 +22,8 @@
 #include "Orange.h"
 #include "StaticObject.h"
 #include "Vector3.h"
+#include "Vector4.h"
+#include "Candle.h"
 #include "stdafx.h"
 #include <iostream>
 #define _USE_MATH_DEFINES
