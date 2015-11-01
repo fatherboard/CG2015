@@ -15,7 +15,6 @@ Cheerio::Cheerio(Vector3* position, double iR, double oR){
 	_outer_radius = oR;
 	_sides = 10;
 	_rings = 10;
-	pushed = false;
 
 	setObjRadius(oR);
 }

@@ -1,10 +1,22 @@
 #include "Header.h"
 
 extern GameManager* gameManager;
+extern int _wireframe;
 
 Candle::Candle(Vector3* pos){
 	setPosition(pos->getX(), pos->getY(), pos->getZ());
 	setSize(0.5, 0.5, 10);
+
+	LightSource *aux = new LightSource(gameManager->getLightSources().size());
+    aux->setPosition(pos->getX(), pos->getY(), pos->getZ(), 1);
+    aux->setDirection(1, 1, -1);
+    aux->setSpecular(1.0, 1.0, 1.0, 1.0);
+    aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
+    aux->setAmbient(0.2, 0.2, 0.2, 1.0);
+    aux->setCutOff(60);
+    aux->setExponent(3);
+    aux->setState(false);
+    gameManager->addLightSource(aux);
 }
 
 Candle::~Candle(){
@@ -28,17 +40,20 @@ void Candle::draw(){
     //glScalef(2*getSize()->getX(), 2*getSize()->getY(),2* getSize()->getZ());
     glScalef(1,1,5);
     //glutSolidCube(1);
-    glutSolidSphere(1, 8, 8);
+    if(_wireframe)
+        glutWireSphere(1, 8, 8);
+    else
+        glutSolidSphere(1, 8, 8);
     glPopMatrix();
 
     glPushMatrix(),
-    glTranslatef(-2, 0, 2*getSize()->getZ()+0.5);
+    /*glTranslatef(-2, 0, 2*getSize()->getZ()+0.5);
     glScalef(5, 1, 1);
-    //glutSolidCube(1);
+    glutSolidCube(1);*/
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(-4,0,2*getSize()->getZ());
+    /*glTranslatef(-4,0,2*getSize()->getZ());
     glColor3f(1.0, 1.0,0.0);
     if (gameManager->getLightsOn()){
         defineMaterial(	1.00, 1.00, 0.00, 1.00,	//Ambient
@@ -53,7 +68,7 @@ void Candle::draw(){
                         0.00, 0.00, 0.00, 1.00,	//Emission
                         77);					//SHININESS
     }
-    //glutSolidSphere(0.5, 8, 8);
+    //glutSolidSphere(0.5, 8, 8);*/
     glPopMatrix();
 	glPopMatrix();
 }

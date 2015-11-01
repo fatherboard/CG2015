@@ -8,7 +8,6 @@
 
 class GameObject: public Entity {
 	public:
-        bool pushed;
 
 		GameObject();
 		GameObject(double obj_radius);

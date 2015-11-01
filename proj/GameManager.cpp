@@ -238,13 +238,10 @@ void GameManager::update(unsigned long delta_t) {
         }else{
             Vector3* obj_pos = collided->getPosition();
             Vector3* car_dir = car->getDirecao();
-            if(!collided->pushed){
-                if(backwards){
-                    collided->setPosition(obj_pos->getX()-car_dir->getX(), obj_pos->getY()-car_dir->getY(), obj_pos->getZ());
-                }else{
-                    collided->setPosition(obj_pos->getX()+car_dir->getX(), obj_pos->getY()+car_dir->getY(), obj_pos->getZ());
-                }
-                collided->pushed = true;
+            if(backwards){
+                collided->setPosition(obj_pos->getX()-car_dir->getX(), obj_pos->getY()-car_dir->getY(), obj_pos->getZ());
+            }else{
+                collided->setPosition(obj_pos->getX()+car_dir->getX(), obj_pos->getY()+car_dir->getY(), obj_pos->getZ());
             }
             car->setPosition(posAnterior);
         }
@@ -290,7 +287,8 @@ void GameManager::init() {
     ls->setState(true);
     addLightSource(ls);
 
-    // velas
+    // velas (as lightsources são criadas pelo Candle e adicionadas
+    // a lista de lightsources)
     setStaticObject(new Candle(new Vector3(-50, 50, 45)));
     setStaticObject(new Candle(new Vector3(0, 50, 45)));
     setStaticObject(new Candle(new Vector3(50, 50, 45)));
@@ -302,18 +300,6 @@ void GameManager::init() {
     setStaticObject(new Candle(new Vector3(-50, -50, 45)));
     setStaticObject(new Candle(new Vector3(0, -50, 45)));
     setStaticObject(new Candle(new Vector3(50, -50, 45)));
-
-    // luz das velas
-    LightSource *aux = new LightSource(getLightSources().size());
-    aux->setPosition(0, -25, 45, 1);
-    aux->setDirection(1, 1, -1);
-    aux->setSpecular(1.0, 1.0, 1.0, 1.0);
-    aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
-    aux->setAmbient(0.2, 0.2, 0.2, 1.0);
-    aux->setCutOff(60);
-    aux->setExponent(3);
-    aux->setState(_lights_on);
-    addLightSource(aux);
 }
 
 GameObject* GameManager::checkCollisions(){

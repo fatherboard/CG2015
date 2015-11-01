@@ -15,7 +15,6 @@ Butter::Butter(Vector3 position, float width, float length) {
 	_position = position;
 	this->width = width;
 	this->length = length;
-	pushed = false;
 
 	setObjRadius(sqrt(pow(width,2)+pow(length,2))/2);
 }
