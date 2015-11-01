@@ -21,9 +21,21 @@ GameManager::GameManager() {
 }
 
 GameManager::~GameManager() {
-	for (GameObject *aux : getDynamicObjects()) delete(aux);
-	for (GameObject *aux : getStaticObjects()) delete(aux);
-	for (Camera *aux : getCameras()) delete(aux);
+	for (GameObject *aux : getDynamicObjects()){
+        delete(aux);
+    }
+	for (GameObject *aux : getStaticObjects()){
+        delete(aux);
+    }
+	for (Camera *aux : getCameras()){
+        delete(aux);
+    }
+}
+
+void GameManager::setCandles(bool state){
+    for(LightSource *ls : getLightSources()){
+        ls->setState(state);
+    }
 }
 
 std::vector<Camera *> GameManager::getCameras(void) {
@@ -47,7 +59,7 @@ LightSource* GameManager::getLight(int i){
     return _light_sources[i];
 }
 
-void GameManager::addLight(LightSource* light){
+void GameManager::addLightSource(LightSource* light){
     _light_sources.push_back(light);
 }
 
@@ -86,6 +98,10 @@ void GameManager::display() {
 		_dynamic_game_objects.front()->draw();
 		_dynamic_game_objects.push_back(_dynamic_game_objects.front());
 		_dynamic_game_objects.pop_front();
+	}
+
+	for(LightSource *ls : getLightSources()){
+        ls->draw();
 	}
 	car->draw();
 	glFlush();
@@ -181,6 +197,8 @@ void GameManager::keyPressed(unsigned char key) {
     case 'g':
         break;
     case 'c':
+        _lights_on = !_lights_on;
+        setCandles(_lights_on);
         break;
     // extra
     case 'q':
@@ -263,36 +281,39 @@ void GameManager::init() {
 	setDynamicObject(new Orange(new Vector3(-39, -34, 50), 3));
 
 	// iluminacao global
-	LightSource *aux = new LightSource(getLightSources().size());
-    aux->setPosition(-1, -1, 1, 0);
-    aux->setDirection(0, 0, 0);
+	LightSource *ls = new LightSource(getLightSources().size());
+    ls->setPosition(0, 0, 50, 1);
+    ls->setDirection(0, 0, 50);
+    ls->setSpecular(1.0, 1.0, 1.0, 1.0);
+    ls->setDiffuse(1.0, 1.0, 1.0, 1.0);
+    ls->setAmbient(0.2, 0.2, 0.2, 1.0);
+    ls->setState(true);
+    addLightSource(ls);
+
+    // velas
+    setStaticObject(new Candle(new Vector3(-50, 50, 45)));
+    setStaticObject(new Candle(new Vector3(0, 50, 45)));
+    setStaticObject(new Candle(new Vector3(50, 50, 45)));
+
+    setStaticObject(new Candle(new Vector3(-50, 0, 45)));
+    setStaticObject(new Candle(new Vector3(0, 0, 45)));
+    setStaticObject(new Candle(new Vector3(50, 0, 45)));
+
+    setStaticObject(new Candle(new Vector3(-50, -50, 45)));
+    setStaticObject(new Candle(new Vector3(0, -50, 45)));
+    setStaticObject(new Candle(new Vector3(50, -50, 45)));
+
+    // luz das velas
+    LightSource *aux = new LightSource(getLightSources().size());
+    aux->setPosition(0, -25, 45, 1);
+    aux->setDirection(1, 1, -1);
     aux->setSpecular(1.0, 1.0, 1.0, 1.0);
     aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
     aux->setAmbient(0.2, 0.2, 0.2, 1.0);
-    aux->setState(true);
-    addLight(aux);
-
-    // velas
-    for(int y = 0; y <= 200; y+=100){
-        for(int x = -100; x <= 100; x += 200){//Vector3(1, (y == 0) ? 1 : -1 , 1)
-            setStaticObject(new Candle(new Vector3(x, y, 0),
-                                       new Vector3((x > 0) ? 1 : -1,
-                                                   (y > 100) ? -1 : (y < 100) ? 1 : 0,
-                                                    1)));
-            aux = new LightSource(getLightSources().size());
-            aux->setPosition(x, y, 20, 1);
-            aux->setDirection(	(x < 0) ? 1 : -1,
-                                (y < 100) ? 0.8 : (y > 100) ? -0.8 : 0,
-                                -1);
-            aux->setSpecular(1.0, 1.0, 1.0, 1.0);
-            aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
-            aux->setAmbient(0.2, 0.2, 0.2, 1.0);
-            aux->setCutOff(60);
-            aux->setExponent(3);
-            aux->setState(_lights_on);
-            addLight(aux);
-        }
-    }
+    aux->setCutOff(60);
+    aux->setExponent(3);
+    aux->setState(_lights_on);
+    addLightSource(aux);
 }
 
 GameObject* GameManager::checkCollisions(){

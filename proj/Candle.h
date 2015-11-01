@@ -7,9 +7,8 @@
 
 class Candle : public StaticObject{
 
-    Vector3* _direction;
 public:
-	Candle(Vector3* pos, Vector3* dir);
+	Candle(Vector3* pos);
 	~Candle();
 	void draw();
 

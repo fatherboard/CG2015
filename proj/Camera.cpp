@@ -15,11 +15,11 @@ Camera::Camera(double near, double far) {
 }
 Camera::~Camera(){}
 
-double Camera::getNear(){ 
-	return _near; 
+double Camera::getNear(){
+	return _near;
 }
-double Camera::getFar(){ 
-	return _far; 
+double Camera::getFar(){
+	return _far;
 }
 
 Vector3 Camera::getUp(){

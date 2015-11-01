@@ -29,14 +29,14 @@ class GameManager {
 		GameManager();
 		~GameManager();
 
-
+        void setCandles(bool state);
 		std::vector<Camera *> getCameras(void);
 		std::vector<Camera *> setCameras(Camera*aux);
 
 		std::vector<LightSource *> getLightSources(void);
 		void setLightSources(std::vector<LightSource *> lights);
 		LightSource* getLight(int i);
-		void addLight(LightSource* light);
+		void addLightSource(LightSource* light);
 
 		std::list<GameObject *> getDynamicObjects();
 		void setDynamicObject(GameObject * aux);

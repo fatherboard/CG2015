@@ -1,46 +1,46 @@
 # depslib dependency file v1.0
-1446287456 source:/home/eu/workspace/CG2015/proj/Butter.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/Butter.cpp
 	"Butter.h"
 	<math.h>
 
-1446287456 /home/eu/workspace/CG2015/proj/Butter.h
+1446330924 /home/eu/workspace/CG2015/proj/Butter.h
 	"Obstacle.h"
 	"GL/glut.h"
 
-1445716022 /home/eu/workspace/CG2015/proj/Obstacle.h
+1446330924 /home/eu/workspace/CG2015/proj/Obstacle.h
 	"DynamicObject.h"
 
-1446287456 /home/eu/workspace/CG2015/proj/DynamicObject.h
+1446330924 /home/eu/workspace/CG2015/proj/DynamicObject.h
 	"GameObject.h"
 	"Vector3.h"
 	<math.h>
 
-1446320544 /home/eu/workspace/CG2015/proj/GameObject.h
+1446330924 /home/eu/workspace/CG2015/proj/GameObject.h
 	"Entity.h"
 	<GL/glut.h>
 
-1446287456 /home/eu/workspace/CG2015/proj/Entity.h
+1446330924 /home/eu/workspace/CG2015/proj/Entity.h
 	"Vector3.h"
 
-1446287456 /home/eu/workspace/CG2015/proj/Vector3.h
+1446330924 /home/eu/workspace/CG2015/proj/Vector3.h
 
-1446287456 source:/home/eu/workspace/CG2015/proj/Camera.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/Camera.cpp
 	"Camera.h"
 
-1445719195 /home/eu/workspace/CG2015/proj/Camera.h
+1446330924 /home/eu/workspace/CG2015/proj/Camera.h
 	"Entity.h"
 	"Vector3.h"
 	"stdlib.h"
 	"GL/glut.h"
 
-1446287456 source:/home/eu/workspace/CG2015/proj/Car.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/Car.cpp
 	"stdafx.h"
 	"Car.h"
 	<GL/glut.h>
 	<math.h>
 	<iostream>
 
-1446287456 /home/eu/workspace/CG2015/proj/Car.h
+1446330924 /home/eu/workspace/CG2015/proj/Car.h
 	"DynamicObject.h"
 	"stdlib.h"
 	<cmath>
@@ -51,30 +51,30 @@
 
 1445716118 /home/eu/workspace/CG2015/proj/targetver.h
 
-1446287456 source:/home/eu/workspace/CG2015/proj/Cheerio.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/Cheerio.cpp
 	"Cheerio.h"
 
-1446287456 /home/eu/workspace/CG2015/proj/Cheerio.h
+1446330924 /home/eu/workspace/CG2015/proj/Cheerio.h
 	"StaticObject.h"
 	"StaticObject.h"
 	"GL/glut.h"
 
-1446287456 /home/eu/workspace/CG2015/proj/StaticObject.h
+1446330924 /home/eu/workspace/CG2015/proj/StaticObject.h
 	"GameObject.h"
 
-1446287456 source:/home/eu/workspace/CG2015/proj/DynamicObject.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/DynamicObject.cpp
 	"stdafx.h"
 	"DynamicObject.h"
 	<iostream>
 
-1445716022 source:/home/eu/workspace/CG2015/proj/Entity.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/Entity.cpp
 	"Entity.h"
 
-1446329088 source:/home/eu/workspace/CG2015/proj/GameManager.cpp
+1446390841 source:/home/eu/workspace/CG2015/proj/GameManager.cpp
 	"stdafx.h"
 	"GameManager.h"
 
-1446328994 /home/eu/workspace/CG2015/proj/GameManager.h
+1446385170 /home/eu/workspace/CG2015/proj/GameManager.h
 	"Header.h"
 	<list>
 
@@ -106,47 +106,47 @@
 	<cmath>
 	<math.h>
 
-1446328203 /home/eu/workspace/CG2015/proj/LightSource.h
+1446330924 /home/eu/workspace/CG2015/proj/LightSource.h
 	"Header.h"
 
-1445716022 /home/eu/workspace/CG2015/proj/OrthogonalCamera.h
+1446330924 /home/eu/workspace/CG2015/proj/OrthogonalCamera.h
 	"Camera.h"
 
-1445716022 /home/eu/workspace/CG2015/proj/PerspectiveCamera.h
+1446330924 /home/eu/workspace/CG2015/proj/PerspectiveCamera.h
 	"Camera.h"
 
-1446287456 /home/eu/workspace/CG2015/proj/Track.h
+1446330924 /home/eu/workspace/CG2015/proj/Track.h
 	"Header.h"
 	"Cheerio.h"
 	<list>
 
-1446287456 /home/eu/workspace/CG2015/proj/Orange.h
+1446330924 /home/eu/workspace/CG2015/proj/Orange.h
 	"Obstacle.h"
 	<cstdlib>
 	"GL/glut.h"
 
-1446329133 source:/home/eu/workspace/CG2015/proj/GameObject.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/GameObject.cpp
 	"stdafx.h"
 	"GameObject.h"
 	"DynamicObject.h"
 
-1446329351 source:/home/eu/workspace/CG2015/proj/LightSource.cpp
+1446390352 source:/home/eu/workspace/CG2015/proj/LightSource.cpp
 	"Header.h"
 
-1446320839 source:/home/eu/workspace/CG2015/proj/main.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/main.cpp
 	"Header.h"
 	"GameManager.h"
 
 1445716022 source:/home/eu/workspace/CG2015/proj/Obstacle.cpp
 	"Obstacle.h"
 
-1446287456 source:/home/eu/workspace/CG2015/proj/Orange.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/Orange.cpp
 	"Orange.h"
 
-1445716022 source:/home/eu/workspace/CG2015/proj/OrthogonalCamera.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/OrthogonalCamera.cpp
 	"OrthogonalCamera.h"
 
-1446287456 source:/home/eu/workspace/CG2015/proj/PerspectiveCamera.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/PerspectiveCamera.cpp
 	"Header.h"
 	"PerspectiveCamera.h"
 	<iostream>
@@ -157,10 +157,10 @@
 1445716022 source:/home/eu/workspace/CG2015/proj/stdafx.cpp
 	"stdafx.h"
 
-1446287456 source:/home/eu/workspace/CG2015/proj/Track.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/Track.cpp
 	"Track.h"
 
-1446287456 source:/home/eu/workspace/CG2015/proj/Vector3.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/Vector3.cpp
 	"Vector3.h"
 
 1445786774 source:/mnt/DATA/pedro/workspace/CG2015/proj/Butter.cpp
@@ -326,15 +326,15 @@
 	"PerspectiveCamera.h"
 	<iostream>
 
-1446301747 /home/eu/workspace/CG2015/proj/Vector4.h
+1446330924 /home/eu/workspace/CG2015/proj/Vector4.h
 	"Vector3.h"
 
-1446306088 source:/home/eu/workspace/CG2015/proj/Vector4.cpp
+1446330924 source:/home/eu/workspace/CG2015/proj/Vector4.cpp
 	"Header.h"
 
-1446330051 /home/eu/workspace/CG2015/proj/Candle.h
+1446380796 /home/eu/workspace/CG2015/proj/Candle.h
 	"Header.h"
 
-1446329454 source:/home/eu/workspace/CG2015/proj/Candle.cpp
+1446381245 source:/home/eu/workspace/CG2015/proj/Candle.cpp
 	"Header.h"
 
