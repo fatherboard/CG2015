@@ -34,7 +34,6 @@ void Candle::draw(){
     defineMaterial(	0.66, 0.66, 0.66, 1.00,	//Ambient
                     0.66, 0.66, 0.66, 1.00,	//Diffuse
                     1.00, 1.00, 1.00, 1.00,	//Specular
-                    0.00, 0.00, 0.00, 1.00,	//Emission
                     77);					//SHININESS
     glTranslatef(0, 0, 2*getSize()->getZ()/2);
     //glScalef(2*getSize()->getX(), 2*getSize()->getY(),2* getSize()->getZ());

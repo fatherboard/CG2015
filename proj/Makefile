@@ -1,5 +1,5 @@
 all:
-	g++ *.cpp -lGL -lGLU -lglut -o proj
+	g++ *.cpp -lGL -lGLU -lglut -std=c++11 -o proj
 	make run
 
 run:
