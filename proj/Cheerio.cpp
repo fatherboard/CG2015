@@ -31,7 +31,13 @@ Cheerio::~Cheerio() {
 void Cheerio::draw() {
 	glPushMatrix();
 	glTranslatef(_position.getX(), _position.getY(), _position.getZ());
-	glColor3f(1, 0.3f, 0);
+	glColor3f(1, 0.3, 0);
+
+	defineMaterial(	1.00, 0.30, 0.00, 1.00,
+                    0.90, 0.00, 0.00, 1.00,
+                    1.00, 1.00, 1.00, 1.00,
+                    1);
+
 	if (_wireframe)
 		glutWireTorus(0.25, 0.9, 50, 50);
 	else

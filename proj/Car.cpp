@@ -41,8 +41,14 @@ void Car::draw() {
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 	glRotatef(getRadian()*180/M_PI, 0, 0, 1);
 
+    glColor3f(0.6, 0.6, 0.6);
+
+    defineMaterial(	0.60, 0.60, 0.60, 1.00,
+                    0.90, 0.00, 0.00, 1.00,
+                    1.00, 1.00, 1.00, 1.00,
+                    1);
+
 	//eixo traseira esquerda
-	glColor3f(0.6, 0.6, 0.6);
 	glPushMatrix();
 	glTranslated(-2, 1, 50);
 	glScalef(1, 0.5, 1);
@@ -80,8 +86,14 @@ void Car::draw() {
 	}
 	glPopMatrix();
 
+    // rectangulos
+    glColor3f(1, 0, 0);
+    defineMaterial(	1.00, 0.00, 0.00, 1.00,
+                    0.90, 0.00, 0.00, 1.00,
+                    1.00, 1.00, 1.00, 1.00,
+                    1);
+
 	//retangulo, parte de tras do carro
-	glColor3f(1, 0, 0);
 	glPushMatrix();
 	glTranslated(-2, 0, 50);
 	glScalef(0.5, 1.0, 1);
@@ -93,8 +105,16 @@ void Car::draw() {
 	}
 	glPopMatrix();
 
+    // rodas
+
+    glColor3f(0, 0, 0);
+    defineMaterial(	0.00, 0.00, 0.00, 1.00,
+                    0.90, 0.00, 0.00, 1.00,
+                    1.00, 1.00, 1.00, 1.00,
+                    1);
+
 	//roda traseira direita
-	glColor3f(0, 0, 0);
+
 	glPushMatrix();
 	glTranslated(-2, 2.3f, 50);
 	glRotatef(90, 1, 0, 0);
@@ -166,7 +186,13 @@ void Car::draw() {
 	}
 	glPopMatrix();
 
+    // triangulos
 	glColor3f(1, 0, 0);
+	defineMaterial(	1.00, 0.00, 0.00, 1.00,
+                    0.90, 0.00, 0.00, 1.00,
+                    1.00, 1.00, 1.00, 1.00,
+                    1);
+
 	if (_wireframe)
 		glBegin(GL_LINE);
 	else
@@ -277,7 +303,3 @@ void Car::carDesacelera(unsigned long delta_t, bool sentido) {
 	else if(sentido==false)
 		setSpeed(getSpeed()->getX() - ACCELERATION_BACKWARD * getDirecao()->getX() * 1/delta_t, getSpeed()->getY() - ACCELERATION_BACKWARD * getDirecao()->getY() * 1/delta_t, getSpeed()->getZ());
 }
-
-//void Car::update(unsigned long delta_t) {
-//	setPosition(getPosition()->getX() + getSpeed()->getX()*delta_t, getPosition()->getY() + getSpeed()->getY()*delta_t, getPosition()->getZ());
-//}

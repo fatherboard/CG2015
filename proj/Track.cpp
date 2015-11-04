@@ -65,5 +65,11 @@ std::list<Cheerio *> Track::getCheerios(){
 void Track::draw(){
 	//glColor3f(0.75f,0.75f, 0.75f);
 	glColor3f(0.56, 0.76, 0.83);
+
+	defineMaterial(	0.56, 0.76, 0.83, 1.00,
+                    0.90, 0.00, 0.00, 1.00,
+                    1.00, 1.00, 1.00, 1.00,
+                    1);
+
 	glutSolidCube(100);
 }

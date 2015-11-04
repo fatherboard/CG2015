@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1446330924 source:/home/eu/workspace/CG2015/proj/Butter.cpp
+1446596235 source:/home/eu/workspace/CG2015/proj/Butter.cpp
 	"Butter.h"
 	<math.h>
 
@@ -15,7 +15,7 @@
 	"Vector3.h"
 	<math.h>
 
-1446330924 /home/eu/workspace/CG2015/proj/GameObject.h
+1446594838 /home/eu/workspace/CG2015/proj/GameObject.h
 	"Entity.h"
 	<GL/glut.h>
 
@@ -33,7 +33,7 @@
 	"stdlib.h"
 	"GL/glut.h"
 
-1446330924 source:/home/eu/workspace/CG2015/proj/Car.cpp
+1446596621 source:/home/eu/workspace/CG2015/proj/Car.cpp
 	"stdafx.h"
 	"Car.h"
 	<GL/glut.h>
@@ -51,7 +51,7 @@
 
 1445716118 /home/eu/workspace/CG2015/proj/targetver.h
 
-1446330924 source:/home/eu/workspace/CG2015/proj/Cheerio.cpp
+1446596356 source:/home/eu/workspace/CG2015/proj/Cheerio.cpp
 	"Cheerio.h"
 
 1446330924 /home/eu/workspace/CG2015/proj/Cheerio.h
@@ -70,7 +70,7 @@
 1446330924 source:/home/eu/workspace/CG2015/proj/Entity.cpp
 	"Entity.h"
 
-1446390841 source:/home/eu/workspace/CG2015/proj/GameManager.cpp
+1446410791 source:/home/eu/workspace/CG2015/proj/GameManager.cpp
 	"stdafx.h"
 	"GameManager.h"
 
@@ -125,7 +125,7 @@
 	<cstdlib>
 	"GL/glut.h"
 
-1446330924 source:/home/eu/workspace/CG2015/proj/GameObject.cpp
+1446594823 source:/home/eu/workspace/CG2015/proj/GameObject.cpp
 	"stdafx.h"
 	"GameObject.h"
 	"DynamicObject.h"
@@ -140,7 +140,7 @@
 1445716022 source:/home/eu/workspace/CG2015/proj/Obstacle.cpp
 	"Obstacle.h"
 
-1446330924 source:/home/eu/workspace/CG2015/proj/Orange.cpp
+1446596270 source:/home/eu/workspace/CG2015/proj/Orange.cpp
 	"Orange.h"
 
 1446330924 source:/home/eu/workspace/CG2015/proj/OrthogonalCamera.cpp
@@ -157,7 +157,7 @@
 1445716022 source:/home/eu/workspace/CG2015/proj/stdafx.cpp
 	"stdafx.h"
 
-1446330924 source:/home/eu/workspace/CG2015/proj/Track.cpp
+1446596328 source:/home/eu/workspace/CG2015/proj/Track.cpp
 	"Track.h"
 
 1446330924 source:/home/eu/workspace/CG2015/proj/Vector3.cpp
@@ -335,6 +335,6 @@
 1446380796 /home/eu/workspace/CG2015/proj/Candle.h
 	"Header.h"
 
-1446381245 source:/home/eu/workspace/CG2015/proj/Candle.cpp
+1446596439 source:/home/eu/workspace/CG2015/proj/Candle.cpp
 	"Header.h"
 
