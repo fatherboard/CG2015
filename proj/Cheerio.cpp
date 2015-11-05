@@ -5,8 +5,9 @@
  *      Author: ist169537
  */
 
-#include "Cheerio.h"
+#include "Header.h"
 
+extern GameManager* gameManager;
 extern int _wireframe;
 
 Cheerio::Cheerio(Vector3* position, double iR, double oR){
@@ -33,10 +34,19 @@ void Cheerio::draw() {
 	glTranslatef(_position.getX(), _position.getY(), _position.getZ());
 	glColor3f(1, 0.3, 0);
 
-	defineMaterial(	1.00, 0.30, 0.00, 1.00,
-                    0.90, 0.00, 0.00, 1.00,
-                    1.00, 1.00, 1.00, 1.00,
-                    1);
+    if(gameManager->getLightsOn()){
+        defineMaterial(	1.00, 0.30, 0.00, 1.00,
+                        0.90, 0.00, 0.00, 1.00,
+                        1.00, 1.00, 1.00, 1.00,
+                        .1,.1,.1,1,
+                        1);
+    }else{
+        defineMaterial(	1.00, 0.30, 0.00, 1.00,
+                        0.90, 0.00, 0.00, 1.00,
+                        1.00, 1.00, 1.00, 1.00,
+                        0,0,0,1,
+                        1);
+    }
 
 	if (_wireframe)
 		glutWireTorus(0.25, 0.9, 50, 50);

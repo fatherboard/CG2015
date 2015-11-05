@@ -278,14 +278,14 @@ void GameManager::init() {
 	setDynamicObject(new Orange(new Vector3(-39, -34, 50), 3));
 
 	// iluminacao global
-	LightSource *ls = new LightSource(getLightSources().size());
+	/*LightSource *ls = new LightSource(getLightSources().size());
     ls->setPosition(0, 0, 50, 1);
     ls->setDirection(0, 0, 50);
     ls->setSpecular(1.0, 1.0, 1.0, 1.0);
     ls->setDiffuse(1.0, 1.0, 1.0, 1.0);
     ls->setAmbient(0.2, 0.2, 0.2, 1.0);
     ls->setState(true);
-    addLightSource(ls);
+    addLightSource(ls);*/
 
     // velas (as lightsources são criadas pelo Candle e adicionadas
     // a lista de lightsources)

@@ -67,9 +67,9 @@ class GameManager {
 		GameObject* checkCollisions();
 		bool isOutOfTable(GameObject* obj);
 
-		bool _modo_dia = true;
+		bool _modo_dia = false;
 		bool _lights_on = false;
-		bool _lights_active = true;
+		bool _lights_active = false;
 };
 
 #endif

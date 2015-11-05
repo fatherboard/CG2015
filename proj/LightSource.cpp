@@ -8,6 +8,9 @@
 
 LightSource::LightSource(GLenum number) {
 	_num = number;
+    _state = false;
+    _cut_off = 180;
+    _direction.set(0,0,0);
 }
 
 LightSource::~LightSource() {
@@ -76,23 +79,21 @@ void LightSource::setSpecular(double x, double y, double z, double w){
 }
 
 void LightSource::draw(){
+    GLfloat ambient[] = { (GLfloat)_ambient.getX(), (GLfloat)_ambient.getY(), (GLfloat)_ambient.getZ(), (GLfloat)_ambient.getW() };
+    GLfloat diffuse[] = { (GLfloat)_diffuse.getX(), (GLfloat)_diffuse.getY(), (GLfloat)_diffuse.getZ(), (GLfloat)_diffuse.getW() };
+    GLfloat specular[] = { (GLfloat)_specular.getX(), (GLfloat)_specular.getY(), (GLfloat)_specular.getZ(),(GLfloat) _specular.getW() };
     GLfloat light_position[] = { (GLfloat)_position.getX(), (GLfloat)_position.getY(), (GLfloat)_position.getZ(), (GLfloat)_position.getW() };
 	glLightfv(GL_LIGHT0 + _num, GL_POSITION, light_position);
 
-	GLfloat ambient[] = { (GLfloat)_ambient.getX(), (GLfloat)_ambient.getY(), (GLfloat)_ambient.getZ(), (GLfloat)_ambient.getW() };
+
 	glLightfv(GL_LIGHT0 + _num, GL_AMBIENT, ambient);
-
-	GLfloat diffuse[] = { (GLfloat)_diffuse.getX(), (GLfloat)_diffuse.getY(), (GLfloat)_diffuse.getZ(), (GLfloat)_diffuse.getW() };
 	glLightfv(GL_LIGHT0 + _num, GL_DIFFUSE, diffuse);
-
-	GLfloat specular[] = { (GLfloat)_specular.getX(), (GLfloat)_specular.getY(), (GLfloat)_specular.getZ(),(GLfloat) _specular.getW() };
 	glLightfv(GL_LIGHT0 + _num, GL_SPECULAR, specular);
-
-	glLightf(GL_LIGHT0 + _num, GL_SPOT_CUTOFF, _cut_off);
+	glLightfv(GL_LIGHT0 + _num, GL_POSITION, light_position);
 
 	GLfloat direction[] = { (GLfloat)_direction.getX(), (GLfloat)_direction.getY(), (GLfloat)_direction.getZ() };
 	glLightfv(GL_LIGHT0 + _num, GL_SPOT_DIRECTION, direction);
 
 	glLightf(GL_LIGHT0 + _num, GL_SPOT_EXPONENT, _exponent);
-	return;
+	glLightf(GL_LIGHT0 + _num, GL_SPOT_CUTOFF, _cut_off);
 }

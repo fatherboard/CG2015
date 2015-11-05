@@ -5,8 +5,9 @@
  *      Author: Pedro
  */
 
-#include "Orange.h"
+#include "Header.h"
 
+extern GameManager* gameManager;
 extern int _wireframe;
 
 unsigned long inicio;
@@ -54,10 +55,19 @@ void Orange::draw() {
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 	glRotated(_angle, 0, 0, 1);
 
-    defineMaterial(	color.getX(), color.getY(), color.getZ(), 1.00,
-                    0.90, 0.00, 0.00, 1.00,
-                    1.00, 1.00, 1.00, 1.00,
-                    1);
+    if(gameManager->getLightsOn()){
+        defineMaterial(	color.getX(), color.getY(), color.getZ(), 1.00,
+                        0.90, 0.00, 0.00, 1.00,
+                        1.00, 1.00, 1.00, 1.00,
+                        .1,.1,.1,1,
+                        1);
+    }else{
+        defineMaterial(	color.getX(), color.getY(), color.getZ(), 1.00,
+                        0.90, 0.00, 0.00, 1.00,
+                        1.00, 1.00, 1.00, 1.00,
+                        0,0,0,1,
+                        1);
+    }
 
 	if (_wireframe) {
 		glutWireSphere(_radius, 50, 10);
@@ -75,6 +85,7 @@ void Orange::draw() {
 	defineMaterial(	0.035, 0.67, 0.0, 1.00,
                     0.90, 0.00, 0.00, 1.00,
                     1.00, 1.00, 1.00, 1.00,
+                    0,0,0,1,
                     1);
 
 	if (_wireframe) {

@@ -46,6 +46,7 @@ void Car::draw() {
     defineMaterial(	0.60, 0.60, 0.60, 1.00,
                     0.90, 0.00, 0.00, 1.00,
                     1.00, 1.00, 1.00, 1.00,
+                    0,0,0,1,
                     1);
 
 	//eixo traseira esquerda
@@ -91,6 +92,7 @@ void Car::draw() {
     defineMaterial(	1.00, 0.00, 0.00, 1.00,
                     0.90, 0.00, 0.00, 1.00,
                     1.00, 1.00, 1.00, 1.00,
+                    0,0,0,1,
                     1);
 
 	//retangulo, parte de tras do carro
@@ -111,6 +113,7 @@ void Car::draw() {
     defineMaterial(	0.00, 0.00, 0.00, 1.00,
                     0.90, 0.00, 0.00, 1.00,
                     1.00, 1.00, 1.00, 1.00,
+                    0,0,0,1,
                     1);
 
 	//roda traseira direita
@@ -191,6 +194,7 @@ void Car::draw() {
 	defineMaterial(	1.00, 0.00, 0.00, 1.00,
                     0.90, 0.00, 0.00, 1.00,
                     1.00, 1.00, 1.00, 1.00,
+                    0,0,0,1,
                     1);
 
 	if (_wireframe)
