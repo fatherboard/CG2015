@@ -33,8 +33,11 @@ GameManager::~GameManager() {
 }
 
 void GameManager::setCandles(bool state){
-    for(LightSource *ls : getLightSources()){
-        ls->setState(state);
+    std::vector<LightSource*> candles = getLightSources();
+
+    // comeca em 1 para nao modificar a iluminacao global
+    for(unsigned int i = 1; i < candles.size(); i++){
+        candles[i]->setState(state);
     }
 }
 
@@ -278,24 +281,21 @@ void GameManager::init() {
 	setDynamicObject(new Orange(new Vector3(-39, -34, 50), 3));
 
 	// iluminacao global
-	/*LightSource *ls = new LightSource(getLightSources().size());
-    ls->setPosition(0, 0, 50, 1);
-    ls->setDirection(0, 0, 50);
-    ls->setSpecular(1.0, 1.0, 1.0, 1.0);
-    ls->setDiffuse(1.0, 1.0, 1.0, 1.0);
-    ls->setAmbient(0.2, 0.2, 0.2, 1.0);
-    ls->setState(true);
-    addLightSource(ls);*/
+	LightSource *aux = new LightSource(getLightSources().size());
+    aux->setPosition(-1,-1,1, 0); //O SOL esta' a esquerda
+    aux->setDirection(0, 0, 0);
+    aux->setSpecular(1.0, 1.0, 1.0, 1.0);
+    aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
+    aux->setAmbient(0.2, 0.2, 0.2, 1.0);
+    aux->setState(getModoDia());
+    aux->draw();
+    addLightSource(aux);
 
     // velas (as lightsources são criadas pelo Candle e adicionadas
     // a lista de lightsources)
     setStaticObject(new Candle(new Vector3(-50, 50, 45)));
     setStaticObject(new Candle(new Vector3(0, 50, 45)));
     setStaticObject(new Candle(new Vector3(50, 50, 45)));
-
-    setStaticObject(new Candle(new Vector3(-50, 0, 45)));
-    setStaticObject(new Candle(new Vector3(0, 0, 45)));
-    setStaticObject(new Candle(new Vector3(50, 0, 45)));
 
     setStaticObject(new Candle(new Vector3(-50, -50, 45)));
     setStaticObject(new Candle(new Vector3(0, -50, 45)));
@@ -386,4 +386,8 @@ bool GameManager::getLightsActive(){
 }
 void GameManager::setLightsActive(bool modo){
     _lights_active = modo;
+}
+
+Car* GameManager::getCar(){
+    return car;
 }

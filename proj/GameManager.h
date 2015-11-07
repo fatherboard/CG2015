@@ -63,6 +63,8 @@ class GameManager {
 		bool getLightsActive();
 		void setLightsActive(bool modo);
 
+		Car* getCar();
+
     private:
 		GameObject* checkCollisions();
 		bool isOutOfTable(GameObject* obj);

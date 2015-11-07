@@ -8,10 +8,11 @@ Candle::Candle(Vector3* pos){
 	setSize(0.5, 0.5, 10);
 
 	LightSource *aux = new LightSource(gameManager->getLightSources().size());
-    aux->setPosition(pos->getX(), pos->getY(), 50, 1);
+    aux->setPosition(pos->getX(), pos->getY(), pos->getZ() + 1, 1);
     aux->setDirection((pos->getX() < 0) ? 1 : -1,
                       (pos->getY() < 100) ? 0.8 : (pos->getY() > 100) ? -0.8 : 0,
                        -1);
+    //aux->setDirection(1,1,-1);
     aux->setSpecular(1.0, 1.0, 1.0, 1.0);
     aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
     aux->setAmbient(0.2, 0.2, 0.2, 1.0);
