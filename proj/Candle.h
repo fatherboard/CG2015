@@ -3,6 +3,7 @@
 #ifndef __CANDLE__
 #define __CANDLE__
 
+#include "StaticObject.h"
 #include "Candle.h"
 
 class Candle : public StaticObject{

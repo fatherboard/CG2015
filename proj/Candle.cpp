@@ -1,4 +1,5 @@
-#include "Header.h"
+#include "GameManager.h"
+#include "Candle.h"
 
 extern GameManager* gameManager;
 extern int _wireframe;

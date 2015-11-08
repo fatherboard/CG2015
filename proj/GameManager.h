@@ -2,9 +2,12 @@
 #ifndef __GAMEMANAGER__
 #define __GAMEMANAGER__
 
-#include "Header.h"
 #include <list>
-
+#include <vector>
+#include "Car.h"
+#include "Camera.h"
+#include "GameObject.h"
+#include "LightSource.h"
 
 class GameManager {
 

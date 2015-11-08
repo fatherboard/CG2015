@@ -5,7 +5,6 @@
  *      Author: 5702pedro.bucho
  */
 
-#include "Header.h"
 #include "PerspectiveCamera.h"
 #include <iostream>
 

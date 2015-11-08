@@ -5,8 +5,13 @@
 *      Author: 5702pedro.bucho
 */
 
-#include "stdafx.h"
 #include "GameManager.h"
+#include "Track.h"
+#include "Orange.h"
+#include "OrthogonalCamera.h"
+#include "PerspectiveCamera.h"
+#include "Butter.h"
+#include "Candle.h"
 
 extern GameManager *gameManager;
 int _wireframe;

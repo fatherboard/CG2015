@@ -5,7 +5,8 @@
  *      Author: Pedro
  */
 
-#include "Header.h"
+#include "GameManager.h"
+#include "Orange.h"
 
 extern GameManager* gameManager;
 extern int _wireframe;

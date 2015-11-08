@@ -1,4 +1,6 @@
-#include "Header.h"
+#define UPDATE_TIME 10
+
+#include <GL/glut.h>
 #include "GameManager.h"
 
 GameManager *gameManager;

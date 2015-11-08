@@ -1,4 +1,7 @@
 #include "Track.h"
+#include "GameManager.h"
+#include "Cheerio.h"
+#include "Vector3.h"
 
 int i;
 extern GameManager* gameManager;

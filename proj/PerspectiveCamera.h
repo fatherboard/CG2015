@@ -4,6 +4,7 @@
 #define __PERSPECTIVECAMERA__
 
 #include "Camera.h"
+#include "Car.h"
 
 class PerspectiveCamera: public Camera {
 

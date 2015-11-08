@@ -5,7 +5,8 @@
  *      Author: ist169537
  */
 
-#include "Header.h"
+#include "GameManager.h"
+#include "Cheerio.h"
 
 extern GameManager* gameManager;
 extern int _wireframe;

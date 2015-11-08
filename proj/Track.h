@@ -3,9 +3,8 @@
 #ifndef __TRACK__
 #define __TRACK__
 
-#include "Header.h"
-#include "Cheerio.h"
 #include <list>
+#include "Cheerio.h"
 
 class Track : public StaticObject
 {
