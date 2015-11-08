@@ -1,3 +1,4 @@
+#include <vector>
 #include "Car.h"
 
 //Vector3 _position;
@@ -31,9 +32,33 @@ void Car::drawCube(int _wireframe) {
 		glutSolidCube(1);
 }
 
+void carVertex(Vector3* vec){
+    glVertex3f(vec->getX(), vec->getY(), vec->getZ());
+}
+
+void carTriangle(Vector3* a, Vector3* b, Vector3* c, Vector3* normal){
+    glBegin(GL_TRIANGLES);
+    glNormal3f(normal->getX(), normal->getY(), normal->getZ());
+    carVertex(a);
+    carVertex(b);
+    carVertex(c);
+    glEnd();
+}
+
+// enviar os vertices no sentido anti-horario
+void carRectangle(Vector3* a, Vector3* b, Vector3* c, Vector3* d, Vector3* normal){
+    glBegin(GL_QUADS);
+    //glNormal3f(normal->getX(), normal->getY(), normal->getZ());
+    carVertex(a);
+    carVertex(b);
+    carVertex(c);
+    carVertex(d);
+    glEnd();
+}
+
 void Car::draw() {
 
-	glPushMatrix();
+    glPushMatrix();
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 	glRotatef(getRadian()*180/M_PI, 0, 0, 1);
 
@@ -92,25 +117,27 @@ void Car::draw() {
                     1);
 
     // topo da parte de tras do carro
-	glBegin(GL_QUADS);
-        glNormal3f(0,0,1);
-        glVertex3f(_TL->getX(), _TL->getY(), _TL->getZ());
-        glVertex3f(_TBL->getX(), _TBL->getY(), _TBL->getZ());
-        glVertex3f(_TBR->getX(), _TBR->getY(), _TBR->getZ());
-        glVertex3f(_TR->getX(), _TR->getY(), _TR->getZ());
-	glEnd();
-
+	carRectangle(_TL, _TR, _TBR, _TBL, new Vector3(0,0,1));
+	// traseira da parte de tras do carro
+	carRectangle(_TBR, _BBR, _BBL, _TBL, new Vector3(-1,0,0));
 	// lateral esquerda da parte de tras do carro
-	glBegin(GL_QUADS);
-        glNormal3f(0,1,0);
-        glVertex3f(_TL->getX(), _TL->getY(), _TL->getZ());
-        glVertex3f(-2.8, _l/2, 52);
-        glVertex3f(-2.8, -_l/2, 52);
-        glVertex3f(_BL->getX(), _BL->getY(), _BL->getZ());
-	glEnd();
+	carRectangle(_TL, _TBL, _BBL, _BL, new Vector3(0,1,0));
+	// lateral direita da parte de tras do carro
+	carRectangle(_TR, _BR, _BBR, _TBR, new Vector3(0,-1,0));
+
+    // topo do capo do carro
+    carTriangle(_TL, _TF, _TR, new Vector3(0,0,1));
+    // lateral esquerda do capo do carro
+    carRectangle(_TL, _TF, _BF, _BL, new Vector3(1/sqrt(2), 1/sqrt(2), 0));
+    // lateria direita do capo do carro
+    carRectangle(_TR, _TF, _BF, _BR, new Vector3(1/sqrt(2), -1/sqrt(2), 0));
+
+
+
+
+
 
     // rodas
-
     glColor3f(0, 0, 0);
     defineMaterial(	0.00, 0.00, 0.00, 1.00,
                     0.90, 0.00, 0.00, 1.00,
@@ -119,7 +146,6 @@ void Car::draw() {
                     1);
 
 	//roda traseira direita
-
 	glPushMatrix();
 	glTranslated(-2, 2.3f, 50);
 	glRotatef(90, 1, 0, 0);
@@ -191,63 +217,6 @@ void Car::draw() {
 	}
 	glPopMatrix();
 
-    // triangulos
-	glColor3f(1, 0, 0);
-	defineMaterial(	1.00, 0.00, 0.00, 1.00,
-                    0.90, 0.00, 0.00, 1.00,
-                    1.00, 1.00, 1.00, 1.00,
-                    0,0,0,1,
-                    1);
-
-	if (_wireframe)
-		glBegin(GL_LINE);
-	else
-		glBegin(GL_TRIANGLES);
-
-	// topo
-	glVertex3f(_TL->getX(), _TL->getY(), _TL->getZ());
-	glVertex3f(_TF->getX(), _TF->getY(), _TF->getZ());
-	glVertex3f(_TR->getX(), _TR->getY(), _TF->getZ());
-
-
-	// fundo
-	glVertex3f(_BL->getX(), _BL->getY(), _BL->getZ());
-	glVertex3f(_BR->getX(), _BR->getY(), _BR->getZ());
-	glVertex3f(_BF->getX(), _BF->getY(), _BF->getZ());
-
-	glEnd();
-
-	// laterais
-	if (_wireframe)
-		glBegin(GL_LINES);
-	else
-		glBegin(GL_POLYGON);
-	glVertex3f(_TL->getX(), _TL->getY(), _TL->getZ());
-	glVertex3f(_TF->getX(), _TF->getY(), _TF->getZ());
-	glVertex3f(_BF->getX(), _BF->getY(), _BF->getZ());
-	glVertex3f(_BL->getX(), _BL->getY(), _BL->getZ());
-	glEnd();
-
-	if (_wireframe)
-		glBegin(GL_LINES);
-	else
-		glBegin(GL_POLYGON);
-	glVertex3f(_TR->getX(), _TR->getY(), _TR->getZ());
-	glVertex3f(_TF->getX(), _TF->getY(), _TF->getZ());
-	glVertex3f(_BF->getX(), _BF->getY(), _BF->getZ());
-	glVertex3f(_BR->getX(), _BR->getY(), _BR->getZ());
-	glEnd();
-
-	if (_wireframe)
-		glBegin(GL_LINES);
-	else
-		glBegin(GL_POLYGON);
-	glVertex3f(_TL->getX(), _TL->getY(), _TL->getZ());
-	glVertex3f(_TR->getX(), _TR->getY(), _TR->getZ());
-	glVertex3f(_BR->getX(), _BR->getY(), _BR->getZ());
-	glVertex3f(_BL->getX(), _BL->getY(), _BL->getZ());
-	glEnd();
-
 	glPopMatrix();
 }
 
@@ -256,17 +225,19 @@ float Car::computeSqrt() {
 }
 
 void Car::computeVertices() {
-	_TL = new Vector3(-1.3f, _l / 2, 52);
-	_TR = new Vector3(-1.3f, -_l / 2, 52);
+	_TL = new Vector3(-1.3, _l/2, 52);
+	_TR = new Vector3(-1.3, -_l/2, 52);
 	_TF = new Vector3(1.3, 0, 52);
 
-	_BL = new Vector3(-1.3f, _l / 2, 50);
-	_BR = new Vector3(-1.3f, _l / 2, 50);
-	_BF = new Vector3(1.3, 0,50);
+	_BL = new Vector3(-1.3, _l/2, 50);
+	_BR = new Vector3(-1.3, -_l/2, 50);
+	_BF = new Vector3(1.3, 0, 50);
 
 	_TBL = new Vector3(-2.8, _l/2, 52);
-	_TBR = new Vector3(-2.8, _l/2, 50);
+	_TBR = new Vector3(-2.8, -_l/2, 52);
 
+	_BBL = new Vector3(-2.8, _l/2, 50);
+	_BBR = new Vector3(-2.8, -_l/2, 50);
 }
 
 void Car::carAcelera(unsigned long delta_t) {
