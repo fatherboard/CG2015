@@ -3,8 +3,7 @@
 #define __ORANGE__
 
 #include "Obstacle.h"
-#include <cstdlib>
-#include "GL/glut.h"
+#include <GL/glut.h>
 
 class Orange: public Obstacle {
 public:

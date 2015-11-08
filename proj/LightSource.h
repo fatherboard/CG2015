@@ -1,9 +1,11 @@
+#pragma once
+
 #ifndef __LIGHTSOURCE__
 #define __LIGHTSOURCE__
 
 #include "Vector4.h"
 #include "Vector3.h"
-#include "GL/glut.h"
+#include <GL/glut.h>
 class LightSource
 {
 	Vector4 _ambient;

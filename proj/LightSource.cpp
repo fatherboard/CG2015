@@ -1,11 +1,18 @@
 
 #include "LightSource.h"
-#include "GL/glut.h"
-#include <iostream>
-LightSource::LightSource(unsigned long number){ _num = number; _state = false; _cut_off = 180;
-_direction.set(0,0,0);}
-LightSource::~LightSource(){ }
-bool LightSource::getState(){ return _state; }
+#include <GL/glut.h>
+
+LightSource::LightSource(unsigned long number){
+    _num = number; _state = false; _cut_off = 180;
+    _direction.set(0,0,0);
+}
+
+LightSource::~LightSource(){
+}
+bool LightSource::getState(){
+    return _state;
+}
+
 bool LightSource::setState(bool state){
 	_state = state;
 	if (state){
@@ -16,8 +23,13 @@ bool LightSource::setState(bool state){
 	}
 	return _state;
 }
-unsigned long LightSource::getNum(){ return _num; }
-void LightSource::setPosition(GLdouble x, GLdouble y, GLdouble z, GLdouble w){ _position.set(x, y, z, w); }
+
+unsigned long LightSource::getNum(){
+    return _num;
+}
+void LightSource::setPosition(GLdouble x, GLdouble y, GLdouble z, GLdouble w){
+    _position.set(x, y, z, w);
+}
 Vector4* LightSource::getPosition(){ return &_position; }
 void LightSource::setDirection(GLdouble x, GLdouble y, GLdouble z){ _direction.set(x,y,z); }
 void LightSource::setCutOff(double cut_off){ _cut_off = cut_off; }

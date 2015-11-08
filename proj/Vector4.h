@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef __VECTOR4__
 #define __VECTOR4__
 

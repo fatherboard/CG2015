@@ -5,7 +5,6 @@
  *      Author: 5702pedro.bucho
  */
 
-#include "stdafx.h"
 #include "DynamicObject.h"
 #include <iostream>
 

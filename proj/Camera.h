@@ -5,8 +5,7 @@
 
 #include "Entity.h"
 #include "Vector3.h"
-#include "stdlib.h"
-#include "GL/glut.h"
+#include <GL/glut.h>
 
 class Camera : public Entity{
 public:

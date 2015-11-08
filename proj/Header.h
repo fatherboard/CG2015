@@ -6,8 +6,8 @@
 
 #define UPDATE_TIME 10
 
-#include "stdlib.h"
-#include "GL/glut.h"
+#include <stdlib.h>
+#include <GL/glut.h>
 #include "Entity.h"
 #include "GameObject.h"
 #include "DynamicObject.h"

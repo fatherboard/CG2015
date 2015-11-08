@@ -3,7 +3,6 @@
 #define __CAR__
 
 #include "DynamicObject.h"
-#include "stdlib.h"
 #include <cmath>
 #define _USE_MATH_DEFINES
 #define ACCELERATION_FORWARD 0.0001

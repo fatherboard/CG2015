@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Car.h"
 #include <GL/glut.h>
 #include <math.h>
