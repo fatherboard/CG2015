@@ -4,6 +4,7 @@
 
 #include "DynamicObject.h"
 #include <cmath>
+
 #define _USE_MATH_DEFINES
 #define ACCELERATION_FORWARD 0.0001
 #define ACCELERATION_BACKWARD 0.00006
@@ -28,7 +29,14 @@ private:
 	//		L -> vertice da esquerda (visto pelo condutor)
 	//		R -> vertice da direita (visto pelo condutor)
 	//		F -> vertice da frente
-	Vector3 *_vertTL, *_vertTR, *_vertTF, *_vertBL, *_vertBR, *_vertBF;
+	Vector3 *_TL, *_TR, *_TF, *_BL, *_BR, *_BF;
+
+	// TBL -> top behing left
+	// TBR -> top behind right
+	// BBL -> bottom behind left
+	// BBR -> bottom behing right
+	Vector3 *_TBL, *_TBR, *_BBL, *_BBR;
+
 	int wf;
 	double _l, _h;
 	//void update(unsigned long delta_t);

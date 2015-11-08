@@ -7,14 +7,30 @@ Candle::Candle(Vector3* pos){
 	setPosition(pos->getX(), pos->getY(), pos->getZ());
 	setSize(0.5, 0.5, 10);
 
+	int dirX, dirY;
+
 	LightSource *aux = new LightSource(gameManager->getLightSources().size());
-    aux->setPosition(pos->getX(), pos->getY(), pos->getZ() + 1, 1);
-    aux->setDirection((pos->getX() < 0) ? 1 : -1,
-                      (pos->getY() < 100) ? 0.8 : (pos->getY() > 100) ? -0.8 : 0,
-                       -1);
-    //aux->setDirection(1,1,-1);
-    aux->setSpecular(1.0, 1.0, 1.0, 1.0);
-    aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
+    aux->setPosition(pos->getX(), pos->getY(), pos->getZ() + 10, 1);
+
+    if(pos->getX() > 0){
+        dirX = -1;
+    }else if(pos->getX() < 0){
+        dirX = 1;
+    }else{
+        dirX = 0;
+    }
+
+    if(pos->getY() > 0){
+        dirY = -1;
+    }else if(pos->getY() < 0){
+        dirY = 1;
+    }else{
+        dirY = 0;
+    }
+
+    aux->setDirection(dirX, dirY, -2);
+    aux->setSpecular(1, 1, 1, 1.0);
+    aux->setDiffuse(1, 1, 1, 1.0);
     aux->setAmbient(0.2, 0.2, 0.2, 1.0);
     aux->setCutOff(60);
     aux->setExponent(3);

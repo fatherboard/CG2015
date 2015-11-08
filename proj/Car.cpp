@@ -1,7 +1,4 @@
 #include "Car.h"
-#include <GL/glut.h>
-#include <math.h>
-#include <iostream>
 
 //Vector3 _position;
 extern int _wireframe;
@@ -19,12 +16,12 @@ Car::Car(Vector3 *position) {
 }
 
 Car::~Car() {
-	_vertTL->~Vector3();
-	_vertTR->~Vector3();
-	_vertTF->~Vector3();
-	_vertBL->~Vector3();
-	_vertBR->~Vector3();
-	_vertBF->~Vector3();
+	_TL->~Vector3();
+	_TR->~Vector3();
+	_TF->~Vector3();
+	_BL->~Vector3();
+	_BR->~Vector3();
+	_BF->~Vector3();
 }
 
 void Car::drawCube(int _wireframe) {
@@ -94,17 +91,23 @@ void Car::draw() {
                     0,0,0,1,
                     1);
 
-	//retangulo, parte de tras do carro
-	glPushMatrix();
-	glTranslated(-2, 0, 50);
-	glScalef(0.5, 1.0, 1);
-	if (_wireframe) {
-		glutWireCube(3);
-	}
-	else {
-		glutSolidCube(3);
-	}
-	glPopMatrix();
+    // topo da parte de tras do carro
+	glBegin(GL_QUADS);
+        glNormal3f(0,0,1);
+        glVertex3f(_TL->getX(), _TL->getY(), _TL->getZ());
+        glVertex3f(_TBL->getX(), _TBL->getY(), _TBL->getZ());
+        glVertex3f(_TBR->getX(), _TBR->getY(), _TBR->getZ());
+        glVertex3f(_TR->getX(), _TR->getY(), _TR->getZ());
+	glEnd();
+
+	// lateral esquerda da parte de tras do carro
+	glBegin(GL_QUADS);
+        glNormal3f(0,1,0);
+        glVertex3f(_TL->getX(), _TL->getY(), _TL->getZ());
+        glVertex3f(-2.8, _l/2, 52);
+        glVertex3f(-2.8, -_l/2, 52);
+        glVertex3f(_BL->getX(), _BL->getY(), _BL->getZ());
+	glEnd();
 
     // rodas
 
@@ -202,15 +205,15 @@ void Car::draw() {
 		glBegin(GL_TRIANGLES);
 
 	// topo
-	glVertex3f(_vertTL->getX(), _vertTL->getY(), _vertTL->getZ());
-	glVertex3f(_vertTF->getX(), _vertTF->getY(), _vertTF->getZ());
-	glVertex3f(_vertTR->getX(), _vertTR->getY(), _vertTF->getZ());
+	glVertex3f(_TL->getX(), _TL->getY(), _TL->getZ());
+	glVertex3f(_TF->getX(), _TF->getY(), _TF->getZ());
+	glVertex3f(_TR->getX(), _TR->getY(), _TF->getZ());
 
 
 	// fundo
-	glVertex3f(_vertBL->getX(), _vertBL->getY(), _vertBL->getZ());
-	glVertex3f(_vertBR->getX(), _vertBR->getY(), _vertBR->getZ());
-	glVertex3f(_vertBF->getX(), _vertBF->getY(), _vertBF->getZ());
+	glVertex3f(_BL->getX(), _BL->getY(), _BL->getZ());
+	glVertex3f(_BR->getX(), _BR->getY(), _BR->getZ());
+	glVertex3f(_BF->getX(), _BF->getY(), _BF->getZ());
 
 	glEnd();
 
@@ -219,30 +222,30 @@ void Car::draw() {
 		glBegin(GL_LINES);
 	else
 		glBegin(GL_POLYGON);
-	glVertex3f(_vertTL->getX(), _vertTL->getY(), _vertTL->getZ());
-	glVertex3f(_vertTF->getX(), _vertTF->getY(), _vertTF->getZ());
-	glVertex3f(_vertBF->getX(), _vertBF->getY(), _vertBF->getZ());
-	glVertex3f(_vertBL->getX(), _vertBL->getY(), _vertBL->getZ());
+	glVertex3f(_TL->getX(), _TL->getY(), _TL->getZ());
+	glVertex3f(_TF->getX(), _TF->getY(), _TF->getZ());
+	glVertex3f(_BF->getX(), _BF->getY(), _BF->getZ());
+	glVertex3f(_BL->getX(), _BL->getY(), _BL->getZ());
 	glEnd();
 
 	if (_wireframe)
 		glBegin(GL_LINES);
 	else
 		glBegin(GL_POLYGON);
-	glVertex3f(_vertTR->getX(), _vertTR->getY(), _vertTR->getZ());
-	glVertex3f(_vertTF->getX(), _vertTF->getY(), _vertTF->getZ());
-	glVertex3f(_vertBF->getX(), _vertBF->getY(), _vertBF->getZ());
-	glVertex3f(_vertBR->getX(), _vertBR->getY(), _vertBR->getZ());
+	glVertex3f(_TR->getX(), _TR->getY(), _TR->getZ());
+	glVertex3f(_TF->getX(), _TF->getY(), _TF->getZ());
+	glVertex3f(_BF->getX(), _BF->getY(), _BF->getZ());
+	glVertex3f(_BR->getX(), _BR->getY(), _BR->getZ());
 	glEnd();
 
 	if (_wireframe)
 		glBegin(GL_LINES);
 	else
 		glBegin(GL_POLYGON);
-	glVertex3f(_vertTL->getX(), _vertTL->getY(), _vertTL->getZ());
-	glVertex3f(_vertTR->getX(), _vertTR->getY(), _vertTR->getZ());
-	glVertex3f(_vertBR->getX(), _vertBR->getY(), _vertBR->getZ());
-	glVertex3f(_vertBL->getX(), _vertBL->getY(), _vertBL->getZ());
+	glVertex3f(_TL->getX(), _TL->getY(), _TL->getZ());
+	glVertex3f(_TR->getX(), _TR->getY(), _TR->getZ());
+	glVertex3f(_BR->getX(), _BR->getY(), _BR->getZ());
+	glVertex3f(_BL->getX(), _BL->getY(), _BL->getZ());
 	glEnd();
 
 	glPopMatrix();
@@ -253,13 +256,16 @@ float Car::computeSqrt() {
 }
 
 void Car::computeVertices() {
-	_vertTL = new Vector3(-1.3f, _l / 2, 52);
-	_vertTR = new Vector3(-1.3f, -_l / 2, 52);
-	_vertTF = new Vector3(1.3, 0, 52);
+	_TL = new Vector3(-1.3f, _l / 2, 52);
+	_TR = new Vector3(-1.3f, -_l / 2, 52);
+	_TF = new Vector3(1.3, 0, 52);
 
-	_vertBL = new Vector3(-1.3f,_l / 2, 50);
-	_vertBR = new Vector3(-1.3f,_l / 2, 50);
-	_vertBF = new Vector3(1.3, 0,50);
+	_BL = new Vector3(-1.3f, _l / 2, 50);
+	_BR = new Vector3(-1.3f, _l / 2, 50);
+	_BF = new Vector3(1.3, 0,50);
+
+	_TBL = new Vector3(-2.8, _l/2, 52);
+	_TBR = new Vector3(-2.8, _l/2, 50);
 
 }
 
