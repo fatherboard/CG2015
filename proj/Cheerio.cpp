@@ -35,16 +35,16 @@ void Cheerio::draw() {
 	glTranslatef(_position.getX(), _position.getY(), _position.getZ());
 	glColor3f(1, 0.3, 0);
 
-    if(gameManager->getLightsOn()){
+    if(gameManager->getLightsOn() || gameManager->getModoDia()){
         defineMaterial(	1.00, 0.30, 0.00, 1.00,
                         0.50, 0.30, 0.00, 1.00,
                         0.00, 0.00, 0.00, 1.00,
                         0,0,0,1,
-                        0);
+                        128);
     }else{
-        defineMaterial(	1.00, 0.30, 0.00, 1.00,
-                        0.50, 0.30, 0.00, 1.00,
-                        0.00, 0.00, 0.00, 1.00,
+        defineMaterial(	0,0,0,1,
+                        0,0,0,1,
+                        0,0,0,1,
                         0,0,0,1,
                         0);
     }

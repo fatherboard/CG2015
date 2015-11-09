@@ -54,11 +54,20 @@ void Candle::draw(){
     glTranslatef(0, 0, 2*getSize()->getZ()/2);
     glScalef(1,1,5);
 
-    defineMaterial(	0.99, 0.83, 0.44, 1.00,
-                    0.90, 0.00, 0.00, 1.00,
-                    1.00, 1.00, 1.00, 1.00,
-                    0,0,0,1,
-                    1);
+    if(gameManager->getLightsOn()){
+        defineMaterial(	0.99, 0.83, 0.44, 1.00,
+                        0.90, 0.00, 0.00, 1.00,
+                        1.00, 1.00, 1.00, 1.00,
+                        0,0,0,1,
+                        128);
+    }else if(gameManager->getModoDia()){
+    }else{
+        defineMaterial(	0,0,0,1,
+                        0,0,0,1,
+                        0,0,0,1,
+                        0,0,0,1,
+                        0);
+    }
 
     if(_wireframe)
         glutWireSphere(1, 8, 8);

@@ -1,8 +1,10 @@
 #include <vector>
 #include "Car.h"
+#include "GameManager.h"
 
 //Vector3 _position;
 extern int _wireframe;
+extern GameManager* gameManager;
 
 Car::Car(Vector3 *position) {
 	setPosition(position);
@@ -74,10 +76,10 @@ void Car::draw() {
 
     glColor3f(0.6, 0.6, 0.6);
     defineMaterial(	0.60, 0.60, 0.60, 1.00,
-                    0.90, 0.00, 0.00, 1.00,
-                    1.00, 1.00, 1.00, 1.00,
+                    0.50, 0.50, 0.50, 1.00,
+                    0,0,0, 1.00,
                     0,0,0,1,
-                    1);
+                    128);
 
     // eixo frontal
     carRectangle(AF1, AF2, AF3, AF4, new Vector3(0,1,0));
@@ -93,11 +95,7 @@ void Car::draw() {
 
     // rodas
     glColor3f(0, 0, 0);
-    defineMaterial(	0.00, 0.00, 0.00, 1.00,
-                    0.90, 0.00, 0.00, 1.00,
-                    1.00, 1.00, 1.00, 1.00,
-                    0,0,0,1,
-                    1);
+    defineMaterial(	0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,128);
 
     carRectangle(FLW1, FLW2, FLW3, FLW4, new Vector3(0,-1,0));
     carRectangle(FRW1, FRW2, FRW3, FRW4, new Vector3(0,1,0));
@@ -133,31 +131,33 @@ void Car::draw() {
                     0.90, 0.00, 0.00, 1.00,
                     1.00, 1.00, 1.00, 1.00,
                     0,0,0,1,
-                    1);
+                    128);
 
     // topo da parte de tras do carro
 	carRectangle(TL, TR, TBR, TBL, new Vector3(0,0,1));
+	//carRectangle(BF,BR,BBR,BBL, new Vector3(0,0,-1));
 	// traseira da parte de tras do carro
 	carRectangle(TBR, BBR, BBL, TBL, new Vector3(-1,0,0));
 	// lateral esquerda da parte de tras do carro
-	carRectangle(TL, TBL, BBL, BL, new Vector3(0,1,0));
+	//carRectangle(TL, TBL, BBL, BL, new Vector3(0,1,0));
 	// lateral direita da parte de tras do carro
-	carRectangle(TR, BR, BBR, TBR, new Vector3(0,-1,0));
+	//carRectangle(TR, BR, BBR, TBR, new Vector3(0,-1,0));
 
     // topo do capo do carro
     carTriangle(TL, TF, TR, new Vector3(0,0,1));
+    //carTriangle(BL, BF, BR, new Vector3(0,0,-1));
     // lateral esquerda do capo do carro
-    carRectangle(TL, TF, BF, BL, new Vector3(1/sqrt(2), 1/sqrt(2), 0));
+    //carRectangle(TL, TF, BF, BL, new Vector3(1/sqrt(2), 1/sqrt(2), 0));
     // lateral direita do capo do carro
-    carRectangle(TR, TF, BF, BR, new Vector3(1/sqrt(2), -1/sqrt(2), 0));
+    //carRectangle(TR, TF, BF, BR, new Vector3(1/sqrt(2), -1/sqrt(2), 0));
 
     // tubos escape
     glColor3f(0, 0, 0);
-    defineMaterial(	0.00, 0.00, 0.00, 1.00,
-                    0.90, 0.00, 0.00, 1.00,
-                    1.00, 1.00, 1.00, 1.00,
+    defineMaterial(	0,0,0,1,
+                    0.5,0.5,0.5,1,
                     0,0,0,1,
-                    1);
+                    0,0,0,1,
+                    128);
 
     // tubo escape esquerdo
     carRectangle(EL1, EL2, EL3, EL4, new Vector3(0,0,1));

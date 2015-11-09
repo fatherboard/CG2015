@@ -242,7 +242,7 @@ void GameManager::update(unsigned long delta_t) {
         Orange* v = dynamic_cast<Orange*>(collided);
         if (v != 0) {
             // e uma laranja
-            //car->setPosition(pos_init);
+            car->setPosition(pos_init);
         }else{
             Vector3* obj_pos = collided->getPosition();
             Vector3* car_dir = car->getDirecao();
@@ -285,13 +285,13 @@ void GameManager::init() {
 	setDynamicObject(new Orange(new Vector3(35, 34, 50), 3));
 	setDynamicObject(new Orange(new Vector3(-39, -34, 50), 3));
 
-	// iluminacao global
+	// iluminacao global - SOL
 	LightSource *aux = new LightSource(getLightSources().size());
     aux->setPosition(50, 50, 100, 0);
-    aux->setDirection(0, 0, -1);
-    aux->setSpecular(1, 1, 1, 1.0);
-    aux->setDiffuse(1, 1, 1, 1);
-    aux->setAmbient(0, 0, 0, 1.0);
+    aux->setDirection(-1/sqrt(3), -1/sqrt(3), -1/sqrt(3));
+    aux->setSpecular(1.0, 1.0, 1.0, 1.0);
+    aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
+    aux->setAmbient(0.2, 0.2, 0.2, 1.0);
     aux->setState(getModoDia());
     aux->draw();
     addLightSource(aux);

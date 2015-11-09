@@ -39,12 +39,18 @@ void Butter::draw(){
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 	glScalef(width, length, 1);
 
-    if(gameManager->getLightsOn() || gameManager->getModoDia()){
-        defineMaterial(	color.getX(), color.getY(), color.getZ(), 0.00,
-                        0.90, 0.00, 0.00, 0.00,
-                        1.00, 1.00, 1.00, 0.00,
-                        0,0,0,0,
-                        1);
+    if(gameManager->getLightsOn()){
+        defineMaterial(	color.getX(), color.getY(), color.getZ(), 1.00,
+                        0.90, 0.00, 0.00, 1.00,
+                        1.00, 1.00, 1.00, 1.00,
+                        0,0,0,1,
+                        128);
+    }else if(gameManager->getModoDia()){
+        defineMaterial( color.getX(), color.getY(), color.getZ(), 1.00,
+                        0.40, 0.25, 0.00, 1.00,
+                        0.10, 1.00, 0.00, 1.00,
+                        0,0,0,1,
+                        128);
     }else{
         defineMaterial(	0,0,0,1,
                         0,0,0,1,

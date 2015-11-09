@@ -67,24 +67,21 @@ std::list<Cheerio *> Track::getCheerios(){
 }
 
 void Track::draw(){
-	//glColor3f(0.75f,0.75f, 0.75f);
 	glColor3f(0.56, 0.76, 0.83);
 
-    if(gameManager->getLightsActive() || gameManager->getModoDia()){
+    if(gameManager->getLightsOn() || gameManager->getModoDia()){
         defineMaterial(	0.56, 0.76, 0.83, 1.00,
                         0.00, 0.30, 0.36, 1.00,
                         0.56, 0.76, 0.83, 1.00,
                         0,0,0,1,
-                        0);
+                        128);
     }else{
-        defineMaterial(	0.00, 0.00, 0.00, 1.00,
-                        0.00, 0.00, 0.00, 1.00,
-                        0.00, 0.00, 0.00, 1.00,
-                        0,0,0,1,
+        defineMaterial(	0,0,0,0,
+                        0,0,0,0,
+                        0,0,0,0,
+                        0,0,0,0,
                         0);
     }
-
-	//glutSolidCube(100);
 
 	glBegin(GL_QUADS);
         glNormal3f(0,0,1);

@@ -61,11 +61,11 @@ void Orange::draw() {
                         color.getX(), color.getY(), color.getZ(), 1.00,
                         0.00, 0.00, 0.00, 0.00,
                         0,0,0,1,
-                        0);
+                        128);
     }else{
-        defineMaterial(	0,0,0, 1.00,
-                        0,0,0, 1.00,
-                        0.00, 0.00, 0.00, 0.00,
+        defineMaterial(	0,0,0,1,
+                        0,0,0,1,
+                        0,0,0,1,
                         0,0,0,1,
                         0);
     }
@@ -85,10 +85,10 @@ void Orange::draw() {
 
     if(gameManager->getLightsOn() || gameManager->getModoDia()){
         defineMaterial(	0.035, 0.67, 0.0, 1.00,
-                        0.90, 0.00, 0.00, 1.00,
-                        1.00, 1.00, 1.00, 1.00,
+                        0.90, 0.50, 0.00, 1.00,
                         0,0,0,1,
-                        1);
+                        0,0,0,1,
+                        128);
     }else{
         defineMaterial(	0, 0, 0, 1,
                         0, 0, 0, 1,
