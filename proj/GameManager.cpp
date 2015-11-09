@@ -203,6 +203,12 @@ void GameManager::keyPressed(unsigned char key) {
 		}
 		break;
     case 'g':
+	_smooth = !_smooth;
+	if(_smooth){
+	  glShadeModel(GL_SMOOTH);
+	}else{
+	  glShadeModel(GL_FLAT);
+	}
         break;
     case 'c':
         _lights_on = !_lights_on;
@@ -293,7 +299,6 @@ void GameManager::init() {
     aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
     aux->setAmbient(0.2, 0.2, 0.2, 1.0);
     aux->setState(getModoDia());
-    aux->draw();
     addLightSource(aux);
 
     // velas (as lightsources são criadas pelo Candle e adicionadas
@@ -395,4 +400,12 @@ void GameManager::setLightsActive(bool modo){
 
 Car* GameManager::getCar(){
     return car;
+}
+
+bool GameManager::getSmooth(){
+   return _smooth;
+}
+
+void GameManager::setSmooth(bool smooth){
+   _smooth = smooth;
 }

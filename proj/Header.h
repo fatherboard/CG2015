@@ -4,7 +4,7 @@
 #include <queue>
 
 
-#define UPDATE_TIME 10
+#define UPDATE_TIME 25
 
 //#include <stdlib.h>
 #include <GL/glut.h>

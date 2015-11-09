@@ -65,6 +65,9 @@ class GameManager {
 		void setLightsOn(bool modo);
 		bool getLightsActive();
 		void setLightsActive(bool modo);
+		
+		bool getSmooth();
+		void setSmooth(bool smooth);
 
 		Car* getCar();
 
@@ -75,6 +78,8 @@ class GameManager {
 		bool _modo_dia = false;
 		bool _lights_on = false;
 		bool _lights_active = false;
+		
+		bool _smooth = false;
 };
 
 #endif
