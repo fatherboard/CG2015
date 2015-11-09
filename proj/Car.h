@@ -29,13 +29,18 @@ private:
 	//		L -> vertice da esquerda (visto pelo condutor)
 	//		R -> vertice da direita (visto pelo condutor)
 	//		F -> vertice da frente
-	Vector3 *_TL, *_TR, *_TF, *_BL, *_BR, *_BF;
+	Vector3 *TL, *TR, *TF, *BL, *BR, *BF;
 
 	// TBL -> top behing left
 	// TBR -> top behind right
 	// BBL -> bottom behind left
 	// BBR -> bottom behing right
-	Vector3 *_TBL, *_TBR, *_BBL, *_BBR;
+	Vector3 *TBL, *TBR, *BBL, *BBR;
+
+	Vector3 *FLW1, *FLW2, *FLW3, *FLW4;
+	Vector3 *FRW1, *FRW2, *FRW3, *FRW4;
+	Vector3 *BLW1, *BLW2, *BLW3, *BLW4;
+	Vector3 *BRW1, *BRW2, *BRW3, *BRW4;
 
 	int wf;
 	double _l, _h;

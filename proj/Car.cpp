@@ -17,12 +17,12 @@ Car::Car(Vector3 *position) {
 }
 
 Car::~Car() {
-	_TL->~Vector3();
-	_TR->~Vector3();
-	_TF->~Vector3();
-	_BL->~Vector3();
-	_BR->~Vector3();
-	_BF->~Vector3();
+	TL->~Vector3();
+	TR->~Vector3();
+	TF->~Vector3();
+	BL->~Vector3();
+	BR->~Vector3();
+	BF->~Vector3();
 }
 
 void Car::drawCube(int _wireframe) {
@@ -45,14 +45,23 @@ void carTriangle(Vector3* a, Vector3* b, Vector3* c, Vector3* normal){
     glEnd();
 }
 
-// enviar os vertices no sentido anti-horario
 void carRectangle(Vector3* a, Vector3* b, Vector3* c, Vector3* d, Vector3* normal){
     glBegin(GL_QUADS);
-    //glNormal3f(normal->getX(), normal->getY(), normal->getZ());
+    glNormal3f(normal->getX(), normal->getY(), normal->getZ());
     carVertex(a);
     carVertex(b);
     carVertex(c);
     carVertex(d);
+    glEnd();
+}
+
+void carRectangleOffset(Vector3* a, Vector3* b, Vector3* c, Vector3* d, Vector3* normal, Vector3* offset){
+    glBegin(GL_QUADS);
+    glNormal3f(normal->getX(), normal->getY(), normal->getZ());
+    glVertex3f(a->getX()+offset->getX(), a->getY()+offset->getY(), a->getZ()+offset->getZ());
+    glVertex3f(b->getX()+offset->getX(), b->getY()+offset->getY(), b->getZ()+offset->getZ());
+    glVertex3f(c->getX()+offset->getX(), c->getY()+offset->getY(), c->getZ()+offset->getZ());
+    glVertex3f(d->getX()+offset->getX(), d->getY()+offset->getY(), d->getZ()+offset->getZ());
     glEnd();
 }
 
@@ -61,52 +70,6 @@ void Car::draw() {
     glPushMatrix();
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 	glRotatef(getRadian()*180/M_PI, 0, 0, 1);
-
-    glColor3f(0.6, 0.6, 0.6);
-
-    defineMaterial(	0.60, 0.60, 0.60, 1.00,
-                    0.90, 0.00, 0.00, 1.00,
-                    1.00, 1.00, 1.00, 1.00,
-                    0,0,0,1,
-                    1);
-
-	//eixo traseira esquerda
-	glPushMatrix();
-	glTranslated(-2, 1, 50);
-	glScalef(1, 0.5, 1);
-	drawCube(_wireframe);
-	glPopMatrix();
-
-	//eixo traseira direita
-	glPushMatrix();
-	glTranslated(-2, - 1.7, 50);
-	glScalef(1, 0.5, 1);
-	drawCube(_wireframe);
-	glPopMatrix();
-
-	//eixo frontal direita
-	glPushMatrix();
-	glTranslated(0.5, 1, 50);
-	glScalef(0.6, 1.2, 1);
-	if (_wireframe) {
-		glutWireCube(1);
-	}
-	else {
-		glutSolidCube(1);
-	}
-	glPopMatrix();
-
-	//eixo frontal esquerda
-	glPushMatrix();
-	glTranslated(0.5, - 1, 50);
-	glScalef(0.6, 1.2, 1);
-	if (_wireframe) {
-		glutWireCube(1);
-	}
-	else {
-		glutSolidCube(1);
-	}
-	glPopMatrix();
 
     // rectangulos
     glColor3f(1, 0, 0);
@@ -117,25 +80,20 @@ void Car::draw() {
                     1);
 
     // topo da parte de tras do carro
-	carRectangle(_TL, _TR, _TBR, _TBL, new Vector3(0,0,1));
+	carRectangle(TL, TR, TBR, TBL, new Vector3(0,0,1));
 	// traseira da parte de tras do carro
-	carRectangle(_TBR, _BBR, _BBL, _TBL, new Vector3(-1,0,0));
+	carRectangle(TBR, BBR, BBL, TBL, new Vector3(-1,0,0));
 	// lateral esquerda da parte de tras do carro
-	carRectangle(_TL, _TBL, _BBL, _BL, new Vector3(0,1,0));
+	carRectangle(TL, TBL, BBL, BL, new Vector3(0,1,0));
 	// lateral direita da parte de tras do carro
-	carRectangle(_TR, _BR, _BBR, _TBR, new Vector3(0,-1,0));
+	carRectangle(TR, BR, BBR, TBR, new Vector3(0,-1,0));
 
     // topo do capo do carro
-    carTriangle(_TL, _TF, _TR, new Vector3(0,0,1));
+    carTriangle(TL, TF, TR, new Vector3(0,0,1));
     // lateral esquerda do capo do carro
-    carRectangle(_TL, _TF, _BF, _BL, new Vector3(1/sqrt(2), 1/sqrt(2), 0));
+    carRectangle(TL, TF, BF, BL, new Vector3(1/sqrt(2), 1/sqrt(2), 0));
     // lateria direita do capo do carro
-    carRectangle(_TR, _TF, _BF, _BR, new Vector3(1/sqrt(2), -1/sqrt(2), 0));
-
-
-
-
-
+    carRectangle(TR, TF, BF, BR, new Vector3(1/sqrt(2), -1/sqrt(2), 0));
 
     // rodas
     glColor3f(0, 0, 0);
@@ -145,53 +103,33 @@ void Car::draw() {
                     0,0,0,1,
                     1);
 
-	//roda traseira direita
-	glPushMatrix();
-	glTranslated(-2, 2.3f, 50);
-	glRotatef(90, 1, 0, 0);
-	if (_wireframe) {
-		glutWireTorus(0.4, 0.5, 100, 100);
-	}
-	else {
-		glutSolidTorus(0.4, 0.5, 100, 100);
-	}
-	glPopMatrix();
+    carRectangle(FLW1, FLW2, FLW3, FLW4, new Vector3(0,-1,0));
+    carRectangle(FRW1, FRW2, FRW3, FRW4, new Vector3(0,1,0));
+    carRectangle(BLW1, BLW2, BLW3, BLW4, new Vector3(0,-1,0));
+    carRectangle(BRW1, BRW2, BRW3, BRW4, new Vector3(0,1,0));
 
-	//roda traseira esquerda
-	glPushMatrix();
-	glTranslated(- 2, -2.3f, 50);
-	glRotatef(90, 1, 0, 0);
-	if (_wireframe) {
-		glutWireTorus(0.4, 0.5, 100, 100);
-	}
-	else {
-		glutSolidTorus(0.4, 0.5, 100, 100);
-	}
-	glPopMatrix();
+    carRectangleOffset(FLW1, FLW2, FLW3, FLW4, new Vector3(0,1,0), new Vector3(0,0.2,0));
+    carRectangleOffset(FRW1, FRW2, FRW3, FRW4, new Vector3(0,-1,0), new Vector3(0,-0.2,0));
+    carRectangleOffset(BLW1, BLW2, BLW3, BLW4, new Vector3(0,1,0), new Vector3(0,0.2,0));
+    carRectangleOffset(BRW1, BRW2, BRW3, BRW4, new Vector3(0,-1,0), new Vector3(0,-0.2,0));
 
-	//roda frontal esquerda
-	glPushMatrix();
-	glTranslated(0.5f,- 1.6f, 50);
-	glRotatef(90, 1, 0, 0);
-	if (_wireframe) {
-		glutWireTorus(0.2, 0.5, 100, 100);
-	}
-	else {
-		glutSolidTorus(0.2, 0.5, 100, 100);
-	}
-	glPopMatrix();
+    carRectangle(FLW1, new Vector3(FLW1->getX(), FLW1->getY()+0.2, FLW1->getZ()),
+                       new Vector3(FLW4->getX(), FLW4->getY()+0.2, FLW4->getZ()), FLW4, new Vector3(0,0,1));
+    carRectangle(FRW1, new Vector3(FRW1->getX(), FRW1->getY()-0.2, FRW1->getZ()),
+                       new Vector3(FRW4->getX(), FRW4->getY()-0.2, FRW4->getZ()), FRW4, new Vector3(0,0,1));
+    carRectangle(BLW1, new Vector3(BLW1->getX(), BLW1->getY()+0.2, BLW1->getZ()),
+                       new Vector3(BLW4->getX(), BLW4->getY()+0.2, BLW4->getZ()), BLW4, new Vector3(0,0,1));
+    carRectangle(BRW1, new Vector3(BRW1->getX(), BRW1->getY()-0.2, BRW1->getZ()),
+                       new Vector3(BRW4->getX(), BRW4->getY()-0.2, BRW4->getZ()), BRW4, new Vector3(0,0,1));
 
-	//roda frontal direita
-	glPushMatrix();
-	glTranslated(0.5f, 1.6f, 50);
-	glRotatef(90, 1, 0, 0);
-	if (_wireframe) {
-		glutWireTorus(0.2, 0.5, 100, 100);
-	}
-	else {
-		glutSolidTorus(0.2, 0.5, 100, 100);
-	}
-	glPopMatrix();
+    carRectangle(FLW2, new Vector3(FLW2->getX(), FLW2->getY()+0.2, FLW2->getZ()),
+                       new Vector3(FLW3->getX(), FLW3->getY()+0.2, FLW3->getZ()), FLW3, new Vector3(1,0,0));
+    carRectangle(FRW2, new Vector3(FRW2->getX(), FRW2->getY()-0.2, FRW2->getZ()),
+                       new Vector3(FRW3->getX(), FRW3->getY()-0.2, FRW3->getZ()), FRW3, new Vector3(1,0,0));
+    carRectangle(BLW2, new Vector3(BLW2->getX(), BLW2->getY()+0.2, BLW2->getZ()),
+                       new Vector3(BLW3->getX(), BLW3->getY()+0.2, BLW3->getZ()), BLW3, new Vector3(1,0,0));
+    carRectangle(BRW2, new Vector3(BRW2->getX(), BRW2->getY()-0.2, BRW2->getZ()),
+                       new Vector3(BRW3->getX(), BRW3->getY()-0.2, BRW3->getZ()), BRW3, new Vector3(1,0,0));
 
 	//tubo de escape esquerdo
 	glPushMatrix();
@@ -225,19 +163,43 @@ float Car::computeSqrt() {
 }
 
 void Car::computeVertices() {
-	_TL = new Vector3(-1.3, _l/2, 52);
-	_TR = new Vector3(-1.3, -_l/2, 52);
-	_TF = new Vector3(1.3, 0, 52);
+	TL = new Vector3(-1.3, _l/2, 52);
+	TR = new Vector3(-1.3, -_l/2, 52);
+	TF = new Vector3(1.3, 0, 52);
 
-	_BL = new Vector3(-1.3, _l/2, 50);
-	_BR = new Vector3(-1.3, -_l/2, 50);
-	_BF = new Vector3(1.3, 0, 50);
+	BL = new Vector3(-1.3, _l/2, 50);
+	BR = new Vector3(-1.3, -_l/2, 50);
+	BF = new Vector3(1.3, 0, 50);
 
-	_TBL = new Vector3(-2.8, _l/2, 52);
-	_TBR = new Vector3(-2.8, -_l/2, 52);
+	TBL = new Vector3(-2.8, _l/2, 52);
+	TBR = new Vector3(-2.8, -_l/2, 52);
 
-	_BBL = new Vector3(-2.8, _l/2, 50);
-	_BBR = new Vector3(-2.8, -_l/2, 50);
+	BBL = new Vector3(-2.8, _l/2, 50);
+	BBR = new Vector3(-2.8, -_l/2, 50);
+
+    // coordenadas roda frente esquerda
+	FLW1 = new Vector3(0.5, _l*3/4, 51);
+	FLW2 = new Vector3(0.5, _l*3/4, 50);
+	FLW3 = new Vector3(-0.5, _l*3/4, 50);
+	FLW4 = new Vector3(-0.5, _l*3/4, 51);
+
+    // coordenadas roda frente direita
+	FRW1 = new Vector3(0.5, -_l*3/4, 51);
+	FRW2 = new Vector3(0.5, -_l*3/4, 50);
+	FRW3 = new Vector3(-0.5, -_l*3/4, 50);
+	FRW4 = new Vector3(-0.5, -_l*3/4, 51);
+
+    // coordenadas roda tras esquerda
+	BLW1 = new Vector3(-1.3, _l*3/4, 51);
+	BLW2 = new Vector3(-1.3, _l*3/4, 50);
+	BLW3 = new Vector3(-2.3, _l*3/4, 50);
+	BLW4 = new Vector3(-2.3, _l*3/4, 51);
+
+    // coordenadas roda tras direita
+	BRW1 = new Vector3(-1.3, -_l*3/4, 51);
+	BRW2 = new Vector3(-1.3, -_l*3/4, 50);
+	BRW3 = new Vector3(-2.3, -_l*3/4, 50);
+	BRW4 = new Vector3(-2.3, -_l*3/4, 51);
 }
 
 void Car::carAcelera(unsigned long delta_t) {
