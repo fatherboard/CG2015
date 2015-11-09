@@ -42,6 +42,12 @@ private:
 	Vector3 *BLW1, *BLW2, *BLW3, *BLW4;
 	Vector3 *BRW1, *BRW2, *BRW3, *BRW4;
 
+	Vector3 *AF1, *AF2, *AF3, *AF4, *AF5, *AF6, *AF7, *AF8;
+	Vector3 *AB1, *AB2, *AB3, *AB4, *AB5, *AB6, *AB7, *AB8;
+
+	Vector3 *EL1, *EL2, *EL3, *EL4, *EL5, *EL6, *EL7, *EL8;
+	Vector3 *ER1, *ER2, *ER3, *ER4, *ER5, *ER6, *ER7, *ER8;
+
 	int wf;
 	double _l, _h;
 	//void update(unsigned long delta_t);
