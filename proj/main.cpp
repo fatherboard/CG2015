@@ -1,7 +1,7 @@
-#define UPDATE_TIME 10
+#include "Header.h"
+#include <cstdlib>
 
-#include <GL/glut.h>
-#include "GameManager.h"
+#include <ctime>
 
 GameManager *gameManager;
 

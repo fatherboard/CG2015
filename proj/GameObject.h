@@ -7,6 +7,14 @@
 #include <GL/glut.h>
 
 class GameObject: public Entity {
+  
+	Vector3* _size;
+
+	void drawWireframe();
+	void drawSolid();
+	
+	GLuint _texture;
+	
 	public:
 
 		GameObject();
@@ -24,12 +32,15 @@ class GameObject: public Entity {
                             GLfloat Ks_r, GLfloat Ks_g, GLfloat Ks_b, GLfloat Ks_w,
                             GLfloat Ke_r, GLfloat Ke_g, GLfloat Ke_b, GLfloat Ke_w,
                             GLfloat Se);
+		void defineMaterial(GLfloat Ka_r, GLfloat Ka_g, GLfloat Ka_b, GLfloat Ka_w,
+			    GLfloat Kd_r, GLfloat Kd_g, GLfloat Kd_b, GLfloat Kd_w,
+			    GLfloat Ks_r, GLfloat Ks_g, GLfloat Ks_b, GLfloat Ks_w,
+			    GLfloat Ke_r, GLfloat Ke_g, GLfloat Ke_b, GLfloat Ke_w,
+			    GLfloat se, GLuint Texture);
+		void setTexture(GLuint a){ _texture = a;}
+		GLuint getTexture(){ return _texture; }
 
-	private:
-        Vector3* _size;
-
-		void drawWireframe();
-		void drawSolid();
+        
 };
 
 #endif

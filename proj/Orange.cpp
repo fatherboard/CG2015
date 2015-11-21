@@ -7,6 +7,7 @@
 
 #include "GameManager.h"
 #include "Orange.h"
+#include "Texture.h"
 
 extern GameManager* gameManager;
 extern int _wireframe;
@@ -26,6 +27,8 @@ Orange::Orange(Vector3 position, float radius){
 	setSpeed(0.5,0.5,0);
 
 	setObjRadius(radius);
+	
+	setTexture(Texture::load_textures("orange.bmp"));
 }
 
 Orange::~Orange() {
@@ -61,7 +64,7 @@ void Orange::draw() {
                         color.getX(), color.getY(), color.getZ(), 1.00,
                         0.00, 0.00, 0.00, 0.00,
                         0,0,0,1,
-                        128);
+                        128, getTexture());
     }else{
         defineMaterial(	0,0,0,1,
                         0,0,0,1,

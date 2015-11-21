@@ -5,6 +5,7 @@
 *      Author: 5702pedro.bucho
 */
 
+#include "Texture.h"
 #include "GameManager.h"
 #include "Track.h"
 #include "Orange.h"
