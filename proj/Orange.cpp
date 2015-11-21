@@ -7,7 +7,6 @@
 
 #include "GameManager.h"
 #include "Orange.h"
-#include "Texture.h"
 
 extern GameManager* gameManager;
 extern int _wireframe;
@@ -28,7 +27,6 @@ Orange::Orange(Vector3 position, float radius){
 
 	setObjRadius(radius);
 	
-	setTexture(Texture::load_textures("orange.bmp"));
 }
 
 Orange::~Orange() {
@@ -64,7 +62,8 @@ void Orange::draw() {
                         color.getX(), color.getY(), color.getZ(), 1.00,
                         0.00, 0.00, 0.00, 0.00,
                         0,0,0,1,
-                        128, getTexture());
+                        128);
+         
     }else{
         defineMaterial(	0,0,0,1,
                         0,0,0,1,
@@ -78,8 +77,7 @@ void Orange::draw() {
 	} else {
 		glutSolidSphere(_radius, 50, 10);
 	}
-
-	//glPopMatrix();
+	
 
 	glPushMatrix();
 	glColor3d(0.035,0.67,0);

@@ -5,14 +5,8 @@
 *      Author: 5702pedro.bucho
 */
 
-#include "Texture.h"
 #include "GameManager.h"
-#include "Track.h"
-#include "Orange.h"
-#include "OrthogonalCamera.h"
-#include "PerspectiveCamera.h"
-#include "Butter.h"
-#include "Candle.h"
+
 
 extern GameManager *gameManager;
 int _wireframe;
@@ -88,15 +82,16 @@ void GameManager::setStaticObject(GameObject* aux) {
 
 void GameManager::display() {
 
-	glClearColor(0, 0, 0, 0);
-	glClear(GL_COLOR_BUFFER_BIT);
-
-	track->draw();
-
+	glClearColor(0,0,0, 0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	
 	camera_atual->computeProjectionMatrix();
 	camera_atual->update(_w, _h);
 	camera_atual->computeVisualizationMatrix();
-
+	
+	
+	track->draw();
 	for (unsigned int i = 0; i < _static_game_objects.size(); i++) {
 		_static_game_objects.front()->draw();
 		_static_game_objects.push_back(_static_game_objects.front());
@@ -113,6 +108,7 @@ void GameManager::display() {
         ls->draw();
 	}
 	car->draw();
+	glutSwapBuffers();
 	glFlush();
 }
 void GameManager::reshape(GLsizei w, GLsizei h) {
@@ -224,19 +220,22 @@ void GameManager::keyPressed(unsigned char key) {
 
 void GameManager::onTimer() {
 	_tempo_atual = glutGet(GLUT_ELAPSED_TIME);
-	gameManager->update(_tempo_atual - _tempo_anterior);
+	gameManager->update((paused) ? 0 : _tempo_atual - _tempo_anterior);
 	_tempo_anterior = _tempo_atual;
 }
 
 void GameManager::idle() {}
 
 void GameManager::update(unsigned long delta_t) {
+	
 	_delta_t = delta_t;
+	
 	for (unsigned int i = 0; i < _dynamic_game_objects.size(); i++) {
 		_dynamic_game_objects.front()->update(delta_t);
 		_dynamic_game_objects.push_back(_dynamic_game_objects.front());
 		_dynamic_game_objects.pop_front();
 	}
+	
 	if (camera_atual_id == 2) {
 		camera_atual->setAt(car->getPosition()->getX(), car->getPosition()->getY(), car->getPosition()->getZ());
 		camera_atual->setUp(0, 0, 1);

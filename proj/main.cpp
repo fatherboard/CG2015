@@ -1,7 +1,9 @@
-#include "Header.h"
+#include "GameManager.h"
 #include <cstdlib>
-
+#include "GL/glut.h"
 #include <ctime>
+
+#define UPDATE_TIME 10
 
 GameManager *gameManager;
 
@@ -29,11 +31,15 @@ void update_game(int i) {
 
 int main(int argc, char ** argv) {
 	gameManager = new GameManager();
+	srand(time(0));
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
-	glutInitWindowSize (600,600);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+	glutInitWindowSize (800,600);
 	glutInitWindowPosition (-1, -1);
 	glutCreateWindow("Micromachines");
+	//glEnable(GL_DEPTH_TEST);
+	glHint(GL_NICEST,GL_POLYGON_SMOOTH_HINT);
+	glEnable(GL_POLYGON_SMOOTH);
 	glutTimerFunc(UPDATE_TIME, update_game, UPDATE_TIME);
 	glutDisplayFunc(myDisplay);
 	glutReshapeFunc(myReshape);

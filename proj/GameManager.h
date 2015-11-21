@@ -2,12 +2,24 @@
 #ifndef __GAMEMANAGER__
 #define __GAMEMANAGER__
 
-#include <list>
-#include <vector>
-#include "Car.h"
 #include "Camera.h"
-#include "GameObject.h"
+#include "Vector3.h"
 #include "LightSource.h"
+#include "StaticObject.h"
+#include "DynamicObject.h"
+#include "GameObject.h"
+#include "Texture.h"
+#include "Track.h"
+#include "Car.h"
+#include "Orange.h"
+#include "OrthogonalCamera.h"
+#include "PerspectiveCamera.h"
+#include "Butter.h"
+#include "Candle.h"
+#include <vector>
+#include <map>
+#include <list>
+#include <iostream>
 
 class GameManager {
 
@@ -25,6 +37,8 @@ class GameManager {
 	unsigned long _delta_t;
 	bool keystates[4];
 	int camera_atual_id = 1;
+	bool _dead = false;
+	bool paused = false;
 
 	Vector3* pos_init;
 
