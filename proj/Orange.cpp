@@ -57,20 +57,13 @@ void Orange::draw() {
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 	glRotated(_angle, 0, 0, 1);
 
-    if(gameManager->getLightsOn() || gameManager->getModoDia()){
+   
         defineMaterial(	color.getX(), color.getY(), color.getZ(), 1.00,
                         color.getX(), color.getY(), color.getZ(), 1.00,
                         0.00, 0.00, 0.00, 0.00,
                         0,0,0,1,
                         128);
          
-    }else{
-        defineMaterial(	0,0,0,1,
-                        0,0,0,1,
-                        0,0,0,1,
-                        0,0,0,1,
-                        0);
-    }
 
 	if (_wireframe) {
 		glutWireSphere(_radius, 50, 10);

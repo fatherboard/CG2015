@@ -4,37 +4,34 @@
 extern GameManager* gameManager;
 extern int _wireframe;
 
-Candle::Candle(Vector3* pos){
+Candle::Candle(Vector3* pos, Vector3* pos_luz){
 	setPosition(pos->getX(), pos->getY(), pos->getZ());
 	setSize(0.5, 0.5, 10);
-
-	int dirX, dirY;
+	GLdouble dirX, dirY;
 
 	LightSource *aux = new LightSource(gameManager->getLightSources().size());
-    aux->setPosition(pos->getX(), pos->getY(), pos->getZ() + 10, 1);
+    aux->setPosition(pos_luz->getX(), pos_luz->getY(), pos_luz->getZ(), 1);
 
     if(pos->getX() > 0){
-        dirX = -1;
+        dirX = -0.5;
     }else if(pos->getX() < 0){
-        dirX = 1;
+        dirX = 0.5;
     }else{
         dirX = 0;
     }
 
     if(pos->getY() > 0){
-        dirY = -1;
+        dirY = -0.5;
     }else if(pos->getY() < 0){
-        dirY = 1;
-    }else{
-        dirY = 0;
-    }
+        dirY = 0.5;
+   }
 
-    aux->setDirection(dirX, dirY, -2);
+    aux->setDirection(dirX, dirY, -1);
     aux->setSpecular(1, 1, 1, 1.0);
     aux->setDiffuse(1, 1, 1, 1.0);
     aux->setAmbient(0.2, 0.2, 0.2, 1.0);
     aux->setCutOff(60);
-    aux->setExponent(3);
+    aux->setExponent(5);
     aux->setState(gameManager->getLightsOn());
     gameManager->addLightSource(aux);
 }
@@ -47,11 +44,11 @@ void Candle::draw(){
 	glPushMatrix();
     glTranslatef(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 
-    if (getPosition()->getX() < 0) glRotatef(180, 0, 0, 1);
+    //if (getPosition()->getX() < 0) glRotatef(180, 0, 0, 1);
 
     glPushMatrix();
     glColor3f(0.99, 0.83, 0.44);
-    glTranslatef(0, 0, 2*getSize()->getZ()/2);
+    //glTranslatef(0, 0, 2*getSize()->getZ()/2);
     glScalef(1,1,5);
 
     if(gameManager->getLightsOn()){
@@ -70,9 +67,9 @@ void Candle::draw(){
     }
 
     if(_wireframe)
-        glutWireSphere(1, 8, 8);
+        glutWireSphere(0.5, 8, 8);
     else
-        glutSolidSphere(1, 8, 8);
+        glutSolidSphere(0.5, 8, 8);
 
     glPopMatrix();
 	glPopMatrix();

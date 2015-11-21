@@ -9,7 +9,7 @@
 class Candle : public StaticObject{
 
 public:
-	Candle(Vector3* pos);
+	Candle(Vector3* pos, Vector3* pos_luz);
 	~Candle();
 	void draw();
 

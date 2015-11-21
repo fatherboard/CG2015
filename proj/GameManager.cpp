@@ -211,6 +211,9 @@ void GameManager::keyPressed(unsigned char key) {
         _lights_on = !_lights_on;
         setCandles(_lights_on);
         break;
+    case 'h':
+		car->toggleLight();
+		break;
     // extra
     case 'q':
         exit(0);
@@ -293,8 +296,8 @@ void GameManager::init() {
 
 	// iluminacao global - SOL
 	LightSource *aux = new LightSource(getLightSources().size());
-    aux->setPosition(50, 50, 100, 0);
-    aux->setDirection(-1/sqrt(3), -1/sqrt(3), -1/sqrt(3));
+    aux->setPosition(-200, -200, 500, 0);
+    aux->setDirection(0, 0, 0);
     aux->setSpecular(1.0, 1.0, 1.0, 1.0);
     aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
     aux->setAmbient(0.2, 0.2, 0.2, 1.0);
@@ -303,13 +306,13 @@ void GameManager::init() {
 
     // velas (as lightsources são criadas pelo Candle e adicionadas
     // a lista de lightsources)
-    setStaticObject(new Candle(new Vector3(-45, 45, 45)));
-    setStaticObject(new Candle(new Vector3(0, 45, 45)));
-    setStaticObject(new Candle(new Vector3(45, 45, 45)));
+    setStaticObject(new Candle(new Vector3(-45, 45, 55), new Vector3(-45, 45, 60)));
+    setStaticObject(new Candle(new Vector3(0, 45, 55), new Vector3(0, 45, 58)));
+    setStaticObject(new Candle(new Vector3(45, 45, 55), new Vector3(45, 45, 60)));
 
-    setStaticObject(new Candle(new Vector3(-45, -45, 45)));
-    setStaticObject(new Candle(new Vector3(0, -45, 45)));
-    setStaticObject(new Candle(new Vector3(45, -45, 45)));
+    setStaticObject(new Candle(new Vector3(-45, -45, 55), new Vector3(-45, -45, 60)));
+    setStaticObject(new Candle(new Vector3(0, -45, 55), new Vector3(0, -45, 60)));
+    setStaticObject(new Candle(new Vector3(45, -45, 55), new Vector3(45, -45, 60)));
 }
 
 GameObject* GameManager::checkCollisions(){

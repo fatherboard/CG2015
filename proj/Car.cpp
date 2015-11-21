@@ -12,9 +12,15 @@ Car::Car(Vector3 *position) {
 	setDirecao(0, 0, 0);
 	setRadian(0);
 	_l = 3;
-
+	light_on=false;
 	setObjRadius(3);
-
+	light = new LightSource(gameManager->getLightSources().size());
+	light->setSpecular(1.0, 1.0, 1.0, 1.0);
+	light->setDiffuse(1.0, 1.0, 1.0, 1.0);
+	light->setAmbient(0.2, 0.2, 0.2, 1.0);
+	light->setCutOff(90);
+	light->setExponent(2);
+	light->setState(light_on);
 	computeVertices();
 }
 
@@ -72,6 +78,12 @@ void Car::draw() {
     glPushMatrix();
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 	glRotatef(getRadian()*180/M_PI, 0, 0, 1);
+	
+	
+	light->setPosition(getPosition()->getX()+2,
+						getPosition()->getY(),
+						getPosition()->getZ(), 1); 
+	light->setDirection(getDirecao()->getX(), getDirecao()->getY(), -1); //Direcao do carro
 
 
     glColor3f(0.6, 0.6, 0.6);
@@ -300,4 +312,8 @@ void Car::carDesacelera(unsigned long delta_t, bool sentido) {
 		setSpeed(getSpeed()->getX() + ACCELERATION_FORWARD * getDirecao()->getX() * 1/delta_t, getSpeed()->getY() + ACCELERATION_FORWARD * getDirecao()->getY() * 1/delta_t, getSpeed()->getZ());
 	else if(sentido==false)
 		setSpeed(getSpeed()->getX() - ACCELERATION_BACKWARD * getDirecao()->getX() * 1/delta_t, getSpeed()->getY() - ACCELERATION_BACKWARD * getDirecao()->getY() * 1/delta_t, getSpeed()->getZ());
+}
+void Car::toggleLight(){
+	light_on = !light_on;
+	light->setState(light_on);
 }

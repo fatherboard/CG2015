@@ -3,6 +3,7 @@
 #define __CAR__
 
 #include "DynamicObject.h"
+#include "LightSource.h"
 #include <cmath>
 
 #define _USE_MATH_DEFINES
@@ -21,6 +22,9 @@ public:
 	void Esquerda(unsigned long delta_t);
 	void Direita(unsigned long delta_t);
 	void carDesacelera(unsigned long delta_t, bool sentido);
+	LightSource* getLuz(){return light;};
+	void toggleLight();
+	
 
 private:
 	// Nomes:
@@ -49,7 +53,9 @@ private:
 	Vector3 *ER1, *ER2, *ER3, *ER4, *ER5, *ER6, *ER7, *ER8;
 
 	int wf;
+	bool light_on;
 	double _l, _h;
+	LightSource *light;
 	//void update(unsigned long delta_t);
 	float computeSqrt();
 	void computeVertices();
