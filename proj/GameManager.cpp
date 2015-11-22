@@ -85,11 +85,14 @@ void GameManager::display() {
 	glClearColor(0,0,0, 0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
+	glViewport(0, 0, _w, _h);
 	camera_atual->computeProjectionMatrix();
 	camera_atual->update(_w, _h);
 	camera_atual->computeVisualizationMatrix();
 
+	for(LightSource *ls : getLightSources()){
+        ls->draw();
+	}
 
 	track->draw();
 	for (unsigned int i = 0; i < _static_game_objects.size(); i++) {
@@ -104,10 +107,26 @@ void GameManager::display() {
 		_dynamic_game_objects.pop_front();
 	}
 
-	for(LightSource *ls : getLightSources()){
-        ls->draw();
-	}
 	car->draw();
+	glViewport(0, 0, _w, _h);
+
+	if(isOutOfTable(car)){
+        decreaseLifes();
+        if(isDead()){
+            //mostrar ecra
+        }
+        car->setPosition(pos_init);
+        }
+
+	getCameras()[0]->computeProjectionMatrix();
+	getCameras()[0]->update(_w, _h);
+	getCameras()[0]->computeVisualizationMatrix();
+
+	glDisable(GL_LIGHTING);
+	drawLifes();
+	drawInfo();
+	if (_lights_active)	glEnable(GL_LIGHTING);
+
 	glutSwapBuffers();
 	glFlush();
 }
@@ -214,6 +233,15 @@ void GameManager::keyPressed(unsigned char key) {
     case 'h':
 		car->toggleLight();
 		break;
+	case 's':
+		if(!isDead())
+			paused = !paused;
+		break;
+    case 'r':
+        if(isDead()){
+            // reiniciar
+        }
+        break;
     // extra
     case 'q':
         exit(0);
@@ -252,6 +280,10 @@ void GameManager::update(unsigned long delta_t) {
         if (v != 0) {
             // e uma laranja
             //car->setPosition(pos_init);
+            decreaseLifes();
+            if(isDead()){
+                // mostrar ecra
+            }
         }else{
             Vector3* obj_pos = collided->getPosition();
             Vector3* car_dir = car->getDirecao();
@@ -267,6 +299,10 @@ void GameManager::update(unsigned long delta_t) {
 }
 
 void GameManager::init() {
+
+	TexturePause = Texture::load_textures("Pause.bmp");
+	TextureGameOver = Texture::load_textures("GameOver.bmp");
+
 	setCameras(camera_atual = new OrthogonalCamera(-60, 60, -60, 60, -60, 60));
 	setCameras(new PerspectiveCamera(90, 1, 1, 400));
 
@@ -411,4 +447,68 @@ bool GameManager::getSmooth(){
 
 void GameManager::setSmooth(bool smooth){
    _smooth = smooth;
+}
+
+void GameManager::drawLifes(){
+	Car *aux = new Car(new Vector3(0, 0,0));
+	glPushMatrix();
+	glScalef(0.5,0.5,0.5);
+	
+	for(int i = 1; i < 6; i++){
+		glPushMatrix();
+		glRotatef(90,0,0,1);
+		aux->setPosition(110, 5+i*15 ,50);
+		aux->draw();
+		glPopMatrix;
+	}
+	
+	glPopMatrix();
+	delete(aux);
+}
+
+void GameManager::drawInfo(){
+	if (!paused && !isDead()) return;
+	glPushMatrix();
+	glTranslatef(-25, -25, 51);
+	glScalef(50, 50, 1);
+	glColor4f(1, 1, 1, 0);
+
+	glEnable(GL_TEXTURE_2D);
+
+	if (paused)	glBindTexture(GL_TEXTURE_2D, gameManager->getTexturePause());
+	if (isDead())	glBindTexture(GL_TEXTURE_2D, gameManager->getTextureGameOver());
+
+	glBegin(GL_POLYGON);
+
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(0, 0, 0);
+
+	glTexCoord2f(0.0f, 1.0);
+	glVertex3f(0, 1, 0);
+
+	glTexCoord2f(1.0, 1.0);
+	glVertex3f(1, 1, 0);
+
+	glTexCoord2f(1.0, 0.0f);
+	glVertex3f(1, 0, 0);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+	glPopMatrix();
+}
+
+int GameManager::getLifes(){
+    return lifes;
+}
+
+void GameManager::setLifes(int lifes){
+    this->lifes = lifes;
+}
+
+void GameManager::decreaseLifes(){
+    lifes--;
+}
+
+bool GameManager::isDead(){
+    return lifes <= 0;
 }
