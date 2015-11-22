@@ -101,6 +101,7 @@ void Orange::draw() {
 }
 
 void Orange::update(unsigned long delta_t) {
+	if(gameManager->getPause()) return;
     _angle += 45;
     if(_angle >= 360)
         _angle = 0;

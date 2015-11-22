@@ -82,6 +82,7 @@ class GameManager {
 		void setLightsOn(bool modo);
 		bool getLightsActive();
 		void setLightsActive(bool modo);
+		bool getPause(){return paused;};
 		
 		bool getSmooth();
 		void setSmooth(bool smooth);
