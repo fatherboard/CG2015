@@ -21,8 +21,8 @@ Car::Car(Vector3 *position) {
 	light->setSpecular(1.0, 1.0, 1.0, 1.0);
 	light->setDiffuse(1.0, 1.0, 1.0, 1.0);
 	light->setAmbient(0.2, 0.2, 0.2, 1.0);
-	light->setCutOff(90);
-	light->setExponent(2);
+	light->setCutOff(45);
+	light->setExponent(5);
 	light->setState(light_on);
 
 	gameManager->addLightSource(light);
@@ -86,10 +86,10 @@ void Car::draw() {
 	glRotatef(getRadian()*180/M_PI, 0, 0, 1);
 
 
-	light->setPosition(getPosition()->getX()+2,
+	light->setPosition(getPosition()->getX(),
 						getPosition()->getY(),
-						getPosition()->getZ(), 1);
-	light->setDirection(getDirecao()->getX(), getDirecao()->getY(), -1); //Direcao do carro
+						53, 1);
+	light->setDirection(getDirecao()->getX(), getDirecao()->getY(), -1.2f); //Direcao do carro
 
 
     glColor3f(0.6, 0.6, 0.6);

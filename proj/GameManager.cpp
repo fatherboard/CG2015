@@ -251,7 +251,7 @@ void GameManager::update(unsigned long delta_t) {
         Orange* v = dynamic_cast<Orange*>(collided);
         if (v != 0) {
             // e uma laranja
-            car->setPosition(pos_init);
+            //car->setPosition(pos_init);
         }else{
             Vector3* obj_pos = collided->getPosition();
             Vector3* car_dir = car->getDirecao();
