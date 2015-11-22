@@ -57,7 +57,7 @@ Track::Track(){
 		_cheerios.push_back(new Cheerio(new Vector3(-30 + i, -28, 50), 0.25, 0.9));
 	}
 	
-	setTexture(Texture::load_textures("mesa.bmp"));
+	setTexture(Texture::load_textures("mesa23.bmp"));
 }
 
 Track::~Track() {
@@ -69,8 +69,11 @@ std::list<Cheerio *> Track::getCheerios(){
 }
 
 void Track::draw(){
-	glColor3f(0.56, 0.76, 0.83);
-
+	
+	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, getTexture());
+	
     if(gameManager->getLightsOn() || gameManager->getModoDia()){
         defineMaterial(	0.56, 0.76, 0.83, 1.00,
                         0.00, 0.30, 0.36, 1.00,
@@ -86,33 +89,29 @@ void Track::draw(){
                         0,0,0,0,
                         0);
     }
-
-	glBegin(GL_QUADS);
-        glNormal3f(0,0,1);
-        glVertex3f(50,50,50);
-        glVertex3f(50,-50,50);
-        glVertex3f(-50,-50,50);
-        glVertex3f(-50,50,50);
-	glEnd();
-	
-	glPushMatrix();
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, getTexture());
-	glBegin(GL_POLYGON);
-	glNormal3f(0, 0, 1);
-	
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(-50, -50, 50);
-	
-	glTexCoord2f(0.0f, 1.0);
-	glVertex3f(-50, 50, 50);
-	
-	glTexCoord2f(1.0, 1.0);
-	glVertex3f(50, 50, 50);
-	
-	glTexCoord2f(1.0, 0.0f);
-	glVertex3f(50, -50, 50);
-	glEnd();
+    int quad = 2;
+	glColor3f(0.56, 0.76, 0.83);
+	for(float y = -50; y<50; y+=quad){
+		for(float x = -50; x<50; x+=quad){
+			
+			glBegin(GL_POLYGON);
+			glNormal3f(0, 0, 1);
+			
+			glTexCoord2f(0,0);
+			glVertex3f(x, y, 50);
+			
+			glTexCoord2f(1,0);
+			glVertex3f(x+quad, y, 50);
+			
+			glTexCoord2f(1,1);
+			glVertex3f(x+quad, y+quad, 50);
+			
+			glTexCoord2f(0,1);
+			glVertex3f(x, y+quad, 50);
+			glEnd();
+			
+		}
+	}
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 }

@@ -1,0 +1,75 @@
+CC = g++
+
+FLAGS = -std=c++11 -O3 -ggdb -Wall -pedantic -Wpedantic -pedantic-errors \
+        -Wextra -w -Waggressive-loop-optimizations -Werror -pedantic-errors \
+				-Wparentheses -Wunknown-pragmas -lGL -lGLU -lglut
+#        -static-libstdc++
+
+COMP = $(CC) $(FLAGS) -g -c
+
+MicroMachines: Butter.o  Camera.o  Candle.o  Car.o  Cheerio.o  DynamicObject.o  Entity.o  GameManager.o  GameObject.o  LightSource.o  main.o  Obstacle.o  Orange.o  OrthogonalCamera.o  PerspectiveCamera.o  StaticObject.o  stdafx.o  Texture.o  Track.o  Vector3.o  Vector4.o
+	$(CC) $(FLAGS) -g *.o -o $@
+
+Butter.o: Butter.cpp Butter.h Obstacle.h DynamicObject.h GameObject.h   Entity.h Vector3.h GameManager.h Camera.h LightSource.h Vector4.h   StaticObject.h Texture.h Track.h Cheerio.h Car.h Orange.h   OrthogonalCamera.h PerspectiveCamera.h Candle.h
+	$(COMP) $(FLAGS) $< -o $@
+
+Camera.o: Camera.cpp Camera.h Entity.h Vector3.h
+	$(COMP) $(FLAGS) $< -o $@
+
+Candle.o: Candle.cpp GameManager.h Camera.h Entity.h Vector3.h   LightSource.h Vector4.h StaticObject.h GameObject.h DynamicObject.h   Texture.h Track.h Cheerio.h Car.h Orange.h Obstacle.h OrthogonalCamera.h   PerspectiveCamera.h Butter.h Candle.h
+	$(COMP) $(FLAGS) $< -o $@
+
+Car.o: Car.cpp Car.h DynamicObject.h GameObject.h Entity.h Vector3.h   LightSource.h Vector4.h GameManager.h Camera.h StaticObject.h Texture.h   Track.h Cheerio.h Orange.h Obstacle.h OrthogonalCamera.h   PerspectiveCamera.h Butter.h Candle.h
+	$(COMP) $(FLAGS) $< -o $@
+
+Cheerio.o: Cheerio.cpp GameManager.h Camera.h Entity.h Vector3.h   LightSource.h Vector4.h StaticObject.h GameObject.h DynamicObject.h   Texture.h Track.h Cheerio.h Car.h Orange.h Obstacle.h OrthogonalCamera.h   PerspectiveCamera.h Butter.h Candle.h
+	$(COMP) $(FLAGS) $< -o $@
+
+DynamicObject.o: DynamicObject.cpp DynamicObject.h GameObject.h Entity.h   Vector3.h
+	$(COMP) $(FLAGS) $< -o $@
+
+Entity.o: Entity.cpp Entity.h Vector3.h
+	$(COMP) $(FLAGS) $< -o $@
+
+GameManager.o: GameManager.cpp GameManager.h Camera.h Entity.h Vector3.h   LightSource.h Vector4.h StaticObject.h GameObject.h DynamicObject.h   Texture.h Track.h Cheerio.h Car.h Orange.h Obstacle.h OrthogonalCamera.h   PerspectiveCamera.h Butter.h Candle.h
+	$(COMP) $(FLAGS) $< -o $@
+
+GameObject.o: GameObject.cpp stdafx.h targetver.h GameObject.h Entity.h   Vector3.h DynamicObject.h
+	$(COMP) $(FLAGS) $< -o $@
+
+LightSource.o: LightSource.cpp LightSource.h Vector4.h Vector3.h
+	$(COMP) $(FLAGS) $< -o $@
+
+main.o: main.cpp GameManager.h Camera.h Entity.h Vector3.h LightSource.h   Vector4.h StaticObject.h GameObject.h DynamicObject.h Texture.h Track.h   Cheerio.h Car.h Orange.h Obstacle.h OrthogonalCamera.h   PerspectiveCamera.h Butter.h Candle.h
+	$(COMP) $(FLAGS) $< -o $@
+
+Obstacle.o: Obstacle.cpp Obstacle.h DynamicObject.h GameObject.h Entity.h   Vector3.h
+	$(COMP) $(FLAGS) $< -o $@
+
+Orange.o: Orange.cpp GameManager.h Camera.h Entity.h Vector3.h   LightSource.h Vector4.h StaticObject.h GameObject.h DynamicObject.h   Texture.h Track.h Cheerio.h Car.h Orange.h Obstacle.h OrthogonalCamera.h   PerspectiveCamera.h Butter.h Candle.h
+	$(COMP) $(FLAGS) $< -o $@
+
+OrthogonalCamera.o: OrthogonalCamera.cpp OrthogonalCamera.h Camera.h   Entity.h Vector3.h
+	$(COMP) $(FLAGS) $< -o $@
+
+PerspectiveCamera.o: PerspectiveCamera.cpp PerspectiveCamera.h Camera.h   Entity.h Vector3.h Car.h DynamicObject.h GameObject.h LightSource.h   Vector4.h
+	$(COMP) $(FLAGS) $< -o $@
+
+StaticObject.o: StaticObject.cpp StaticObject.h GameObject.h Entity.h   Vector3.h
+	$(COMP) $(FLAGS) $< -o $@
+
+stdafx.o: stdafx.cpp stdafx.h targetver.h
+	$(COMP) $(FLAGS) $< -o $@
+
+Texture.o: Texture.cpp Texture.h
+	$(COMP) $(FLAGS) $< -o $@
+
+Track.o: Track.cpp Track.h Cheerio.h StaticObject.h GameObject.h Entity.h   Vector3.h GameManager.h Camera.h LightSource.h Vector4.h DynamicObject.h   Texture.h Car.h Orange.h Obstacle.h OrthogonalCamera.h   PerspectiveCamera.h Butter.h Candle.h
+	$(COMP) $(FLAGS) $< -o $@
+
+Vector3.o: Vector3.cpp Vector3.h
+	$(COMP) $(FLAGS) $< -o $@
+
+Vector4.o: Vector4.cpp Vector4.h Vector3.h
+	$(COMP) $(FLAGS) $< -o $@
+

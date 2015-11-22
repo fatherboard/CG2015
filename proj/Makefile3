@@ -1,0 +1,52 @@
+Butter.o: Butter.cpp Butter.h Obstacle.h DynamicObject.h GameObject.h \
+ Entity.h Vector3.h GameManager.h Camera.h LightSource.h Vector4.h \
+ StaticObject.h Texture.h Track.h Cheerio.h Car.h Orange.h \
+ OrthogonalCamera.h PerspectiveCamera.h Candle.h
+Camera.o: Camera.cpp Camera.h Entity.h Vector3.h
+Candle.o: Candle.cpp GameManager.h Camera.h Entity.h Vector3.h \
+ LightSource.h Vector4.h StaticObject.h GameObject.h DynamicObject.h \
+ Texture.h Track.h Cheerio.h Car.h Orange.h Obstacle.h OrthogonalCamera.h \
+ PerspectiveCamera.h Butter.h Candle.h
+Car.o: Car.cpp Car.h DynamicObject.h GameObject.h Entity.h Vector3.h \
+ LightSource.h Vector4.h GameManager.h Camera.h StaticObject.h Texture.h \
+ Track.h Cheerio.h Orange.h Obstacle.h OrthogonalCamera.h \
+ PerspectiveCamera.h Butter.h Candle.h
+Cheerio.o: Cheerio.cpp GameManager.h Camera.h Entity.h Vector3.h \
+ LightSource.h Vector4.h StaticObject.h GameObject.h DynamicObject.h \
+ Texture.h Track.h Cheerio.h Car.h Orange.h Obstacle.h OrthogonalCamera.h \
+ PerspectiveCamera.h Butter.h Candle.h
+DynamicObject.o: DynamicObject.cpp DynamicObject.h GameObject.h Entity.h \
+ Vector3.h
+Entity.o: Entity.cpp Entity.h Vector3.h
+GameManager.o: GameManager.cpp GameManager.h Camera.h Entity.h Vector3.h \
+ LightSource.h Vector4.h StaticObject.h GameObject.h DynamicObject.h \
+ Texture.h Track.h Cheerio.h Car.h Orange.h Obstacle.h OrthogonalCamera.h \
+ PerspectiveCamera.h Butter.h Candle.h
+GameObject.o: GameObject.cpp stdafx.h targetver.h GameObject.h Entity.h \
+ Vector3.h DynamicObject.h
+LightSource.o: LightSource.cpp LightSource.h Vector4.h Vector3.h
+main.o: main.cpp GameManager.h Camera.h Entity.h Vector3.h LightSource.h \
+ Vector4.h StaticObject.h GameObject.h DynamicObject.h Texture.h Track.h \
+ Cheerio.h Car.h Orange.h Obstacle.h OrthogonalCamera.h \
+ PerspectiveCamera.h Butter.h Candle.h
+Obstacle.o: Obstacle.cpp Obstacle.h DynamicObject.h GameObject.h Entity.h \
+ Vector3.h
+Orange.o: Orange.cpp GameManager.h Camera.h Entity.h Vector3.h \
+ LightSource.h Vector4.h StaticObject.h GameObject.h DynamicObject.h \
+ Texture.h Track.h Cheerio.h Car.h Orange.h Obstacle.h OrthogonalCamera.h \
+ PerspectiveCamera.h Butter.h Candle.h
+OrthogonalCamera.o: OrthogonalCamera.cpp OrthogonalCamera.h Camera.h \
+ Entity.h Vector3.h
+PerspectiveCamera.o: PerspectiveCamera.cpp PerspectiveCamera.h Camera.h \
+ Entity.h Vector3.h Car.h DynamicObject.h GameObject.h LightSource.h \
+ Vector4.h
+StaticObject.o: StaticObject.cpp StaticObject.h GameObject.h Entity.h \
+ Vector3.h
+stdafx.o: stdafx.cpp stdafx.h targetver.h
+Texture.o: Texture.cpp Texture.h
+Track.o: Track.cpp Track.h Cheerio.h StaticObject.h GameObject.h Entity.h \
+ Vector3.h GameManager.h Camera.h LightSource.h Vector4.h DynamicObject.h \
+ Texture.h Car.h Orange.h Obstacle.h OrthogonalCamera.h \
+ PerspectiveCamera.h Butter.h Candle.h
+Vector3.o: Vector3.cpp Vector3.h
+Vector4.o: Vector4.cpp Vector4.h Vector3.h

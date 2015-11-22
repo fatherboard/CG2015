@@ -291,6 +291,8 @@ void Car::Esquerda(unsigned long delta_t) {
 		setRadian(M_PI);
 	}
 	setDirecao(getRadian(), getRadian(), 0);
+	
+	
 }
 
 void Car::Direita(unsigned long delta_t) {
