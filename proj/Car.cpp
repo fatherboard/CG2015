@@ -12,15 +12,21 @@ Car::Car(Vector3 *position) {
 	setDirecao(0, 0, 0);
 	setRadian(0);
 	_l = 3;
-	light_on=false;
+
 	setObjRadius(3);
+
+	light_on=false;
 	light = new LightSource(gameManager->getLightSources().size());
+
 	light->setSpecular(1.0, 1.0, 1.0, 1.0);
 	light->setDiffuse(1.0, 1.0, 1.0, 1.0);
 	light->setAmbient(0.2, 0.2, 0.2, 1.0);
 	light->setCutOff(90);
 	light->setExponent(2);
 	light->setState(light_on);
+
+	gameManager->addLightSource(light);
+
 	computeVertices();
 }
 
@@ -78,11 +84,11 @@ void Car::draw() {
     glPushMatrix();
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 	glRotatef(getRadian()*180/M_PI, 0, 0, 1);
-	
-	
+
+
 	light->setPosition(getPosition()->getX()+2,
 						getPosition()->getY(),
-						getPosition()->getZ(), 1); 
+						getPosition()->getZ(), 1);
 	light->setDirection(getDirecao()->getX(), getDirecao()->getY(), -1); //Direcao do carro
 
 
@@ -291,8 +297,8 @@ void Car::Esquerda(unsigned long delta_t) {
 		setRadian(M_PI);
 	}
 	setDirecao(getRadian(), getRadian(), 0);
-	
-	
+
+
 }
 
 void Car::Direita(unsigned long delta_t) {

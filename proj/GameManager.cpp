@@ -35,8 +35,8 @@ GameManager::~GameManager() {
 void GameManager::setCandles(bool state){
     std::vector<LightSource*> candles = getLightSources();
 
-    // comeca em 1 para nao modificar a iluminacao global
-    for(unsigned int i = 1; i < candles.size(); i++){
+    // comeca em 2 para nao modificar a iluminacao global nem o carro
+    for(unsigned int i = 2; i < candles.size(); i++){
         candles[i]->setState(state);
     }
 }
@@ -84,13 +84,13 @@ void GameManager::display() {
 
 	glClearColor(0,0,0, 0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	
+
+
 	camera_atual->computeProjectionMatrix();
 	camera_atual->update(_w, _h);
 	camera_atual->computeVisualizationMatrix();
-	
-	
+
+
 	track->draw();
 	for (unsigned int i = 0; i < _static_game_objects.size(); i++) {
 		_static_game_objects.front()->draw();
@@ -230,15 +230,15 @@ void GameManager::onTimer() {
 void GameManager::idle() {}
 
 void GameManager::update(unsigned long delta_t) {
-	
+
 	_delta_t = delta_t;
-	
+
 	for (unsigned int i = 0; i < _dynamic_game_objects.size(); i++) {
 		_dynamic_game_objects.front()->update(delta_t);
 		_dynamic_game_objects.push_back(_dynamic_game_objects.front());
 		_dynamic_game_objects.pop_front();
 	}
-	
+
 	if (camera_atual_id == 2) {
 		camera_atual->setAt(car->getPosition()->getX(), car->getPosition()->getY(), car->getPosition()->getZ());
 		camera_atual->setUp(0, 0, 1);
@@ -279,6 +279,16 @@ void GameManager::init() {
         setStaticObject(cheerio);
 	}
 
+    // iluminacao global - SOL
+	LightSource *aux = new LightSource(getLightSources().size());
+    aux->setPosition(-200, -200, 500, 0);
+    aux->setDirection(0, 0, 0);
+    aux->setSpecular(1.0, 1.0, 1.0, 1.0);
+    aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
+    aux->setAmbient(0.2, 0.2, 0.2, 1.0);
+    aux->setState(getModoDia());
+    addLightSource(aux);
+
 	pos_init = new Vector3(-30, 35, 0);
 	car = new Car(pos_init);
 	//setDynamicObject(car = new Car(pos));
@@ -293,16 +303,6 @@ void GameManager::init() {
 	setDynamicObject(new Orange(new Vector3(-39, 34, 50), 3));
 	setDynamicObject(new Orange(new Vector3(35, 34, 50), 3));
 	setDynamicObject(new Orange(new Vector3(-39, -34, 50), 3));
-
-	// iluminacao global - SOL
-	LightSource *aux = new LightSource(getLightSources().size());
-    aux->setPosition(-200, -200, 500, 0);
-    aux->setDirection(0, 0, 0);
-    aux->setSpecular(1.0, 1.0, 1.0, 1.0);
-    aux->setDiffuse(1.0, 1.0, 1.0, 1.0);
-    aux->setAmbient(0.2, 0.2, 0.2, 1.0);
-    aux->setState(getModoDia());
-    addLightSource(aux);
 
     // velas (as lightsources são criadas pelo Candle e adicionadas
     // a lista de lightsources)

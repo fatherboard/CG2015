@@ -56,7 +56,7 @@ Track::Track(){
 	for (i = 0; i < 55; i=i+4) {
 		_cheerios.push_back(new Cheerio(new Vector3(-30 + i, -28, 50), 0.25, 0.9));
 	}
-	setTexture(Texture::load_textures("mesa23.bmp"));
+	setTexture(Texture::load_textures("/home/pedro/workspace/CG2015/proj/mesa23.bmp"));
 }
 
 Track::~Track() {
@@ -91,23 +91,23 @@ void Track::draw(){
 	glColor3f(0.56, 0.76, 0.83);
 	for(float y = -50; y<50; y+=quad){
 		for(float x = -50; x<50; x+=quad){
-			
+
 			glBegin(GL_POLYGON);
 			glNormal3f(0, 0, 1);
-			
+
 			glTexCoord2f(0,0);
 			glVertex3f(x, y, 50);
-			
+
 			glTexCoord2f(1,0);
 			glVertex3f(x+quad, y, 50);
-			
+
 			glTexCoord2f(1,1);
 			glVertex3f(x+quad, y+quad, 50);
-			
+
 			glTexCoord2f(0,1);
 			glVertex3f(x, y+quad, 50);
 			glEnd();
-			
+
 		}
 	}
 	glDisable(GL_TEXTURE_2D);

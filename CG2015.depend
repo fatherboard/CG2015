@@ -163,7 +163,7 @@
 1446330924 source:/home/eu/workspace/CG2015/proj/Vector3.cpp
 	"Vector3.h"
 
-1448192223 source:/mnt/DATA/pedro/workspace/CG2015/proj/Butter.cpp
+1448195442 source:/mnt/DATA/pedro/workspace/CG2015/proj/Butter.cpp
 	"Butter.h"
 	"GameManager.h"
 	<math.h>
@@ -189,7 +189,7 @@
 
 1445850440 /mnt/DATA/pedro/workspace/CG2015/proj/Vector3.h
 
-1448191518 source:/mnt/DATA/pedro/workspace/CG2015/proj/Cheerio.cpp
+1448195442 source:/mnt/DATA/pedro/workspace/CG2015/proj/Cheerio.cpp
 	"GameManager.h"
 	"Cheerio.h"
 
@@ -284,7 +284,7 @@
 	"Vector3.h"
 	<GL/glut.h>
 
-1448192212 /mnt/DATA/pedro/workspace/CG2015/proj/Car.h
+1448195442 /mnt/DATA/pedro/workspace/CG2015/proj/Car.h
 	"DynamicObject.h"
 	"LightSource.h"
 	<cmath>
@@ -307,7 +307,7 @@
 1445850440 source:/mnt/DATA/pedro/workspace/CG2015/proj/Obstacle.cpp
 	"Obstacle.h"
 
-1448191518 source:/mnt/DATA/pedro/workspace/CG2015/proj/Orange.cpp
+1448195442 source:/mnt/DATA/pedro/workspace/CG2015/proj/Orange.cpp
 	"GameManager.h"
 	"Orange.h"
 
@@ -326,15 +326,15 @@
 1447057285 source:/mnt/DATA/pedro/workspace/CG2015/proj/Camera.cpp
 	"Camera.h"
 
-1448191518 source:/mnt/DATA/pedro/workspace/CG2015/proj/Car.cpp
+1448195441 source:/mnt/DATA/pedro/workspace/CG2015/proj/Car.cpp
 	<vector>
 	"Car.h"
 	"GameManager.h"
 
-1448191518 source:/mnt/DATA/pedro/workspace/CG2015/proj/GameManager.cpp
+1448196245 source:/mnt/DATA/pedro/workspace/CG2015/proj/GameManager.cpp
 	"GameManager.h"
 
-1448192081 source:/mnt/DATA/pedro/workspace/CG2015/proj/Track.cpp
+1448196093 source:/mnt/DATA/pedro/workspace/CG2015/proj/Track.cpp
 	"Track.h"
 	"GameManager.h"
 	"Cheerio.h"
@@ -366,7 +366,7 @@
 	"StaticObject.h"
 	"Candle.h"
 
-1448188687 source:/mnt/DATA/pedro/workspace/CG2015/proj/Candle.cpp
+1448195442 source:/mnt/DATA/pedro/workspace/CG2015/proj/Candle.cpp
 	"GameManager.h"
 	"Candle.h"
 
