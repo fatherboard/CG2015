@@ -37,9 +37,8 @@ class GameManager {
 	unsigned long _delta_t;
 	bool keystates[4];
 	int camera_atual_id = 1;
-	bool _dead = false;
 	bool paused = false;
-	
+
 	GLuint TexturePause;
 	GLuint TextureGameOver;
 
@@ -83,7 +82,7 @@ class GameManager {
 		bool getLightsActive();
 		void setLightsActive(bool modo);
 		bool getPause(){return paused;};
-		
+
 		bool getSmooth();
 		void setSmooth(bool smooth);
 		void drawInfo();
@@ -92,6 +91,11 @@ class GameManager {
 		GLuint getTextureGameOver(){ return TextureGameOver; }
 		Car* getCar();
 
+		int getLifes();
+		void setLifes(int lifes);
+		void decreaseLifes();
+		bool isDead();
+
     private:
 		GameObject* checkCollisions();
 		bool isOutOfTable(GameObject* obj);
@@ -99,8 +103,10 @@ class GameManager {
 		bool _modo_dia = false;
 		bool _lights_on = false;
 		bool _lights_active = false;
-		
+
 		bool _smooth = false;
+
+		int lifes = 5;
 };
 
 #endif
