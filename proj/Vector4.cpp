@@ -11,7 +11,7 @@ Vector4::Vector4(double x, double y, double z, double w) : Vector3(x,y,z){
 }
 
 Vector4::~Vector4(){
-    delete this;
+    //delete this;
 }
 
 double Vector4::getW(){

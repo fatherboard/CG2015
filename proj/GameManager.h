@@ -99,6 +99,7 @@ class GameManager {
     private:
 		GameObject* checkCollisions();
 		bool isOutOfTable(GameObject* obj);
+		void initializeGame();
 
 		bool _modo_dia = false;
 		bool _lights_on = false;
@@ -107,6 +108,8 @@ class GameManager {
 		bool _smooth = false;
 
 		int lifes = 5;
+
+		void finalize();
 };
 
 #endif

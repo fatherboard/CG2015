@@ -114,9 +114,10 @@ void GameManager::display() {
         decreaseLifes();
         if(isDead()){
             //mostrar ecra
+            return;
         }
         car->setPosition(pos_init);
-        }
+    }
 
 	getCameras()[0]->computeProjectionMatrix();
 	getCameras()[0]->update(_w, _h);
@@ -240,6 +241,8 @@ void GameManager::keyPressed(unsigned char key) {
     case 'r':
         if(isDead()){
             // reiniciar
+            finalize();
+            init();
         }
         break;
     // extra
@@ -283,6 +286,7 @@ void GameManager::update(unsigned long delta_t) {
             decreaseLifes();
             if(isDead()){
                 // mostrar ecra
+                return;
             }
         }else{
             Vector3* obj_pos = collided->getPosition();
@@ -453,15 +457,15 @@ void GameManager::drawLifes(){
 	Car *aux = new Car(new Vector3(0, 0,0));
 	glPushMatrix();
 	glScalef(0.5,0.5,0.5);
-	
+
 	for(int i = 1; i < 6; i++){
 		glPushMatrix();
 		glRotatef(90,0,0,1);
 		aux->setPosition(110, 5+i*15 ,50);
 		aux->draw();
-		glPopMatrix;
+		glPopMatrix();
 	}
-	
+
 	glPopMatrix();
 	delete(aux);
 }
@@ -511,4 +515,40 @@ void GameManager::decreaseLifes(){
 
 bool GameManager::isDead(){
     return lifes <= 0;
+}
+
+void GameManager::finalize(){
+
+    /*for(GameObject *so : getStaticObjects()){
+        delete(so);
+    }*/
+
+    for(unsigned int i = 0; i < _static_game_objects.size(); i++){
+        _static_game_objects.pop_front();
+    }
+
+    /*for(GameObject *doo : getDynamicObjects()){
+        delete(doo);
+    }*/
+
+    for(unsigned int i = 0; i < _dynamic_game_objects.size(); i++){
+        _dynamic_game_objects.pop_front();
+    }
+
+    /*for(Camera *cam : getCameras()){
+        delete(cam);
+    }*/
+
+    _cameras.erase(_cameras.begin(), _cameras.begin()+_cameras.size());
+
+    delete(car);
+
+    /*for(LightSource *ls : getLightSources()){
+        delete(ls);
+    }*/
+
+    _light_sources.erase(_light_sources.begin(), _light_sources.begin()+_light_sources.size());
+
+    delete(track);
+
 }

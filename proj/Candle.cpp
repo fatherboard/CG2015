@@ -37,7 +37,7 @@ Candle::Candle(Vector3* pos, Vector3* pos_luz){
 }
 
 Candle::~Candle(){
-    delete this;
+    //delete this;
 }
 
 void Candle::draw(){
