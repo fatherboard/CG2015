@@ -56,7 +56,11 @@ Track::Track(){
 	for (i = 0; i < 55; i=i+4) {
 		_cheerios.push_back(new Cheerio(new Vector3(-30 + i, -28, 50), 0.25, 0.9));
 	}
-	setTexture(Texture::load_textures("mesa23.bmp"));
+	if(gameManager->pedro){
+        setTexture(Texture::load_textures("/home/pedro/workspace/CG2015/proj/mesa23.bmp"));
+    }else{
+        setTexture(Texture::load_textures("mesa23.bmp"));
+    }
 }
 
 Track::~Track() {

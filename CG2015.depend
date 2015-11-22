@@ -227,7 +227,7 @@
 	"Vector3.h"
 	<GL/glut.h>
 
-1448131004 source:/mnt/DATA/pedro/workspace/CG2015/proj/main.cpp
+1448198970 source:/mnt/DATA/pedro/workspace/CG2015/proj/main.cpp
 	"GameManager.h"
 	<cstdlib>
 	"GL/glut.h"
@@ -259,7 +259,7 @@
 	<cmath>
 	<math.h>
 
-1448191518 /mnt/DATA/pedro/workspace/CG2015/proj/GameManager.h
+1448198896 /mnt/DATA/pedro/workspace/CG2015/proj/GameManager.h
 	"Camera.h"
 	"Vector3.h"
 	"LightSource.h"
@@ -326,15 +326,15 @@
 1447057285 source:/mnt/DATA/pedro/workspace/CG2015/proj/Camera.cpp
 	"Camera.h"
 
-1448195441 source:/mnt/DATA/pedro/workspace/CG2015/proj/Car.cpp
+1448198605 source:/mnt/DATA/pedro/workspace/CG2015/proj/Car.cpp
 	<vector>
 	"Car.h"
 	"GameManager.h"
 
-1448196245 source:/mnt/DATA/pedro/workspace/CG2015/proj/GameManager.cpp
+1448198605 source:/mnt/DATA/pedro/workspace/CG2015/proj/GameManager.cpp
 	"GameManager.h"
 
-1448196093 source:/mnt/DATA/pedro/workspace/CG2015/proj/Track.cpp
+1448198985 source:/mnt/DATA/pedro/workspace/CG2015/proj/Track.cpp
 	"Track.h"
 	"GameManager.h"
 	"Cheerio.h"

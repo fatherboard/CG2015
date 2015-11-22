@@ -31,6 +31,9 @@ void update_game(int i) {
 
 int main(int argc, char ** argv) {
 	gameManager = new GameManager();
+	if(argc > 1){
+        gameManager->pedro = true;
+	}
 	srand(time(0));
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
