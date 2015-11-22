@@ -35,7 +35,7 @@ void Cheerio::draw() {
 	glTranslatef(_position.getX(), _position.getY(), _position.getZ());
 	glColor3f(1, 0.3, 0);
 
-    if(gameManager->getLightsOn() || gameManager->getModoDia()){
+    if(gameManager->getLightsOn() || gameManager->getModoDia() || gameManager->getCar()->getLightState()){
         defineMaterial(	1.00, 0.30, 0.00, 1.00,
                         0.50, 0.30, 0.00, 1.00,
                         0.00, 0.00, 0.00, 1.00,

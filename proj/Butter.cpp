@@ -39,7 +39,7 @@ void Butter::draw(){
 	glTranslated(getPosition()->getX(), getPosition()->getY(), getPosition()->getZ());
 	glScalef(width, length, 1);
 
-    if(gameManager->getLightsOn()){
+    if(gameManager->getLightsOn() || gameManager->getCar()->getLightState()){
         defineMaterial(	color.getX(), color.getY(), color.getZ(), 1.00,
                         0.90, 0.00, 0.00, 1.00,
                         1.00, 1.00, 1.00, 1.00,

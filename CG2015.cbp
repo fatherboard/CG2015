@@ -41,6 +41,8 @@
 		<Unit filename="proj/Butter.h" />
 		<Unit filename="proj/Camera.cpp" />
 		<Unit filename="proj/Camera.h" />
+		<Unit filename="proj/Candle.cpp" />
+		<Unit filename="proj/Candle.h" />
 		<Unit filename="proj/Car.cpp" />
 		<Unit filename="proj/Car.h" />
 		<Unit filename="proj/Cheerio.cpp" />
@@ -56,7 +58,6 @@
 		<Unit filename="proj/Header.h" />
 		<Unit filename="proj/LightSource.cpp" />
 		<Unit filename="proj/LightSource.h" />
-		<Unit filename="proj/Makefile" />
 		<Unit filename="proj/Obstacle.cpp" />
 		<Unit filename="proj/Obstacle.h" />
 		<Unit filename="proj/Orange.cpp" />
@@ -67,10 +68,14 @@
 		<Unit filename="proj/PerspectiveCamera.h" />
 		<Unit filename="proj/StaticObject.cpp" />
 		<Unit filename="proj/StaticObject.h" />
+		<Unit filename="proj/Texture.cpp" />
+		<Unit filename="proj/Texture.h" />
 		<Unit filename="proj/Track.cpp" />
 		<Unit filename="proj/Track.h" />
 		<Unit filename="proj/Vector3.cpp" />
 		<Unit filename="proj/Vector3.h" />
+		<Unit filename="proj/Vector4.cpp" />
+		<Unit filename="proj/Vector4.h" />
 		<Unit filename="proj/main.cpp" />
 		<Unit filename="proj/stdafx.cpp" />
 		<Unit filename="proj/stdafx.h" />

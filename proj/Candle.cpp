@@ -51,7 +51,7 @@ void Candle::draw(){
     //glTranslatef(0, 0, 2*getSize()->getZ()/2);
     glScalef(1,1,5);
 
-    if(gameManager->getLightsOn()){
+    if(gameManager->getLightsOn() || gameManager->getCar()->getLightState()){
         defineMaterial(	0.99, 0.83, 0.44, 1.00,
                         0.90, 0.00, 0.00, 1.00,
                         1.00, 1.00, 1.00, 1.00,

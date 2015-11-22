@@ -24,7 +24,8 @@ public:
 	void carDesacelera(unsigned long delta_t, bool sentido);
 	LightSource* getLuz(){return light;};
 	void toggleLight();
-	
+	bool getLightState(){ return light_on;};
+
 
 private:
 	// Nomes:

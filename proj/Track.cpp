@@ -56,7 +56,6 @@ Track::Track(){
 	for (i = 0; i < 55; i=i+4) {
 		_cheerios.push_back(new Cheerio(new Vector3(-30 + i, -28, 50), 0.25, 0.9));
 	}
-	
 	setTexture(Texture::load_textures("mesa23.bmp"));
 }
 
@@ -69,19 +68,18 @@ std::list<Cheerio *> Track::getCheerios(){
 }
 
 void Track::draw(){
-	
 	glPushMatrix();
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, getTexture());
-	
-    if(gameManager->getLightsOn() || gameManager->getModoDia()){
+
+    if(gameManager->getLightsOn() || gameManager->getModoDia() || gameManager->getCar()->getLightState()){
         defineMaterial(	0.56, 0.76, 0.83, 1.00,
                         0.00, 0.30, 0.36, 1.00,
                         0.56, 0.76, 0.83, 1.00,
                         0,0,0,1,
                         90);
-           
-		
+
+
     }else{
         defineMaterial(	0,0,0,0,
                         0,0,0,0,
