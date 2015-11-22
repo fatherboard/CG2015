@@ -39,6 +39,9 @@ class GameManager {
 	int camera_atual_id = 1;
 	bool _dead = false;
 	bool paused = false;
+	
+	GLuint TexturePause;
+	GLuint TextureGameOver;
 
 	Vector3* pos_init;
 
@@ -82,7 +85,10 @@ class GameManager {
 		
 		bool getSmooth();
 		void setSmooth(bool smooth);
-
+		void drawInfo();
+		void drawLifes();
+		GLuint getTexturePause(){ return TexturePause; }
+		GLuint getTextureGameOver(){ return TextureGameOver; }
 		Car* getCar();
 
     private:
