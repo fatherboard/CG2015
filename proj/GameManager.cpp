@@ -114,8 +114,11 @@ void GameManager::display() {
         decreaseLifes();
         if(isDead()){
             //mostrar ecra
+            paused=true;
         }
         car->setPosition(pos_init);
+        car->setDirecao(1,0,0);
+        car->setRadian(0);
         }
 
 	getCameras()[0]->computeProjectionMatrix();
@@ -279,10 +282,13 @@ void GameManager::update(unsigned long delta_t) {
         Orange* v = dynamic_cast<Orange*>(collided);
         if (v != 0) {
             // e uma laranja
-            //car->setPosition(pos_init);
+            car->setPosition(pos_init);
+            car->setDirecao(1,0,0);
+            car->setRadian(0);
             decreaseLifes();
             if(isDead()){
                 // mostrar ecra
+                paused=true;
             }
         }else{
             Vector3* obj_pos = collided->getPosition();
@@ -454,7 +460,7 @@ void GameManager::drawLifes(){
 	glPushMatrix();
 	glScalef(0.5,0.5,0.5);
 	
-	for(int i = 1; i < 6; i++){
+	for(int i = 0; i < getLifes(); i++){
 		glPushMatrix();
 		glRotatef(90,0,0,1);
 		aux->setPosition(110, 5+i*15 ,50);
