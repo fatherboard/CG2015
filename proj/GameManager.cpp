@@ -116,7 +116,7 @@ void GameManager::display() {
             paused=true;
         }
         car->setPosition(pos_init);
-        car->setDirecao(1,0,0);
+        car->setDirecao(0,0,0);
         car->setRadian(0);
         }
 
@@ -286,7 +286,7 @@ void GameManager::update(unsigned long delta_t) {
         if (v != 0) {
             // e uma laranja
             car->setPosition(pos_init);
-            car->setDirecao(1,0,0);
+            car->setDirecao(0,0,0);
             car->setRadian(0);
             decreaseLifes();
             if(isDead()){

@@ -89,6 +89,7 @@ void Car::draw() {
 	light->setPosition(getPosition()->getX(),
 						getPosition()->getY(),
 						53, 1);
+
 	light->setDirection(getDirecao()->getX(), getDirecao()->getY(), -1.2f); //Direcao do carro
 
 
