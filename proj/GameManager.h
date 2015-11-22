@@ -23,7 +23,7 @@
 
 class GameManager {
 
-	Car *car;
+	Car *car = NULL;
 	std::vector<Camera *> _cameras;
 	Camera *camera_atual;
 	std::list<GameObject *> _dynamic_game_objects;

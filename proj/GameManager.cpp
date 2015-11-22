@@ -7,7 +7,6 @@
 
 #include "GameManager.h"
 
-
 extern GameManager *gameManager;
 int _wireframe;
 bool backwards = false;
@@ -241,11 +240,13 @@ void GameManager::keyPressed(unsigned char key) {
 			paused = !paused;
 		break;
     case 'r':
-        if(isDead()){
+        //if(isDead()){
             // reiniciar
             finalize();
             init();
-        }
+            setLifes(5);
+            paused = false;
+        //}
         break;
     // extra
     case 'q':
