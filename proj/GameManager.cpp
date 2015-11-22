@@ -528,23 +528,28 @@ void GameManager::finalize(){
         delete(so);
     }*/
 
-    for(unsigned int i = 0; i < _static_game_objects.size(); i++){
+    /*for(unsigned int i = 0; i < _static_game_objects.size(); i++){
         _static_game_objects.pop_front();
-    }
+    }*/
+
+    _static_game_objects.clear();
 
     /*for(GameObject *doo : getDynamicObjects()){
         delete(doo);
     }*/
 
-    for(unsigned int i = 0; i < _dynamic_game_objects.size(); i++){
+    /*for(unsigned int i = 0; i < _dynamic_game_objects.size(); i++){
         _dynamic_game_objects.pop_front();
-    }
+    }*/
+
+    _dynamic_game_objects.clear();
 
     /*for(Camera *cam : getCameras()){
         delete(cam);
     }*/
 
-    _cameras.erase(_cameras.begin(), _cameras.begin()+_cameras.size());
+    //_cameras.erase(_cameras.begin(), _cameras.begin()+_cameras.size());
+    _cameras.clear();
 
     delete(car);
 
